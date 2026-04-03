@@ -36,6 +36,7 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           # 自定义域名挂在站点根路径；若仍用 *.github.io/<repo>/ 作为主 URL，请改为 false 或删除此行
           NEXT_STATIC_SITE_ROOT: "true"
+          NEXT_PUBLIC_SITE_URL: https://devease.ai-dddd.top
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

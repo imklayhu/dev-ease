@@ -7,10 +7,23 @@ import { SiteInfo } from "@/components/site-info";
 import { ThemeSettings } from "@/components/theme-settings";
 import { UsageInsights } from "@/components/usage-insights";
 import { BRAND_DISPLAY_NAME } from "@/lib/brand";
+import { absoluteUrl } from "@/lib/site-url";
+
+const aboutDescription = `${BRAND_DISPLAY_NAME} 站点信息、技术栈、基于 IndexedDB 的本地使用统计、外观主题与各工具操作历史说明。`;
 
 export const metadata: Metadata = {
   title: "关于我们",
-  description: `${BRAND_DISPLAY_NAME} 站点信息、本地使用统计、外观主题与偏好设置。`,
+  description: aboutDescription,
+  alternates: { canonical: absoluteUrl("/settings/") },
+  openGraph: {
+    title: `关于我们 · ${BRAND_DISPLAY_NAME}`,
+    description: aboutDescription,
+    url: absoluteUrl("/settings/"),
+  },
+  twitter: {
+    title: `关于我们 · ${BRAND_DISPLAY_NAME}`,
+    description: aboutDescription,
+  },
 };
 
 export default function AboutPage() {

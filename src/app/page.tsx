@@ -1,6 +1,26 @@
+import type { Metadata } from "next";
+
 import { ToolCard } from "@/components/tool-card";
-import { BRAND_DISPLAY_NAME } from "@/lib/brand";
+import { BRAND_DISPLAY_NAME, BRAND_TAGLINE } from "@/lib/brand";
 import { getToolsGrouped, toolCount } from "@/data/tools";
+import { absoluteUrl } from "@/lib/site-url";
+
+const homeDescription = `${BRAND_DISPLAY_NAME} 收录 JSON 格式化、Base64、时间戳、UUID、哈希、正则、JWT、颜色转换等 ${toolCount} 款纯前端开发者工具。${BRAND_TAGLINE}，无需登录，默认本地处理。`;
+
+export const metadata: Metadata = {
+  title: "常用开发小工具",
+  description: homeDescription,
+  alternates: { canonical: absoluteUrl("/") },
+  openGraph: {
+    title: `${BRAND_DISPLAY_NAME} — 常用开发小工具`,
+    description: homeDescription,
+    url: absoluteUrl("/"),
+  },
+  twitter: {
+    title: `${BRAND_DISPLAY_NAME} — 常用开发小工具`,
+    description: homeDescription,
+  },
+};
 
 export default function Home() {
   const grouped = getToolsGrouped();
