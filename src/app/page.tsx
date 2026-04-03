@@ -1,19 +1,10 @@
-import {
-  Binary,
-  Braces,
-  Clock,
-  Fingerprint,
-  Gauge,
-  Hash,
-  Link2,
-  Palette,
-  Regex,
-} from "lucide-react";
-
 import { ToolCard } from "@/components/tool-card";
 import { BRAND_DISPLAY_NAME } from "@/lib/brand";
+import { getToolsGrouped, toolCount } from "@/data/tools";
 
 export default function Home() {
+  const grouped = getToolsGrouped();
+
   return (
     <div className="flex flex-1 flex-col">
       <main
@@ -76,7 +67,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="space-y-8" id="tools">
+        <section className="space-y-10" id="tools">
           <div className="flex flex-col gap-4 border-b border-[var(--border)] pb-8 sm:flex-row sm:items-end sm:justify-between">
             <div className="space-y-2">
               <div className="flex flex-wrap items-center gap-3">
@@ -84,84 +75,65 @@ export default function Home() {
                   工具索引
                 </h2>
                 <span className="rounded-full bg-gradient-to-r from-[var(--accent-violet)]/20 to-[var(--accent)]/20 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--accent-violet)] ring-1 ring-[var(--accent-violet)]/25">
-                  Bento
+                  按用途分类
                 </span>
               </div>
               <p className="max-w-2xl text-sm leading-6 text-[var(--text-muted)] sm:text-[15px]">
-                {BRAND_DISPLAY_NAME} 当前收录的工具如下。点进卡片即可使用
+                {BRAND_DISPLAY_NAME} 当前收录的工具按用途分组如下。点进卡片即可使用；新增工具时在数据层登记分类即可出现在对应区块。
               </p>
             </div>
             <div className="flex items-center gap-2 self-start rounded-2xl border border-[var(--border)] bg-[var(--surface-elevated)] px-4 py-2 font-mono text-xs text-[var(--text-muted)] shadow-inner ring-1 ring-white/5">
               <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--accent)] shadow-[0_0_12px_var(--accent)] motion-reduce:animate-none" />
-              共 <span className="font-semibold text-[var(--text)]">9</span> 款
+              共 <span className="font-semibold text-[var(--text)]">{toolCount}</span> 款 ·{" "}
+              <span className="font-semibold text-[var(--text)]">{grouped.length}</span> 类
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            <ToolCard
-              badge="JSON"
-              description="校验 JSON；格式化（两格缩进）或压缩成一行。"
-              featured
-              href="/tools/json-formatter/"
-              icon={Braces}
-              title="JSON 格式化 / 压缩"
-            />
-            <ToolCard
-              badge="文本"
-              description="统计字符、单词、行数；访问次数只在本地累计。"
-              href="/tools/text-counter/"
-              icon={Gauge}
-              title="文本计数器"
-            />
-            <ToolCard
-              badge="编码"
-              description="Base64 编解码，UTF-8 文本不走样。"
-              href="/tools/base64/"
-              icon={Binary}
-              title="Base64 编解码"
-            />
-            <ToolCard
-              badge="时间"
-              description="Unix 时间戳与可读时间互转；支持秒/毫秒。"
-              href="/tools/timestamp/"
-              icon={Clock}
-              title="时间戳转换"
-            />
-            <ToolCard
-              badge="随机"
-              description="批量生成 UUID v4。"
-              href="/tools/uuid/"
-              icon={Fingerprint}
-              title="UUID 生成器"
-            />
-            <ToolCard
-              badge="URL"
-              description="encodeURIComponent / decodeURIComponent。"
-              href="/tools/url-codec/"
-              icon={Link2}
-              title="URL 组件编解码"
-            />
-            <ToolCard
-              badge="哈希"
-              description="SHA-256 / 384 / 512；输出 hex。"
-              href="/tools/crypto-hash/"
-              icon={Hash}
-              title="文本哈希（SHA）"
-            />
-            <ToolCard
-              badge="正则"
-              description="调试正则：列出匹配与捕获组。"
-              href="/tools/regex-tester/"
-              icon={Regex}
-              title="正则测试"
-            />
-            <ToolCard
-              badge="颜色"
-              description="HEX / RGB / HSL 互转，带预览。"
-              href="/tools/color-converter/"
-              icon={Palette}
-              title="颜色转换"
-            />
+          <nav aria-label="按分类跳转" className="-mt-2 flex flex-wrap gap-2">
+            {grouped.map(({ category }) => (
+              <a
+                key={category.id}
+                className="rounded-full border border-[var(--border)] bg-[var(--surface-subtle)] px-3 py-1.5 text-xs font-medium text-[var(--text-muted)] outline-none ring-offset-2 ring-offset-[var(--surface)] transition hover:border-[var(--accent-violet)]/35 hover:bg-[var(--accent-violet)]/10 hover:text-[var(--text)] focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                href={`#cat-${category.id}`}
+              >
+                {category.title}
+              </a>
+            ))}
+          </nav>
+
+          <div className="space-y-14">
+            {grouped.map(({ category, tools: categoryTools }) => (
+              <section
+                key={category.id}
+                aria-labelledby={`heading-${category.id}`}
+                className="scroll-mt-28 space-y-5"
+                id={`cat-${category.id}`}
+              >
+                <header className="space-y-1.5 border-b border-[var(--border)]/80 pb-4">
+                  <h3
+                    className="font-display text-lg font-bold tracking-tight text-[var(--text)] sm:text-xl"
+                    id={`heading-${category.id}`}
+                  >
+                    {category.title}
+                  </h3>
+                  <p className="max-w-3xl text-sm leading-6 text-[var(--text-muted)]">{category.description}</p>
+                </header>
+
+                <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                  {categoryTools.map((tool) => (
+                    <ToolCard
+                      key={tool.id}
+                      badge={tool.badge}
+                      description={tool.description}
+                      featured={tool.featured}
+                      href={tool.href}
+                      icon={tool.icon}
+                      title={tool.title}
+                    />
+                  ))}
+                </div>
+              </section>
+            ))}
           </div>
         </section>
       </main>
