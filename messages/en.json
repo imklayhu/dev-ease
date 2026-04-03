@@ -357,6 +357,21 @@
       "description": "Local-first Markdown rendering with GFM support, preview/HTML source tabs, TOC extraction, and quick stats for writing and review.",
       "badge": "Markdown · Preview",
       "breadcrumb": "Markdown Preview",
+      "toolbar": {
+        "view": "Layout",
+        "reading": "Reading width"
+      },
+      "viewMode": {
+        "split": "Split",
+        "editor": "Editor",
+        "preview": "Read"
+      },
+      "readingWidth": {
+        "comfort": "Comfortable",
+        "wide": "Full width"
+      },
+      "previewAria": "Rendered Markdown preview",
+      "previewPanelLabel": "Rendered document",
       "input": "Markdown input",
       "placeholder": "# Title\\n\\n- item 1\\n- item 2",
       "preview": "Preview",
@@ -385,6 +400,71 @@
       "emptyValue": "(empty)",
       "queryParams": "Query parameters",
       "noQueryParams": "No query parameters"
+    },
+    "cronParser": {
+      "title": "Cron Parser",
+      "description": "Parse a cron expression and list the next trigger times in your local timezone.",
+      "badge": "Cron",
+      "breadcrumb": "Cron Parser",
+      "input": "Cron expression",
+      "placeholder": "0 9 * * 1-5",
+      "nextCount": "Next runs to show",
+      "nextRuns": "Next trigger times",
+      "timezone": "Timezone",
+      "copyRuns": "Copy list",
+      "tip": "Supports common 5-field crontab and 6-field (with seconds) expressions, plus aliases like @daily. Times follow your browser timezone.",
+      "parseError": "Could not parse this expression: {detail}",
+      "badCount": "Please choose a number between 1 and 50.",
+      "history": {
+        "copyRuns": "Copy cron next-run list"
+      }
+    },
+    "sqlFormatter": {
+      "title": "SQL Formatter",
+      "description": "Pretty-print SQL in the browser with dialect-aware rules and keyword casing.",
+      "badge": "SQL",
+      "breadcrumb": "SQL Formatter",
+      "dialect": "Dialect",
+      "dialects": {
+        "sql": "SQL (generic)",
+        "mysql": "MySQL",
+        "postgresql": "PostgreSQL",
+        "sqlite": "SQLite",
+        "bigquery": "BigQuery",
+        "transactsql": "Transact-SQL"
+      },
+      "keywordUpper": "UPPER",
+      "keywordLower": "lower",
+      "input": "SQL input",
+      "placeholder": "SELECT id, name FROM users WHERE active = 1;",
+      "output": "Formatted SQL",
+      "copyFormatted": "Copy formatted",
+      "tip": "Formatting runs locally; avoid pasting secrets you would not keep in client-side tools.",
+      "formatError": "Could not format: {detail}",
+      "history": {
+        "copyFormatted": "Copy formatted SQL"
+      }
+    },
+    "qrDecode": {
+      "title": "QR Decode",
+      "description": "Upload a QR image and decode its content locally in your browser.",
+      "badge": "QR Decode",
+      "breadcrumb": "QR Decode",
+      "pickImage": "Choose image",
+      "supportedFormats": "Supported: PNG, JPG, WEBP, GIF, BMP.",
+      "preview": "Image preview",
+      "previewAlt": "Uploaded image preview",
+      "emptyPreview": "No image selected yet.",
+      "decodedContent": "Decoded content",
+      "copyDecoded": "Copy decoded text",
+      "sourceImage": "Source image",
+      "emptyResult": "Select an image containing a QR code to start decoding.",
+      "decodeFailed": "No readable QR code found in this image.",
+      "canvasUnavailable": "Canvas is not available in this browser environment.",
+      "tip": "Everything runs locally in your browser; image files are not uploaded.",
+      "history": {
+        "copyDecoded": "Copy decoded QR content"
+      }
     }
   },
   "guides": {
@@ -480,6 +560,11 @@
         "description": "Generate QR code images from text or links (rendered locally).",
         "badge": "QR"
       },
+      "qr-decode": {
+        "title": "QR Decode",
+        "description": "Upload QR images and decode text locally.",
+        "badge": "QR Decode"
+      },
       "timestamp": {
         "title": "Timestamp Converter",
         "description": "Convert Unix timestamps and readable times; supports seconds/milliseconds.",
@@ -524,6 +609,16 @@
         "title": "URL Parser",
         "description": "Break down URL parts and expand query params for debugging.",
         "badge": "Parser"
+      },
+      "sql-formatter": {
+        "title": "SQL Formatter",
+        "description": "Pretty-print SQL in the browser with dialect-aware rules.",
+        "badge": "SQL"
+      },
+      "cron-parser": {
+        "title": "Cron Parser",
+        "description": "Parse cron expressions and preview upcoming trigger times.",
+        "badge": "Cron"
       }
     }
   }

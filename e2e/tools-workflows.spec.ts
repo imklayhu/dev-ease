@@ -108,4 +108,22 @@ test.describe("tool workflows", () => {
     await expect(page.locator("main")).toContainText("protocol");
     await expect(page.locator("main")).toContainText("x = 1");
   });
+
+  test("cron parser", async ({ page }) => {
+    await page.goto("/zh/tools/cron-parser/");
+    await page.fill("#cron-input", "0 9 * * 1-5");
+    await expect(page.locator("#cron-next-runs li").first()).toBeVisible();
+  });
+
+  test("sql formatter", async ({ page }) => {
+    await page.goto("/zh/tools/sql-formatter/");
+    await page.fill("#sql-input", "select id from t");
+    await expect(page.locator("#sql-output")).toContainText("SELECT");
+  });
+
+  test("qr decode", async ({ page }) => {
+    await page.goto("/zh/tools/qr-decode/");
+    await page.locator("#qr-decode-file").setInputFiles("tests/fixtures/qr-hello.png");
+    await expect(page.locator("#qr-decoded-output")).toContainText("hello");
+  });
 });
