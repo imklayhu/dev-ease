@@ -351,6 +351,40 @@
       "history": {
         "copyAll": "Copy all color conversions"
       }
+    },
+    "markdownPreview": {
+      "title": "Markdown Preview",
+      "description": "Local-first Markdown rendering with GFM support, preview/HTML source tabs, TOC extraction, and quick stats for writing and review.",
+      "badge": "Markdown · Preview",
+      "breadcrumb": "Markdown Preview",
+      "input": "Markdown input",
+      "placeholder": "# Title\\n\\n- item 1\\n- item 2",
+      "preview": "Preview",
+      "htmlSource": "HTML source",
+      "copyHtml": "Copy HTML",
+      "resetDemo": "Reset demo",
+      "clear": "Clear",
+      "toc": "Table of contents",
+      "tocEmpty": "No headings yet",
+      "stats": {
+        "chars": "Chars {value}",
+        "words": "Words {value}",
+        "lines": "Lines {value}"
+      },
+      "empty": "Nothing to preview",
+      "tip": "Supports headings, lists, bold, italic, inline code, and links.",
+      "demoMarkdown": "# DevEase Markdown Preview\\n\\n> Local-first markdown preview with practical output.\\n\\n## Features\\n\\n- [x] GFM table / task list / strikethrough\\n- [x] Safe preview (sanitized HTML)\\n- [x] Preview + HTML source tabs\\n- [x] Copy rendered HTML\\n\\n## Example table\\n\\n| Key | Value |\\n| --- | --- |\\n| framework | Next.js |\\n| i18n | next-intl |\\n\\n```ts\\nconst hello = \"DevEase\";\\nconsole.log(hello);\\n```",
+      "history": {
+        "copyHtml": "Copy rendered Markdown HTML"
+      }
+    },
+    "urlParser": {
+      "input": "URL input",
+      "placeholder": "https://example.com/path?a=1&b=hello#intro",
+      "invalidUrl": "Please enter a valid absolute URL (including protocol).",
+      "emptyValue": "(empty)",
+      "queryParams": "Query parameters",
+      "noQueryParams": "No query parameters"
     }
   },
   "guides": {
@@ -480,6 +514,16 @@
         "title": "Color Converter",
         "description": "Convert HEX / RGB / HSL with a preview.",
         "badge": "Color"
+      },
+      "markdown-preview": {
+        "title": "Markdown Preview",
+        "description": "Render Markdown locally in real time for writing and docs review.",
+        "badge": "Markdown"
+      },
+      "url-parser": {
+        "title": "URL Parser",
+        "description": "Break down URL parts and expand query params for debugging.",
+        "badge": "Parser"
       }
     }
   }

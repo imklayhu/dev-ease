@@ -351,6 +351,40 @@
       "history": {
         "copyAll": "色変換結果をすべてコピー"
       }
+    },
+    "markdownPreview": {
+      "title": "Markdown プレビュー",
+      "description": "GFM 対応のローカル Markdown リアルタイムレンダリング。プレビュー/HTML ソース切替、見出し目次、文字数統計で文書作成を効率化します。",
+      "badge": "Markdown · プレビュー",
+      "breadcrumb": "Markdown プレビュー",
+      "input": "Markdown 入力",
+      "placeholder": "# タイトル\\n\\n- 項目 1\\n- 項目 2",
+      "preview": "プレビュー",
+      "htmlSource": "HTML ソース",
+      "copyHtml": "HTML をコピー",
+      "resetDemo": "サンプルに戻す",
+      "clear": "クリア",
+      "toc": "目次",
+      "tocEmpty": "見出しがありません",
+      "stats": {
+        "chars": "文字 {value}",
+        "words": "単語 {value}",
+        "lines": "行 {value}"
+      },
+      "empty": "プレビュー対象がありません",
+      "tip": "見出し、リスト、太字、斜体、インラインコード、リンクに対応。",
+      "demoMarkdown": "# DevEase Markdown プレビュー\\n\\n> 実用的なローカルファースト Markdown プレビュー。\\n\\n## 機能\\n\\n- [x] GFM テーブル / タスクリスト / 取り消し線\\n- [x] サニタイズ済みの安全なプレビュー\\n- [x] プレビューと HTML ソースのタブ切替\\n- [x] レンダリング済み HTML のコピー\\n\\n## サンプル表\\n\\n| Key | Value |\\n| --- | --- |\\n| framework | Next.js |\\n| i18n | next-intl |\\n\\n```ts\\nconst hello = \"DevEase\";\\nconsole.log(hello);\\n```",
+      "history": {
+        "copyHtml": "Markdown レンダリング HTML をコピー"
+      }
+    },
+    "urlParser": {
+      "input": "URL 入力",
+      "placeholder": "https://example.com/path?a=1&b=hello#intro",
+      "invalidUrl": "有効な絶対 URL（プロトコル含む）を入力してください。",
+      "emptyValue": "（空）",
+      "queryParams": "クエリパラメータ",
+      "noQueryParams": "クエリパラメータなし"
     }
   },
   "guides": {
@@ -480,6 +514,16 @@
         "title": "カラー変換",
         "description": "HEX / RGB / HSL を相互変換し、プレビュー付き。",
         "badge": "カラー"
+      },
+      "markdown-preview": {
+        "title": "Markdown プレビュー",
+        "description": "Markdown をローカルでリアルタイム表示し、文書確認を効率化。",
+        "badge": "Markdown"
+      },
+      "url-parser": {
+        "title": "URL パーサー",
+        "description": "URL 要素とクエリを分解し、デバッグを容易にします。",
+        "badge": "Parser"
       }
     }
   }

@@ -351,6 +351,40 @@
       "history": {
         "copyAll": "复制颜色换算全部"
       }
+    },
+    "markdownPreview": {
+      "title": "Markdown 预览",
+      "description": "支持 GFM 的本地实时 Markdown 渲染，提供预览/HTML 双视图、目录与统计信息，便于文档写作和校对。",
+      "badge": "Markdown · 预览",
+      "breadcrumb": "Markdown 预览",
+      "input": "Markdown 输入",
+      "placeholder": "# 标题\\n\\n- 条目 1\\n- 条目 2",
+      "preview": "预览",
+      "htmlSource": "HTML 源码",
+      "copyHtml": "复制 HTML",
+      "resetDemo": "重置示例",
+      "clear": "清空",
+      "toc": "目录",
+      "tocEmpty": "暂无标题目录",
+      "stats": {
+        "chars": "字符 {value}",
+        "words": "单词 {value}",
+        "lines": "行数 {value}"
+      },
+      "empty": "暂无可预览内容",
+      "tip": "支持标题、列表、粗体、斜体、行内代码与链接。",
+      "demoMarkdown": "# DevEase Markdown 预览\\n\\n> 本地优先的 Markdown 预览，适合文档草稿校对。\\n\\n## 功能\\n\\n- [x] 支持 GFM 表格 / 任务列表 / 删除线\\n- [x] 预览区进行安全净化\\n- [x] 预览与 HTML 源码双视图\\n- [x] 一键复制渲染 HTML\\n\\n## 示例表格\\n\\n| Key | Value |\\n| --- | --- |\\n| framework | Next.js |\\n| i18n | next-intl |\\n\\n```ts\\nconst hello = \"DevEase\";\\nconsole.log(hello);\\n```",
+      "history": {
+        "copyHtml": "复制 Markdown 渲染 HTML"
+      }
+    },
+    "urlParser": {
+      "input": "URL 输入",
+      "placeholder": "https://example.com/path?a=1&b=hello#intro",
+      "invalidUrl": "请输入有效的绝对 URL（包含协议）。",
+      "emptyValue": "（空）",
+      "queryParams": "查询参数",
+      "noQueryParams": "无查询参数"
     }
   },
   "guides": {
@@ -480,6 +514,16 @@
         "title": "颜色转换",
         "description": "HEX / RGB / HSL 互转，带预览。",
         "badge": "颜色"
+      },
+      "markdown-preview": {
+        "title": "Markdown 预览",
+        "description": "本地实时渲染 Markdown，便于写作与文档校对。",
+        "badge": "Markdown"
+      },
+      "url-parser": {
+        "title": "URL 解析器",
+        "description": "拆解 URL 组件并展开查询参数，便于联调与排错。",
+        "badge": "解析"
       }
     }
   }
