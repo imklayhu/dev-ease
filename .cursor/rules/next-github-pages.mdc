@@ -1,0 +1,35 @@
+---
+description: Next.js 静态导出与 GitHub Pages（basePath、自定义域名、SEO 构建变量）
+globs: next.config.*,**/middleware.ts,app/**/*,.github/workflows/**/*
+alwaysApply: false
+---
+
+# Next.js + GitHub Pages
+
+## 目标
+
+- `output: 'export'`（静态导出）必须通过。
+- 页面与 `Link`、`Image`、`router` 与当前部署的 **basePath 策略**一致（子路径或站点根路径）。
+- 线上规范 URL、canonical、sitemap 与 **NEXT_PUBLIC_SITE_URL** 一致。
+
+## basePath 与自定义域名（本项目约定）
+
+- **默认（未设 `NEXT_STATIC_SITE_ROOT`）**：生产构建使用 `GITHUB_REPOSITORY` 推导仓库名，`basePath` / `assetPrefix` 为 `/<repo>/`，适配 `https://<user>.github.io/<repo>/`。
+- **自定义域名挂在站点根**（如 `devease.ai-dddd.top/`）：CI 设 `NEXT_STATIC_SITE_ROOT=true`，`basePath` 与 `assetPrefix` 为空，静态资源为 `/_next/...`。根目录 **CNAME** 由 GitHub Pages 使用，与 Next 配置独立。
+- 详见 `next.config.ts` 内注释；工作流见 `.github/workflows/deploy-pages.yml`。
+
+## 站点 URL 与 SEO（静态导出）
+
+- **`NEXT_PUBLIC_SITE_URL`**：无尾斜杠的绝对源站地址（如 `https://devease.ai-dddd.top`），用于 `metadataBase`、canonical、Open Graph、`sitemap.xml`、`robots.txt`。CI 已与生产域名对齐；本地未设时开发用 `localhost`，生产兜底见 `src/lib/site-url.ts`。
+- **`app/sitemap.ts`**、**`app/robots.ts`**：须 `export const dynamic = "force-static"`，否则 `output: export` 构建会失败。
+- **工具页为 client `page.tsx`** 时，**metadata 放在同段 `layout.tsx`**（服务端），通过 `metadataForTool(toolId)` 生成，避免在 client 组件导出 `metadata`。
+
+## 其他实践要点
+
+- 使用 `next/image` 时确认静态导出支持方式（本项目 `images.unoptimized`）。
+- 避免依赖仅 SSR 可用的特性；需要数据时在客户端 `useEffect` + 静态 JSON，或纯客户端 IDB。
+
+## 自检
+
+- 修改路由或配置后：本地执行生产构建（与 CI 相同环境变量时更佳），检查 `out/_next` 引用路径是否带错 `/repo/` 前缀。
+- 检查 `out/sitemap.xml`、`out/robots.txt` 中的 URL 是否为预期的规范域名。

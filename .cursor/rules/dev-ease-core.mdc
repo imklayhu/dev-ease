@@ -1,0 +1,28 @@
+---
+description: dev-ease 全局宪章与目录约定（纯前端工具站 + GitHub Pages）
+alwaysApply: true
+---
+
+# dev-ease — 核心约束
+
+## 项目是什么
+
+- 纯前端「开发/便利工具」集合站；Next.js；GitHub Pages 发布。
+- 用户设置与行为数据用 **IndexedDB** 持久化（见 `indexeddb-client` 规则）。
+
+## 目录与职责（建议保持）
+
+- `app/`：页面与布局；工具子路由按功能分子目录。
+- `components/`：可复用 UI。
+- `lib/`：无 UI 的逻辑（含 IDB 封装、常量、工具函数）。
+
+## 禁止
+
+- 引入依赖服务端运行时或机密的后端方案来完成当前需求。
+- 假设部署形态单一：写死绝对 URL 或忽略 CI 中的 `basePath` / `NEXT_STATIC_SITE_ROOT` / `NEXT_PUBLIC_SITE_URL` 约定（见 `next-github-pages` 规则）。站内导航仍用框架提供的根相对路径。
+- 用 `localStorage` 替代 IndexedDB 存储结构化或增长型数据。
+
+## Agent 行为
+
+- 改动聚焦需求；不批量重命名、不大范围格式化无关文件。
+- 新增工具页时同步考虑：导航入口、静态导出兼容性、是否需要 IDB。

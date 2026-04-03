@@ -1,0 +1,25 @@
+---
+description: IndexedDB 封装、schema 版本与错误处理
+globs: lib/**/*,{app,components}/**/*
+alwaysApply: false
+---
+
+# IndexedDB（客户端持久化）
+
+## 用途
+
+- 用户**设置**（主题、布局、功能开关等）。
+- 可接受的**匿名使用/行为**记录（频次、最近使用工具等），避免收集 PII。
+- **工具页操作历史**（`toolHistory` 仓库，`DB_VERSION` ≥ 2）：按工具 id 记录事件时间线，单工具条数上限与清理策略见 `src/lib/db/client.ts` 与 `.cursor/specs/2026-04-03-tool-page-history.md`。
+
+## 实现要求
+
+- 集中封装：打开数据库、object store 名称、读写 API 放在 `lib/`（如 `lib/db/`），页面只调高层函数。
+- **版本号**：`onupgradeneeded` 中做 schema 变更；必要时提供轻量迁移逻辑。
+- **错误**：`open`/`transaction` 失败时记录（`console.error` 或项目 logger），并对 UI 做降级（默认设置、禁用依赖 IDB 的增强功能）。
+- **类型**：对存取结构用 TypeScript 类型或 Zod 等校验，避免脏数据导致运行时异常。
+
+## 避免
+
+- 在主线程无节制大批量写入导致卡顿（大数据集考虑分批或 `requestIdleCallback`）。
+- 把敏感令牌写入 IDB（仍属客户端可见）。
