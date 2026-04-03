@@ -8,7 +8,7 @@
 - `TC-ROUTE-04`：`/zh/guides/` 可渲染并出现主标题
 - `TC-ROUTE-05~07`：`en/ja/ko` 语言下首页、settings、guides 路由均可渲染
 
-## 2) 工具页工作流（17 个）
+## 2) 工具页工作流（20 个）
 
 - `TC-TOOL-01` JSON Formatter：输入 JSON，格式化输出出现缩进字段
 - `TC-TOOL-02` UUID：设置数量并触发生成，结果列表出现 UUID 格式串
@@ -27,6 +27,9 @@
 - `TC-TOOL-15` Regex Tester：输入模式与文本，结果区出现匹配内容
 - `TC-TOOL-16` Markdown Preview：输入 markdown 后预览区出现对应标题/样式
 - `TC-TOOL-17` URL Parser：输入 URL 后展示协议/查询参数解析结果
+- `TC-TOOL-18` Cron Parser：输入合法 cron 后「下次触发时间」列表出现条目
+- `TC-TOOL-19` SQL Formatter：输入 SQL 后只读输出区出现关键字（如 `SELECT`）
+- `TC-TOOL-20` QR Decode：上传二维码图片后输出区出现解码文本
 
 ## 3) 报告与产物
 

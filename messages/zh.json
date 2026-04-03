@@ -357,6 +357,21 @@
       "description": "支持 GFM 的本地实时 Markdown 渲染，提供预览/HTML 双视图、目录与统计信息，便于文档写作和校对。",
       "badge": "Markdown · 预览",
       "breadcrumb": "Markdown 预览",
+      "toolbar": {
+        "view": "布局",
+        "reading": "阅读宽度"
+      },
+      "viewMode": {
+        "split": "分栏",
+        "editor": "仅编辑",
+        "preview": "仅阅读"
+      },
+      "readingWidth": {
+        "comfort": "舒适",
+        "wide": "通栏"
+      },
+      "previewAria": "Markdown 渲染预览",
+      "previewPanelLabel": "渲染结果",
       "input": "Markdown 输入",
       "placeholder": "# 标题\\n\\n- 条目 1\\n- 条目 2",
       "preview": "预览",
@@ -385,6 +400,71 @@
       "emptyValue": "（空）",
       "queryParams": "查询参数",
       "noQueryParams": "无查询参数"
+    },
+    "cronParser": {
+      "title": "Cron 解析",
+      "description": "解析 Cron 表达式，并按本机时区列出未来若干次触发时间。",
+      "badge": "Cron",
+      "breadcrumb": "Cron 解析",
+      "input": "Cron 表达式",
+      "placeholder": "0 9 * * 1-5",
+      "nextCount": "展示未来次数",
+      "nextRuns": "下次触发时间",
+      "timezone": "时区",
+      "copyRuns": "复制列表",
+      "tip": "支持常见 5 段 crontab、带「秒」的 6 段表达式，以及 @daily 等别名。时间按浏览器所在时区解释。",
+      "parseError": "无法解析该表达式：{detail}",
+      "badCount": "请选择 1～50 之间的数字。",
+      "history": {
+        "copyRuns": "复制 Cron 未来触发列表"
+      }
+    },
+    "sqlFormatter": {
+      "title": "SQL 格式化",
+      "description": "在浏览器内美化 SQL，可选择方言与关键字大小写。",
+      "badge": "SQL",
+      "breadcrumb": "SQL 格式化",
+      "dialect": "方言",
+      "dialects": {
+        "sql": "通用 SQL",
+        "mysql": "MySQL",
+        "postgresql": "PostgreSQL",
+        "sqlite": "SQLite",
+        "bigquery": "BigQuery",
+        "transactsql": "Transact-SQL"
+      },
+      "keywordUpper": "大写",
+      "keywordLower": "小写",
+      "input": "SQL 输入",
+      "placeholder": "SELECT id, name FROM users WHERE active = 1;",
+      "output": "格式化结果",
+      "copyFormatted": "复制结果",
+      "tip": "格式化在本地执行；请勿粘贴不愿留在浏览器环境内的敏感连接串或机密 SQL。",
+      "formatError": "无法格式化：{detail}",
+      "history": {
+        "copyFormatted": "复制格式化后的 SQL"
+      }
+    },
+    "qrDecode": {
+      "title": "二维码解码",
+      "description": "上传二维码图片，在浏览器本地解析其内容。",
+      "badge": "QR 解码",
+      "breadcrumb": "二维码解码",
+      "pickImage": "选择图片",
+      "supportedFormats": "支持：PNG、JPG、WEBP、GIF、BMP。",
+      "preview": "图片预览",
+      "previewAlt": "已上传图片预览",
+      "emptyPreview": "尚未选择图片。",
+      "decodedContent": "解码内容",
+      "copyDecoded": "复制解码文本",
+      "sourceImage": "来源图片",
+      "emptyResult": "请选择一张包含二维码的图片开始解析。",
+      "decodeFailed": "未在该图片中识别到可读二维码。",
+      "canvasUnavailable": "当前浏览器环境不支持 Canvas。",
+      "tip": "全流程都在浏览器本地执行，图片不会上传。",
+      "history": {
+        "copyDecoded": "复制二维码解码内容"
+      }
     }
   },
   "guides": {
@@ -480,6 +560,11 @@
         "description": "文本或链接生成 QR 码图片（本地渲染）。",
         "badge": "QR"
       },
+      "qr-decode": {
+        "title": "二维码解码",
+        "description": "上传二维码图片并在本地解析文本。",
+        "badge": "QR 解码"
+      },
       "timestamp": {
         "title": "时间戳转换",
         "description": "Unix 时间戳与可读时间互转；支持秒/毫秒。",
@@ -524,6 +609,16 @@
         "title": "URL 解析器",
         "description": "拆解 URL 组件并展开查询参数，便于联调与排错。",
         "badge": "解析"
+      },
+      "sql-formatter": {
+        "title": "SQL 格式化",
+        "description": "在浏览器内美化 SQL，支持多种方言。",
+        "badge": "SQL"
+      },
+      "cron-parser": {
+        "title": "Cron 解析",
+        "description": "解析 Cron 并预览未来触发时间。",
+        "badge": "Cron"
       }
     }
   }

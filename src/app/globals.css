@@ -242,3 +242,228 @@ body::after {
     animation: shimmer 1.15s ease-out;
   }
 }
+
+/*
+ * Markdown 预览正文（不依赖 @tailwindcss/typography 的 prose）
+ * Minimal / Swiss：清晰层级、可读行长、等宽代码块、表格横向滚动
+ */
+.devease-md {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.devease-md > *:first-child {
+  margin-top: 0;
+}
+
+.devease-md > *:last-child {
+  margin-bottom: 0;
+}
+
+.devease-md h1,
+.devease-md h2,
+.devease-md h3,
+.devease-md h4,
+.devease-md h5,
+.devease-md h6 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  scroll-margin-top: 5rem;
+}
+
+.devease-md h1 {
+  margin: 0 0 0.85em;
+  padding-bottom: 0.35em;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.devease-md h2 {
+  margin: 1.5em 0 0.65em;
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+
+.devease-md h3 {
+  margin: 1.35em 0 0.5em;
+  font-size: 1.12rem;
+  line-height: 1.35;
+}
+
+.devease-md h4 {
+  margin: 1.15em 0 0.45em;
+  font-size: 1.02rem;
+}
+
+.devease-md h5,
+.devease-md h6 {
+  margin: 1em 0 0.4em;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.devease-md p {
+  margin: 0.75em 0;
+}
+
+.devease-md a {
+  color: var(--accent-violet);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.devease-md a:hover {
+  color: color-mix(in oklab, var(--accent-violet) 85%, var(--accent-cyan));
+}
+
+.devease-md strong {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.devease-md em {
+  font-style: italic;
+}
+
+.devease-md del {
+  opacity: 0.85;
+}
+
+.devease-md ul,
+.devease-md ol {
+  margin: 0.65em 0;
+  padding-left: 1.35em;
+}
+
+.devease-md li {
+  margin: 0.35em 0;
+}
+
+.devease-md li::marker {
+  color: var(--text-muted);
+}
+
+/* GFM 任务列表：marked 输出为 ul > li > input[type=checkbox] */
+.devease-md ul:has(> li > input[type="checkbox"]) {
+  list-style: none;
+  padding-left: 0;
+}
+
+.devease-md li:has(> input[type="checkbox"]) {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.devease-md li:has(> input[type="checkbox"]) input[type="checkbox"] {
+  margin-top: 0.28em;
+  flex-shrink: 0;
+  accent-color: var(--accent-violet);
+  cursor: default;
+}
+
+.devease-md blockquote {
+  margin: 1em 0;
+  padding: 0.65rem 1rem;
+  border-left: 3px solid color-mix(in oklab, var(--accent-violet) 55%, var(--border));
+  border-radius: 0 0.75rem 0.75rem 0;
+  background: color-mix(in oklab, var(--surface-subtle) 88%, transparent);
+  color: var(--text-muted);
+}
+
+.devease-md blockquote p {
+  margin: 0.4em 0;
+}
+
+.devease-md hr {
+  margin: 1.5em 0;
+  border: none;
+  border-top: 1px solid var(--border-strong);
+}
+
+.devease-md :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  padding: 0.12em 0.4em;
+  border-radius: 0.35rem;
+  background: color-mix(in oklab, var(--surface-subtle) 92%, var(--accent-violet) 8%);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.devease-md-pre {
+  margin: 1em 0;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  border-radius: 0.85rem;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--surface) 92%, #0f172a 8%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+:root[data-theme="light"] .devease-md-pre {
+  background: color-mix(in oklab, #f8fafc 88%, var(--accent-violet) 6%);
+}
+
+.devease-md-codeblock {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--text);
+  white-space: pre;
+  tab-size: 2;
+}
+
+.devease-md table {
+  width: max-content;
+  max-width: min(100%, 100vw - 4rem);
+  margin: 1em 0;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  display: table;
+}
+
+.devease-md thead {
+  background: color-mix(in oklab, var(--surface-subtle) 90%, transparent);
+}
+
+.devease-md th,
+.devease-md td {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.devease-md th {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.devease-md tbody tr:nth-child(even) {
+  background: color-mix(in oklab, var(--surface-subtle) 55%, transparent);
+}
+
+.devease-md img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+/* 阅读宽度：舒适（约 65ch） */
+.devease-md--comfort {
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
+}

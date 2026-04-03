@@ -74,10 +74,14 @@
 
 ## 当前状态
 
-- 状态：进行中（Phase A 已完成）
+- 状态：进行中（Phase A/B/C 功能已完成，进入发布前收口）
 - Phase A 完成项：
   - `markdown-preview` 与 `url-parser` 已实现并接入 `src/data/tools.ts`。
   - 四语 i18n keys 已补齐（`messages/{zh,en,ja,ko}.json`）。
   - 路由、metadata、JSON-LD、sitemap 已随工具注册自动覆盖。
-  - 质量验证已通过：`npm run lint`、`npm run build`、`npm run test:e2e:ci`（22 passed）。
+- Phase B 完成项：
+  - `cron-parser`（`cron-parser` + `luxon` 依赖）与 `sql-formatter` 已上线；`npm run test:e2e` 覆盖（含 Cron / SQL 用例）。
+- Phase C 进展：
+  - `qr-decode` 已上线，支持上传图片后本地解析二维码文本，并纳入四语 i18n 与 E2E。
+- 质量验证：`npm run lint`、`npm run build`、`npm run test:e2e`（33 passed，含 4 语言回归与 qr-decode 用例）。
 - 对应任务：`.cursor/tasks/2026-04-03-more-tools-tasks.md`

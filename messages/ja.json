@@ -357,6 +357,21 @@
       "description": "GFM 対応のローカル Markdown リアルタイムレンダリング。プレビュー/HTML ソース切替、見出し目次、文字数統計で文書作成を効率化します。",
       "badge": "Markdown · プレビュー",
       "breadcrumb": "Markdown プレビュー",
+      "toolbar": {
+        "view": "レイアウト",
+        "reading": "読み幅"
+      },
+      "viewMode": {
+        "split": "分割",
+        "editor": "編集のみ",
+        "preview": "閲覧のみ"
+      },
+      "readingWidth": {
+        "comfort": "快適",
+        "wide": "全幅"
+      },
+      "previewAria": "Markdown レンダリングプレビュー",
+      "previewPanelLabel": "レンダリング結果",
       "input": "Markdown 入力",
       "placeholder": "# タイトル\\n\\n- 項目 1\\n- 項目 2",
       "preview": "プレビュー",
@@ -385,6 +400,71 @@
       "emptyValue": "（空）",
       "queryParams": "クエリパラメータ",
       "noQueryParams": "クエリパラメータなし"
+    },
+    "cronParser": {
+      "title": "Cron パーサ",
+      "description": "Cron 式を解析し、ローカルタイムゾーンで今後の実行時刻を一覧します。",
+      "badge": "Cron",
+      "breadcrumb": "Cron パーサ",
+      "input": "Cron 式",
+      "placeholder": "0 9 * * 1-5",
+      "nextCount": "表示件数",
+      "nextRuns": "次の実行時刻",
+      "timezone": "タイムゾーン",
+      "copyRuns": "一覧をコピー",
+      "tip": "一般的な 5 フィールドの crontab、秒を含む 6 フィールド、@daily などのエイリアスに対応します。時刻はブラウザのタイムゾーンで解釈されます。",
+      "parseError": "解析できませんでした：{detail}",
+      "badCount": "1～50 の数値を指定してください。",
+      "history": {
+        "copyRuns": "Cron 実行予定一覧をコピー"
+      }
+    },
+    "sqlFormatter": {
+      "title": "SQL フォーマッタ",
+      "description": "ブラウザ内で SQL を整形し、方言とキーワードの大文字/小文字を選べます。",
+      "badge": "SQL",
+      "breadcrumb": "SQL フォーマッタ",
+      "dialect": "方言",
+      "dialects": {
+        "sql": "汎用 SQL",
+        "mysql": "MySQL",
+        "postgresql": "PostgreSQL",
+        "sqlite": "SQLite",
+        "bigquery": "BigQuery",
+        "transactsql": "Transact-SQL"
+      },
+      "keywordUpper": "大文字",
+      "keywordLower": "小文字",
+      "input": "SQL 入力",
+      "placeholder": "SELECT id, name FROM users WHERE active = 1;",
+      "output": "整形結果",
+      "copyFormatted": "結果をコピー",
+      "tip": "整形はローカルで実行されます。機密情報を含む SQL は取り扱いに注意してください。",
+      "formatError": "整形できませんでした：{detail}",
+      "history": {
+        "copyFormatted": "整形済み SQL をコピー"
+      }
+    },
+    "qrDecode": {
+      "title": "QR デコード",
+      "description": "QR 画像をアップロードし、ブラウザ内で内容をローカル解析します。",
+      "badge": "QR デコード",
+      "breadcrumb": "QR デコード",
+      "pickImage": "画像を選択",
+      "supportedFormats": "対応形式: PNG, JPG, WEBP, GIF, BMP。",
+      "preview": "画像プレビュー",
+      "previewAlt": "アップロード画像のプレビュー",
+      "emptyPreview": "画像がまだ選択されていません。",
+      "decodedContent": "解析結果",
+      "copyDecoded": "解析テキストをコピー",
+      "sourceImage": "元画像",
+      "emptyResult": "QRコードを含む画像を選択すると解析を開始します。",
+      "decodeFailed": "画像内に読み取れる QR コードが見つかりませんでした。",
+      "canvasUnavailable": "このブラウザ環境では Canvas を利用できません。",
+      "tip": "すべてブラウザ内で処理され、画像ファイルはアップロードされません。",
+      "history": {
+        "copyDecoded": "QR 解析結果をコピー"
+      }
     }
   },
   "guides": {
@@ -480,6 +560,11 @@
         "description": "テキストまたはリンクからQR画像を生成（ローカルでレンダリング）。",
         "badge": "QR"
       },
+      "qr-decode": {
+        "title": "QR デコード",
+        "description": "QR 画像をアップロードしてローカルでテキストを抽出します。",
+        "badge": "QR Decode"
+      },
       "timestamp": {
         "title": "タイムスタンプ変換",
         "description": "Unix タイムスタンプと見やすい時刻を相互変換。秒/ミリ秒対応。",
@@ -524,6 +609,16 @@
         "title": "URL パーサー",
         "description": "URL 要素とクエリを分解し、デバッグを容易にします。",
         "badge": "Parser"
+      },
+      "sql-formatter": {
+        "title": "SQL フォーマッタ",
+        "description": "ブラウザ内で SQL を整形します。",
+        "badge": "SQL"
+      },
+      "cron-parser": {
+        "title": "Cron パーサ",
+        "description": "Cron 式を解析し、今後の実行時刻を表示します。",
+        "badge": "Cron"
       }
     }
   }
