@@ -2,6 +2,9 @@
   "brand": {
     "tagline": "開発をちょっと楽に"
   },
+  "seo": {
+    "siteKeywords": "DevEase, 開発者ツール, オンラインツール, JSON, Base64, タイムスタンプ, UUID, ハッシュ, 正規表現, JWT, QRコード, Markdown, GitHub Pages, フロントエンド"
+  },
   "common": {
     "copy": "コピー",
     "copied": "コピー済み",

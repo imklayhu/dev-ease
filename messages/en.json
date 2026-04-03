@@ -2,6 +2,9 @@
   "brand": {
     "tagline": "Make dev a little easier"
   },
+  "seo": {
+    "siteKeywords": "DevEase, developer tools, online tools, JSON, Base64, timestamp, UUID, hash, regex, JWT, QR code, Markdown, GitHub Pages, front-end"
+  },
   "common": {
     "copy": "Copy",
     "copied": "Copied",

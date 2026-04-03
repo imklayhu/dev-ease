@@ -6,7 +6,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { guides } from "@/data/guides";
 import { Link } from "@/i18n/navigation";
 import { BRAND_DISPLAY_NAME } from "@/lib/brand";
-import { OG_IMAGE_DIMENSIONS, OG_IMAGE_PATH, ogImageAlt } from "@/lib/seo-shared";
+import { localeAlternates } from "@/lib/locale-alternates";
+import { OG_IMAGE_DIMENSIONS, OG_IMAGE_PATH, ogImageAltForLocale } from "@/lib/seo-shared";
 import { absoluteUrl } from "@/lib/site-url";
 
 export async function generateMetadata({
@@ -24,12 +25,14 @@ export async function generateMetadata({
   return {
     title,
     description: indexDescription,
-    alternates: { canonical },
+    alternates: localeAlternates("/guides/", locale),
     openGraph: {
       title: `${title} · ${BRAND_DISPLAY_NAME}`,
       description: indexDescription,
       url: canonical,
-      images: [{ url: OG_IMAGE_PATH, ...OG_IMAGE_DIMENSIONS, alt: ogImageAlt() }],
+      images: [
+        { url: OG_IMAGE_PATH, ...OG_IMAGE_DIMENSIONS, alt: ogImageAltForLocale(locale) },
+      ],
     },
     twitter: {
       card: "summary_large_image",

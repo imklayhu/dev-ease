@@ -11,8 +11,10 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteJsonLd } from "@/components/site-json-ld";
 import { SkipLink } from "@/components/skip-link";
 import { routing } from "@/i18n/routing";
+import { toolCount } from "@/data/tools";
 import { BRAND_DISPLAY_NAME } from "@/lib/brand";
-import { OG_IMAGE_DIMENSIONS, OG_IMAGE_PATH, ogImageAlt } from "@/lib/seo-shared";
+import { localeAlternates } from "@/lib/locale-alternates";
+import { OG_IMAGE_DIMENSIONS, OG_IMAGE_PATH, ogImageAltForLocale } from "@/lib/seo-shared";
 import { absoluteUrl, SITE_ORIGIN } from "@/lib/site-url";
 
 export function generateStaticParams() {
@@ -31,7 +33,12 @@ export async function generateMetadata({
 
   setRequestLocale(locale);
   const tHome = await getTranslations("home");
-  const defaultDescription = tHome("metaDescription", { brand: BRAND_DISPLAY_NAME, toolCount: "15+" });
+  const tSeo = await getTranslations("seo");
+  const defaultDescription = tHome("metaDescription", { brand: BRAND_DISPLAY_NAME, toolCount });
+  const siteKeywords = tSeo("siteKeywords")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
 
   const canonical = absoluteUrl("/", locale);
   const ogLocale =
@@ -42,22 +49,11 @@ export async function generateMetadata({
     title: { default: BRAND_DISPLAY_NAME, template: `%s · ${BRAND_DISPLAY_NAME}` },
     description: defaultDescription,
     applicationName: BRAND_DISPLAY_NAME,
-    keywords: [
-      "DevEase",
-      "开发者工具",
-      "在线工具",
-      "JSON",
-      "Base64",
-      "timestamp",
-      "UUID",
-      "hash",
-      "regex",
-      "JWT",
-      "GitHub Pages",
-    ],
+    keywords: siteKeywords,
     authors: [{ name: BRAND_DISPLAY_NAME, url: canonical }],
     creator: BRAND_DISPLAY_NAME,
     robots: { index: true, follow: true },
+    alternates: localeAlternates("/", locale),
     openGraph: {
       type: "website",
       locale: ogLocale,
@@ -69,7 +65,7 @@ export async function generateMetadata({
         {
           url: OG_IMAGE_PATH,
           ...OG_IMAGE_DIMENSIONS,
-          alt: ogImageAlt(),
+          alt: ogImageAltForLocale(locale),
         },
       ],
     },
@@ -100,11 +96,13 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   setRequestLocale(locale);
   const messages = await getMessages();
+  const tHome = await getTranslations("home");
+  const siteDescription = tHome("metaDescription", { brand: BRAND_DISPLAY_NAME, toolCount });
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       <LocaleHtmlLang />
-      <SiteJsonLd locale={locale} />
+      <SiteJsonLd locale={locale} siteDescription={siteDescription} />
       <SkipLink />
       <SiteHeader />
       {children}

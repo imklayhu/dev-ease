@@ -4,11 +4,16 @@ import { SITE_ORIGIN, absoluteUrl } from "@/lib/site-url";
 
 type SiteJsonLdProps = {
   locale: string;
+  /** 与首页 meta 一致的多语言描述 */
+  siteDescription?: string;
 };
 
-export function SiteJsonLd({ locale }: SiteJsonLdProps) {
+export function SiteJsonLd({ locale, siteDescription }: SiteJsonLdProps) {
   const orgId = `${SITE_ORIGIN}/#organization`;
   const logoUrl = absoluteUrl(OG_IMAGE_PATH, locale);
+  const webDesc =
+    siteDescription ??
+    `${BRAND_DISPLAY_NAME} developer utilities, local-first and deployable on GitHub Pages.`;
 
   const graph = [
     {
@@ -24,7 +29,7 @@ export function SiteJsonLd({ locale }: SiteJsonLdProps) {
       "@id": `${SITE_ORIGIN}/#website`,
       url: absoluteUrl("/", locale),
       name: BRAND_DISPLAY_NAME,
-      description: `${BRAND_DISPLAY_NAME} developer utilities, local-first and deployable on GitHub Pages.`,
+      description: webDesc,
       inLanguage: locale === "zh" ? "zh-CN" : locale === "ja" ? "ja" : locale === "ko" ? "ko" : "en",
       publisher: { "@id": orgId },
     },

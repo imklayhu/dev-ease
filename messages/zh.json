@@ -2,6 +2,9 @@
   "brand": {
     "tagline": "让开发更轻松"
   },
+  "seo": {
+    "siteKeywords": "DevEase, 开发者工具, 在线工具, JSON, Base64, 时间戳, UUID, 哈希, 正则, JWT, 二维码, Markdown, GitHub Pages, 纯前端"
+  },
   "common": {
     "copy": "复制",
     "copied": "已复制",

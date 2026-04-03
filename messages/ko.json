@@ -2,6 +2,9 @@
   "brand": {
     "tagline": "개발을 조금 더 편하게"
   },
+  "seo": {
+    "siteKeywords": "DevEase, 개발자 도구, 온라인 도구, JSON, Base64, 타임스탬프, UUID, 해시, 정규식, JWT, QR 코드, Markdown, GitHub Pages, 프론트엔드"
+  },
   "common": {
     "copy": "복사",
     "copied": "복사됨",

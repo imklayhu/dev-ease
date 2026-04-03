@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 
 import { tools } from "@/data/tools";
 import { BRAND_DISPLAY_NAME } from "@/lib/brand";
-import { OG_IMAGE_DIMENSIONS, OG_IMAGE_PATH, ogImageAlt } from "@/lib/seo-shared";
+import { localeAlternates } from "@/lib/locale-alternates";
+import { OG_IMAGE_DIMENSIONS, OG_IMAGE_PATH, ogImageAltForLocale, toolSeoFallbackSuffix } from "@/lib/seo-shared";
 import { absoluteUrl } from "@/lib/site-url";
 
 export function metadataForTool(toolId: string, locale: string): Metadata {
@@ -11,23 +12,23 @@ export function metadataForTool(toolId: string, locale: string): Metadata {
     return { title: "工具" };
   }
 
+  const url = absoluteUrl(tool.href, locale);
   const description =
     tool.seoDescription ??
-    `${tool.description} 纯前端在线工具，无需登录；数据在浏览器本地处理。`;
-  const url = absoluteUrl(tool.href, locale);
+    `${tool.description} ${toolSeoFallbackSuffix(locale)}`;
   const ogTitle = `${tool.title} · ${BRAND_DISPLAY_NAME}`;
   const ogImages = [
     {
       url: OG_IMAGE_PATH,
       ...OG_IMAGE_DIMENSIONS,
-      alt: ogImageAlt(),
+      alt: ogImageAltForLocale(locale),
     },
   ];
 
   return {
     title: tool.title,
     description,
-    alternates: { canonical: url },
+    alternates: localeAlternates(tool.href, locale),
     openGraph: {
       type: "website",
       url,

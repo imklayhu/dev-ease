@@ -5,16 +5,17 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { HomeJsonLd } from "@/components/home-json-ld";
 import { ToolCard } from "@/components/tool-card";
 import { Link } from "@/i18n/navigation";
-import { BRAND_DISPLAY_NAME } from "@/lib/brand";
 import { getToolsGrouped, toolCount } from "@/data/tools";
-import { OG_IMAGE_DIMENSIONS, OG_IMAGE_PATH, ogImageAlt } from "@/lib/seo-shared";
+import { BRAND_DISPLAY_NAME } from "@/lib/brand";
+import { localeAlternates } from "@/lib/locale-alternates";
+import { OG_IMAGE_DIMENSIONS, OG_IMAGE_PATH, ogImageAltForLocale } from "@/lib/seo-shared";
 import { absoluteUrl } from "@/lib/site-url";
 
-const homeOgImages = [
+const homeOgImages = (locale: string) => [
   {
     url: OG_IMAGE_PATH,
     ...OG_IMAGE_DIMENSIONS,
-    alt: ogImageAlt(),
+    alt: ogImageAltForLocale(locale),
   },
 ];
 
@@ -33,12 +34,12 @@ export async function generateMetadata({
   return {
     title: homeTitle,
     description: homeDescription,
-    alternates: { canonical },
+    alternates: localeAlternates("/", locale),
     openGraph: {
       title: `${BRAND_DISPLAY_NAME} — ${homeTitle}`,
       description: homeDescription,
       url: canonical,
-      images: homeOgImages,
+      images: homeOgImages(locale),
     },
     twitter: {
       card: "summary_large_image",

@@ -8,16 +8,9 @@ import { ThemeSettings } from "@/components/theme-settings";
 import { UsageInsights } from "@/components/usage-insights";
 import { Link } from "@/i18n/navigation";
 import { BRAND_DISPLAY_NAME } from "@/lib/brand";
-import { OG_IMAGE_DIMENSIONS, OG_IMAGE_PATH, ogImageAlt } from "@/lib/seo-shared";
+import { localeAlternates } from "@/lib/locale-alternates";
+import { OG_IMAGE_DIMENSIONS, OG_IMAGE_PATH, ogImageAltForLocale } from "@/lib/seo-shared";
 import { absoluteUrl } from "@/lib/site-url";
-
-const aboutOgImages = [
-  {
-    url: OG_IMAGE_PATH,
-    ...OG_IMAGE_DIMENSIONS,
-    alt: ogImageAlt(),
-  },
-];
 
 export async function generateMetadata({
   params,
@@ -28,11 +21,18 @@ export async function generateMetadata({
   setRequestLocale(locale);
   const t = await getTranslations("settings");
   const canonical = absoluteUrl("/settings/", locale);
+  const aboutOgImages = [
+    {
+      url: OG_IMAGE_PATH,
+      ...OG_IMAGE_DIMENSIONS,
+      alt: ogImageAltForLocale(locale),
+    },
+  ];
 
   return {
     title: t("title"),
     description: t("description", { brand: BRAND_DISPLAY_NAME }),
-    alternates: { canonical },
+    alternates: localeAlternates("/settings/", locale),
     openGraph: {
       title: `${t("title")} · ${BRAND_DISPLAY_NAME}`,
       description: t("description", { brand: BRAND_DISPLAY_NAME }),
