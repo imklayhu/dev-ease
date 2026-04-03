@@ -351,6 +351,40 @@
       "history": {
         "copyAll": "색상 변환 전체 복사"
       }
+    },
+    "markdownPreview": {
+      "title": "Markdown 미리보기",
+      "description": "GFM을 지원하는 로컬 실시간 Markdown 렌더링으로, 미리보기/HTML 소스 탭, 목차, 통계를 함께 제공해 문서 작성과 검토를 돕습니다.",
+      "badge": "Markdown · 미리보기",
+      "breadcrumb": "Markdown 미리보기",
+      "input": "Markdown 입력",
+      "placeholder": "# 제목\\n\\n- 항목 1\\n- 항목 2",
+      "preview": "미리보기",
+      "htmlSource": "HTML 소스",
+      "copyHtml": "HTML 복사",
+      "resetDemo": "데모로 재설정",
+      "clear": "지우기",
+      "toc": "목차",
+      "tocEmpty": "제목이 없습니다",
+      "stats": {
+        "chars": "문자 {value}",
+        "words": "단어 {value}",
+        "lines": "줄 {value}"
+      },
+      "empty": "미리볼 내용이 없습니다",
+      "tip": "제목, 목록, 굵게, 기울임, 인라인 코드, 링크를 지원합니다.",
+      "demoMarkdown": "# DevEase Markdown 미리보기\\n\\n> 실사용에 맞춘 로컬 우선 Markdown 미리보기입니다.\\n\\n## 기능\\n\\n- [x] GFM 표 / 작업 목록 / 취소선 지원\\n- [x] 안전한 미리보기(정화된 HTML)\\n- [x] 미리보기 + HTML 소스 탭\\n- [x] 렌더링된 HTML 복사\\n\\n## 예시 표\\n\\n| Key | Value |\\n| --- | --- |\\n| framework | Next.js |\\n| i18n | next-intl |\\n\\n```ts\\nconst hello = \"DevEase\";\\nconsole.log(hello);\\n```",
+      "history": {
+        "copyHtml": "Markdown 렌더링 HTML 복사"
+      }
+    },
+    "urlParser": {
+      "input": "URL 입력",
+      "placeholder": "https://example.com/path?a=1&b=hello#intro",
+      "invalidUrl": "유효한 절대 URL(프로토콜 포함)을 입력하세요.",
+      "emptyValue": "(비어 있음)",
+      "queryParams": "쿼리 파라미터",
+      "noQueryParams": "쿼리 파라미터 없음"
     }
   },
   "guides": {
@@ -480,6 +514,16 @@
         "title": "컬러 변환",
         "description": "HEX / RGB / HSL을 상호 변환하고 미리보기를 제공합니다.",
         "badge": "컬러"
+      },
+      "markdown-preview": {
+        "title": "Markdown 미리보기",
+        "description": "Markdown을 로컬에서 실시간 렌더링해 문서 점검을 돕습니다.",
+        "badge": "Markdown"
+      },
+      "url-parser": {
+        "title": "URL 파서",
+        "description": "URL 구성요소와 쿼리를 분해해 디버깅을 돕습니다.",
+        "badge": "Parser"
       }
     }
   }

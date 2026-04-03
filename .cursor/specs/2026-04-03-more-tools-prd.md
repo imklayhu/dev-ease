@@ -1,10 +1,10 @@
-# 新增更多小工具（规划阶段）规格
+# 新增更多小工具规格
 
 ## 背景
 
 当前站点已完成多语言与基础工具集建设，下一阶段目标是持续扩充高频工具覆盖面，提升站点“开箱即用”价值。
 
-本规格仅用于需求与实现边界定义，当前阶段不进入开发。
+本规格用于需求与实现边界定义，并跟踪分阶段交付状态。
 
 ## 目标
 
@@ -14,15 +14,14 @@
 
 ## 范围
 
-### In Scope（本轮规划）
+### In Scope
 
-- 明确第一批候选工具与优先级。
-- 输出统一的工具接入规范（路由、数据、i18n、SEO、UI、测试）。
-- 形成可执行任务清单（`tasks`）。
+- 新工具规划与分批实现（Phase A/B/C）。
+- 工具接入规范（路由、数据、i18n、SEO、UI、测试）。
+- 可执行任务清单（`tasks`）与阶段性验收记录。
 
 ### Out of Scope（当前阶段）
 
-- 工具功能代码实现。
 - 视觉系统重构。
 - 引入服务端依赖或后端 API。
 
@@ -75,5 +74,10 @@
 
 ## 当前状态
 
-- 状态：规划中（未开发）
+- 状态：进行中（Phase A 已完成）
+- Phase A 完成项：
+  - `markdown-preview` 与 `url-parser` 已实现并接入 `src/data/tools.ts`。
+  - 四语 i18n keys 已补齐（`messages/{zh,en,ja,ko}.json`）。
+  - 路由、metadata、JSON-LD、sitemap 已随工具注册自动覆盖。
+  - 质量验证已通过：`npm run lint`、`npm run build`、`npm run test:e2e:ci`（22 passed）。
 - 对应任务：`.cursor/tasks/2026-04-03-more-tools-tasks.md`

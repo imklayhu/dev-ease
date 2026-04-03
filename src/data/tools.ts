@@ -6,6 +6,7 @@ import {
   Clock,
   CodeXml,
   Fingerprint,
+  FileText,
   Gauge,
   GitCompare,
   Hash,
@@ -15,6 +16,7 @@ import {
   QrCode,
   Regex,
   Shield,
+  Waypoints,
 } from "lucide-react";
 
 /** 用途分类：新增工具时在此注册，并在 `tools` 中挂上 `categoryId` */
@@ -123,6 +125,18 @@ export const tools: ToolItem[] = [
     relatedToolIds: ["text-counter", "html-entities"],
   },
   {
+    id: "markdown-preview",
+    title: "Markdown 预览",
+    description: "本地实时渲染 Markdown，便于写作与文档校对。",
+    seoDescription:
+      "在线 Markdown 实时预览：输入即渲染，适合 README 与文档草稿校对。纯前端本地处理，无需上传内容。",
+    href: "/tools/markdown-preview/",
+    badge: "Markdown",
+    icon: FileText,
+    categoryId: "text-data",
+    relatedToolIds: ["text-counter", "text-diff"],
+  },
+  {
     id: "base64",
     title: "Base64 编解码",
     description: "Base64 编解码，UTF-8 文本不走样。",
@@ -145,6 +159,18 @@ export const tools: ToolItem[] = [
     icon: Link2,
     categoryId: "encoding",
     relatedToolIds: ["base64", "qr-code"],
+  },
+  {
+    id: "url-parser",
+    title: "URL 解析器",
+    description: "拆解 URL 组件并展开查询参数，便于联调与排错。",
+    seoDescription:
+      "在线 URL 解析器：展示协议、主机、路径、查询参数与片段，快速定位拼接错误与编码问题。浏览器本地执行。",
+    href: "/tools/url-parser/",
+    badge: "Parser",
+    icon: Waypoints,
+    categoryId: "encoding",
+    relatedToolIds: ["url-codec", "qr-code"],
   },
   {
     id: "html-entities",

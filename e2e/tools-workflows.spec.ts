@@ -94,4 +94,18 @@ test.describe("tool workflows", () => {
     await page.fill("#re-text", "a1 b22");
     await expect(page.locator("main")).toContainText("22");
   });
+
+  test("markdown preview", async ({ page }) => {
+    await page.goto("/zh/tools/markdown-preview/");
+    await page.fill("#md-input", "# hello\n\n**world**");
+    await expect(page.locator("article h1")).toContainText("hello");
+    await expect(page.locator("article strong")).toContainText("world");
+  });
+
+  test("url parser", async ({ page }) => {
+    await page.goto("/zh/tools/url-parser/");
+    await page.fill("#url-parser-input", "https://example.com/a?x=1#y");
+    await expect(page.locator("main")).toContainText("protocol");
+    await expect(page.locator("main")).toContainText("x = 1");
+  });
 });
