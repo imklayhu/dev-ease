@@ -3,9 +3,9 @@
 import { startTransition, useCallback, useEffect, useState } from "react";
 
 import { ChevronDown, ChevronRight, History, Trash2 } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 
 import { clearToolHistory, getToolHistory, type ToolHistoryRecord } from "@/lib/db/client";
-import { formatRelativeTimeZh } from "@/lib/format-relative-time";
 
 const HISTORY_EVENT = "dev-ease-tool-history";
 
@@ -14,6 +14,8 @@ type ToolHistoryPanelProps = {
 };
 
 export function ToolHistoryPanel({ toolId }: ToolHistoryPanelProps) {
+  const t = useTranslations("toolHistory");
+  const locale = useLocale();
   const [items, setItems] = useState<ToolHistoryRecord[]>([]);
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
 
@@ -51,7 +53,7 @@ export function ToolHistoryPanel({ toolId }: ToolHistoryPanelProps) {
   }, [load, toolId]);
 
   const onClear = async () => {
-    if (!window.confirm("确定清空本工具在本机的全部操作历史？此操作不可恢复。")) {
+    if (!window.confirm(t("confirmClear"))) {
       return;
     }
     await clearToolHistory(toolId);
@@ -68,17 +70,17 @@ export function ToolHistoryPanel({ toolId }: ToolHistoryPanelProps) {
         <div>
           <p className="flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
             <History aria-hidden className="h-4 w-4 text-[var(--accent-violet)]" />
-            操作历史
+            {t("title")}
           </p>
           <p className="mt-1 text-xs leading-5 text-[var(--text-muted)]">
-            仅保存在本机 IndexedDB，单工具最多 {50} 条；清除站点数据会一并丢失。
+            {t("desc", { max: 50 })}
           </p>
         </div>
       </div>
 
       {items.length === 0 ? (
         <p className="mt-4 rounded-xl border border-dashed border-[var(--border)] bg-[var(--surface-subtle)]/40 px-3 py-6 text-center text-xs text-[var(--text-muted)]">
-          暂无记录。进入本页、复制结果等操作会自动出现在这里。
+          {t("empty")}
         </p>
       ) : (
         <ul className="mt-4 max-h-72 space-y-2 overflow-y-auto overscroll-contain pr-1" role="list">
@@ -89,7 +91,7 @@ export function ToolHistoryPanel({ toolId }: ToolHistoryPanelProps) {
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-medium text-[var(--text)]">{row.label}</p>
                     <p className="mt-0.5 text-[11px] tabular-nums text-[var(--text-faint)]" title={row.createdAt}>
-                      {formatRelativeTimeZh(row.createdAt)} ·{" "}
+                      {formatRelativeTime(row.createdAt, locale, t("justNow"))} ·{" "}
                       {new Date(row.createdAt).toLocaleString(undefined, {
                         hour: "2-digit",
                         minute: "2-digit",
@@ -100,7 +102,7 @@ export function ToolHistoryPanel({ toolId }: ToolHistoryPanelProps) {
                   {row.detail ? (
                     <button
                       aria-expanded={Boolean(expanded[row.id])}
-                      aria-label={expanded[row.id] ? "收起详情" : "展开详情"}
+                      aria-label={expanded[row.id] ? t("collapseDetail") : t("expandDetail")}
                       className="shrink-0 rounded-lg p-1 text-[var(--text-muted)] transition hover:bg-[var(--surface-subtle)] hover:text-[var(--text)]"
                       type="button"
                       onClick={() => toggle(row.id)}
@@ -130,8 +132,42 @@ export function ToolHistoryPanel({ toolId }: ToolHistoryPanelProps) {
         onClick={() => void onClear()}
       >
         <Trash2 aria-hidden className="h-3.5 w-3.5" />
-        清空本工具历史
+        {t("clear")}
       </button>
     </div>
   );
+}
+
+function formatRelativeTime(iso: string, locale: string, justNowLabel: string): string {
+  const target = new Date(iso).getTime();
+  if (Number.isNaN(target)) {
+    return iso;
+  }
+
+  const diffSec = Math.floor((Date.now() - target) / 1000);
+  if (diffSec < 0) {
+    return new Date(iso).toLocaleString();
+  }
+  if (diffSec < 60) {
+    return justNowLabel;
+  }
+  if (diffSec < 3600) {
+    const mins = Math.floor(diffSec / 60);
+    return new Intl.RelativeTimeFormat(locale, { numeric: "always" }).format(-mins, "minute");
+  }
+  if (diffSec < 86400) {
+    const hours = Math.floor(diffSec / 3600);
+    return new Intl.RelativeTimeFormat(locale, { numeric: "always" }).format(-hours, "hour");
+  }
+  const days = Math.floor(diffSec / 86400);
+  if (days < 7) {
+    return new Intl.RelativeTimeFormat(locale, { numeric: "always" }).format(-days, "day");
+  }
+
+  return new Date(iso).toLocaleString(undefined, {
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 }

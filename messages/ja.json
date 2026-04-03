@@ -1,0 +1,486 @@
+{
+  "brand": {
+    "tagline": "開発をちょっと楽に"
+  },
+  "common": {
+    "copy": "コピー",
+    "copied": "コピー済み",
+    "skipToMain": "メインコンテンツへ移動"
+  },
+  "nav": {
+    "home": "ホーム",
+    "tools": "ツール",
+    "guides": "ガイド",
+    "about": "情報",
+    "language": "言語",
+    "mainAria": "メインナビゲーション",
+    "breadcrumbAria": "パンくずリスト",
+    "backToTools": "ツール一覧へ",
+    "browseTools": "ツールを見る"
+  },
+  "footer": {
+    "line": "設定と訪問記録は既定でブラウザ内に保存されます",
+    "about": "このサイトについて",
+    "guides": "ガイド",
+    "repo": "GitHub でソース",
+    "stack": "Next.js · Tailwind · GitHub Pages"
+  },
+  "home": {
+    "metaTitle": "日常開発ツール",
+    "metaDescription": "{brand} は JSON 整形、Base64、タイムスタンプ、UUID、ハッシュ、正規表現、JWT、色変換など {toolCount} 種のフロントエンド開発ツールを収録。ログイン不要、既定でローカル処理。",
+    "heroTitle": "日常開発ツール",
+    "heroSubtitle": "ひとまとめに、すぐ使える",
+    "heroLead": "開発と日常効率のために、JSON・Base64・タイムスタンプ・ハッシュなどをログイン不要の純フロントエンド静的サイトに集約。名前の <ease>Ease</ease> は「軽く、手になじむ」意味で、整形・検証・変換の作業をブラウザ内で素早く終えられます。",
+    "sectionIndex": "ツール一覧",
+    "sectionIndexBadge": "カテゴリ別",
+    "sectionIndexDesc": "{brand} のツールは用途ごとに分類しています。カードを開いて利用してください。新規ツールはデータ登録でここに表示されます。",
+    "statsLine": "全 {toolCount} 件 · {catCount} カテゴリ",
+    "jumpToCategory": "カテゴリへ",
+    "readAbout": "サイトについて",
+    "localFirst": "ローカル優先",
+    "open": "開く",
+    "enter": "入る",
+    "featured": "注目"
+  },
+  "about": {
+    "drawerLead": "{brand} のサイト説明とローカル設定。詳しい内容は <link>設定ページ</link> へ。",
+    "close": "閉じる",
+    "closeDialogAria": "情報パネルを閉じる",
+    "overlayCloseAria": "情報パネルを閉じる",
+    "themeSectionAria": "テーマと外観"
+  },
+  "settings": {
+    "title": "このサイトについて",
+    "description": "{brand} のサイト情報、技術スタック、IndexedDB ベースのローカル利用統計、テーマ設定、ツール操作履歴の説明。",
+    "badge": "サイトと設定",
+    "lead": "{brand} は dev-ease リポジトリから構築されています。このページでは技術スタック、IndexedDB ベースのローカル利用統計、外観設定を提供します。",
+    "siteInfoHeading": "サイト情報",
+    "themeSectionAria": "外観とテーマ"
+  },
+  "siteInfo": {
+    "title": "サイト情報",
+    "stackTitle": "技術スタック",
+    "version": "v0.x",
+    "rows": {
+      "framework": "フレームワーク",
+      "deploy": "デプロイ",
+      "storage": "保存",
+      "backend": "バックエンド",
+      "repo": "ソース"
+    },
+    "values": {
+      "framework": "Next.js（静的エクスポート）",
+      "deploy": "GitHub Pages",
+      "storage": "IndexedDB",
+      "backend": "なし",
+      "repo": "GitHub · imklayhu/dev-ease"
+    }
+  },
+  "theme": {
+    "title": "外観設定",
+    "desc": "テーマ設定は IndexedDB に保存され、切り替えは即時反映されます。",
+    "minimalDesc": "切り替えは即時反映され、設定は IndexedDB に保存されます。",
+    "modeAria": "テーマモード",
+    "warningNoIdb": "このブラウザでは IndexedDB が利用できません。セッションメモリで動作するため、更新後に設定が失われる可能性があります。",
+    "options": {
+      "system": {
+        "label": "システム",
+        "description": "システムに従う"
+      },
+      "light": {
+        "label": "ライト",
+        "description": "明るい表示"
+      },
+      "dark": {
+        "label": "ダーク",
+        "description": "暗い表示"
+      }
+    }
+  },
+  "usage": {
+    "badge": "ローカル統計",
+    "title": "利用傾向の概要",
+    "lead": "各ツールページの訪問回数を集計。テーマは現在の設定を表示します。データは端末内に保存され、サイトデータ削除でリセットされます。",
+    "idbUnavailable": "この環境では IndexedDB が利用できないため、統計はこのセッションのみを反映する可能性があります。",
+    "idbEnabled": "IndexedDB 有効",
+    "none": "なし",
+    "emptyTitle": "ローカル訪問記録はまだありません",
+    "emptyDesc": "任意のツールページを開くと、訪問回数とカテゴリ比率がここに集計されます。",
+    "toolVisitsTitle": "ツール別訪問回数",
+    "categorySummaryTitle": "カテゴリ別集計",
+    "categorySummaryDesc": "各ツールの訪問回数をホームの分類ごとに合算します。",
+    "currentTheme": "現在のテーマ設定",
+    "kpi": {
+      "totalVisits": "累計訪問",
+      "activeTools": "利用ツール数",
+      "lastVisit": "最終訪問"
+    },
+    "theme": {
+      "system": "システムに従う",
+      "light": "ライト",
+      "dark": "ダーク"
+    },
+    "percent": "({value}%)"
+  },
+  "toolVisit": {
+    "title": "ローカル訪問記録",
+    "visits": "訪問回数",
+    "lastVisit": "前回訪問",
+    "firstVisit": "初回訪問",
+    "note": "ローカルブラウザ（IndexedDB）にのみ保存され、サーバーへは送信されません。",
+    "history": {
+      "openCount": "このツールを {count} 回開きました"
+    }
+  },
+  "toolHistory": {
+    "title": "操作履歴",
+    "desc": "ローカル IndexedDB のみに保存され、ツールごとに最大 {max} 件。サイトデータ削除で消去されます。",
+    "empty": "記録はまだありません。このページの表示やコピー操作などが自動でここに追加されます。",
+    "confirmClear": "このツールのローカル操作履歴をすべて削除しますか？この操作は元に戻せません。",
+    "collapseDetail": "詳細を閉じる",
+    "expandDetail": "詳細を開く",
+    "clear": "このツールの履歴を消去",
+    "justNow": "たった今"
+  },
+  "relatedTools": {
+    "title": "関連ツール",
+    "desc": "連続作業に便利な、サイト内の関連機能です。"
+  },
+  "toolPages": {
+    "jsonFormatter": {
+      "unknownError": "不明なエラー",
+      "inputLabel": "JSON 入力",
+      "placeholder": "例: JSON オブジェクト",
+      "parseFailed": "解析失敗",
+      "copyFormatted": "整形結果をコピー",
+      "copyMinified": "圧縮結果をコピー",
+      "formattedTitle": "整形（2スペース）",
+      "minifiedTitle": "圧縮",
+      "tip": "ヒント: 非常に大きい JSON は表示が遅くなる場合があります。機密データは信頼できるローカル環境で扱ってください。",
+      "usageTitle": "使い方",
+      "usageLi1": "左側の入力が変わると、右側でリアルタイム解析を試みます。",
+      "usageLi2": "コピー ボタンは「整形結果」「圧縮結果」に対応しています。",
+      "history": {
+        "copyFormatted": "JSON 整形結果をコピー",
+        "copyMinified": "JSON 圧縮結果をコピー"
+      }
+    },
+    "uuid": {
+      "countLabel": "生成数",
+      "generate": "生成",
+      "copyAll": "すべてコピー",
+      "resultTitle": "結果",
+      "empty": "「生成」をクリックして開始します。",
+      "tip": "ヒント: 1回あたり最大 50 件まで（ページの重さを防止）。",
+      "history": {
+        "generated": "{count} 件の UUID を生成",
+        "copyAll": "UUID をすべてコピー",
+        "copyOne": "UUID を1件コピー"
+      }
+    },
+    "base64": {
+      "modeAria": "モード",
+      "encode": "エンコード",
+      "decode": "デコード",
+      "rawText": "元テキスト",
+      "base64Text": "Base64 テキスト",
+      "copyOutput": "出力をコピー",
+      "output": "出力",
+      "encodeDecodeFailed": "エンコード/デコード失敗",
+      "history": {
+        "copyOutput": "Base64 出力をコピー"
+      }
+    },
+    "timestamp": {
+      "invalidNumber": "有効な数値を入力してください",
+      "unitAuto": "自動",
+      "unitS": "秒（s）",
+      "unitMs": "ミリ秒（ms）",
+      "fillNow": "現在時刻を入力（ms）",
+      "inputLabel": "タイムスタンプ（空欄なら現在時刻）",
+      "placeholder": "例: 1712131200 または 1712131200000",
+      "emptyHint": "タイムスタンプを入力するか、「現在時刻を入力」をクリックしてください。",
+      "resultTitle": "変換結果",
+      "copyAll": "すべてコピー",
+      "isoUtc": "ISO（UTC）",
+      "localTime": "ローカル時刻",
+      "unixS": "Unix（秒）",
+      "unixMs": "Unix（ミリ秒）",
+      "tip": "ヒント: 自動モードでは数字文字列の桁数ルールを使います。その他の形式は先に秒/ミリ秒へ統一してください。",
+      "history": {
+        "copyResult": "タイムスタンプ変換結果をコピー"
+      }
+    },
+    "textCounter": {
+      "inputLabel": "テキスト入力",
+      "placeholder": "テキストを貼り付けまたは入力…",
+      "tip": "ヒント: 単語数は空白区切りで集計します。日英混在時も空白ベースです。",
+      "chars": "文字数",
+      "words": "単語数",
+      "lines": "行数"
+    },
+    "textDiff": {
+      "textA": "テキスト A",
+      "textB": "テキスト B",
+      "placeholderA": "左側バージョン…",
+      "placeholderB": "右側バージョン…",
+      "resultTitle": "差分（行単位）",
+      "resultAria": "diff 結果",
+      "bothEmpty": "両側とも空です"
+    },
+    "passwordGenerator": {
+      "length": "長さ",
+      "regenerate": "再生成",
+      "charset": "文字セット",
+      "lower": "小文字 a–z",
+      "upper": "大文字 A–Z",
+      "digit": "数字 0–9",
+      "symbol": "記号",
+      "chooseOne": "少なくとも1種類の文字を選択してください。",
+      "resultTitle": "結果",
+      "emptyResult": "—",
+      "copyPassword": "パスワードをコピー",
+      "maskedCopied": "••••（コピー済み）",
+      "history": {
+        "regenerate": "ランダムパスワードを再生成",
+        "copyPassword": "ランダムパスワードをコピー"
+      }
+    },
+    "jwtInspector": {
+      "pasteJwt": "JWT を貼り付け",
+      "placeholder": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....",
+      "threePartsError": "JWT は3つのセグメントが必要です: header.payload.signature",
+      "parseFailed": "解析に失敗しました",
+      "copy": "コピー",
+      "signatureTitle": "Signature（元のセグメント・未検証）",
+      "history": {
+        "copyHeader": "JWT Header をコピー",
+        "copyPayload": "JWT Payload をコピー"
+      }
+    },
+    "unicodeInspector": {
+      "inputLabel": "入力テキスト",
+      "placeholder": "任意の Unicode テキストを貼り付け…",
+      "char": "文字",
+      "codePoint": "コードポイント",
+      "utf16Literal": "UTF-16 リテラル",
+      "empty": "空文字列",
+      "tip": "説明: `for...of` 走査により多くの emoji（サロゲートペア）を正しく処理できますが、結合文字は複数行になる場合があります。"
+    },
+    "urlCodec": {
+      "modeAria": "モード",
+      "encode": "エンコード",
+      "decode": "デコード",
+      "input": "入力",
+      "output": "出力",
+      "copyOutput": "出力をコピー",
+      "convertFailed": "変換に失敗しました",
+      "history": {
+        "copyOutput": "URL 変換結果をコピー"
+      }
+    },
+    "qrCode": {
+      "content": "内容",
+      "placeholder": "https:// または任意のテキスト",
+      "preview": "プレビュー",
+      "previewAlt": "QRコードのプレビュー",
+      "generating": "生成中…",
+      "enterContent": "内容を入力してください",
+      "generateFailed": "生成に失敗しました",
+      "downloadPng": "PNG をダウンロード（Data URL）",
+      "history": {
+        "generated": "QRコードを生成"
+      }
+    },
+    "regexTester": {
+      "tooLong": "テキストが長すぎます: {max} 文字以内にしてください（ReDoS リスク軽減）。",
+      "truncated": "…（一致が多すぎるため表示を省略）",
+      "invalidRegex": "正規表現が無効です",
+      "pattern": "Pattern",
+      "flags": "Flags",
+      "text": "テキスト",
+      "matchCount": "一致数",
+      "copyMatches": "一致一覧をコピー",
+      "resultTitle": "一致結果",
+      "noMatch": "一致なし。",
+      "index": "index",
+      "captureGroups": "キャプチャグループ",
+      "emptyGroup": "（空）",
+      "tipPrefix": "ヒント: ",
+      "tipSuffix": " がない場合は通常最初の一致のみ。全体一致には g を含めてください。",
+      "history": {
+        "copyMatches": "正規表現の一致一覧をコピー"
+      }
+    },
+    "htmlEntities": {
+      "encode": "エンコード（エンティティ化）",
+      "decode": "デコード（テキストへ）",
+      "input": "入力",
+      "output": "出力",
+      "placeholderEncode": "<div>\"サンプル\" & 記号</div>",
+      "placeholderDecode": "&lt;div&gt;&quot;サンプル&quot; &amp; 記号&lt;/div&gt;",
+      "copyOutput": "出力をコピー",
+      "history": {
+        "copyEncode": "HTML エンティティのエンコード結果をコピー",
+        "copyDecode": "HTML エンティティのデコード結果をコピー"
+      }
+    },
+    "cryptoHash": {
+      "webCryptoUnavailable": "この環境では Web Crypto が利用できません（安全なコンテキストが必要: HTTPS または localhost）。",
+      "webCryptoUnavailableBanner": "現在のページ環境では利用不可です：`crypto.subtle` には HTTPS または localhost が必要です。",
+      "computeFailed": "計算に失敗しました",
+      "computing": "計算中…",
+      "recompute": "再計算",
+      "input": "入力テキスト",
+      "copyHex": "HEX をコピー",
+      "hexDigest": "HEX ダイジェスト",
+      "tip": "ヒント: 非常に長いテキストは時間がかかる場合があります。機密データは信頼できるローカル環境で扱ってください。",
+      "history": {
+        "copyHex": "ハッシュ HEX をコピー"
+      }
+    },
+    "colorConverter": {
+      "input": "入力色",
+      "placeholder": "#22c55e / rgb(34, 197, 94) / hsl(142, 71%, 45%)",
+      "preview": "プレビュー",
+      "previewAria": "色のプレビュー",
+      "copyAll": "すべてコピー",
+      "copyPrefix": "コピー ",
+      "examples": "例",
+      "tip": "ヒント: 色空間変換には丸め誤差があります。印刷やブランドカラーはデザイン原本を基準にしてください。",
+      "history": {
+        "copyAll": "色変換結果をすべてコピー"
+      }
+    }
+  },
+  "guides": {
+    "breadcrumb": "ガイド",
+    "badge": "ガイドとユースケース",
+    "metaDescription": "{brand} の短いガイド：開発ツールの利用シーン、プライバシー、ローカルファースト実践。",
+    "indexTitle": "{brand} ガイド",
+    "indexLead": "よくある使い方・プライバシー・ローカルファーストの考え方。ツール更新に合わせて追加します。",
+    "readMore": "続きを読む →",
+    "backToList": "← ガイド一覧へ",
+    "items": {
+      "local-first-json-workflow": {
+        "title": "ローカルファースト：JSONをブラウザで処理するほうが安心な理由",
+        "description": "API連携、プライバシー要件、オフライン環境まで。ブラウザ内でJSONを検証・整形する価値と、DevEaseのJSONツールおよびローカルストレージとの組み合わせを説明します。"
+      }
+    },
+    "localFirst": {
+      "date": "2026-04-03",
+      "breadcrumbCurrent": "ローカルファーストとJSON",
+      "title": "ローカルファースト：JSONをブラウザで処理するほうが安心な理由",
+      "description": "API連携、プライバシー要件、オフライン環境まで。ブラウザ内でJSONを検証・整形する価値と、DevEaseのJSONツールおよびローカルストレージとの組み合わせを説明します。",
+      "p1": "API連携や設定ファイルの整理を行うとき、JSON には<strong>項目名、業務識別子、あるいはマスキング後でも実データ</strong>が含まれていることがよくあります。整形のために同じ内容を知らないサーバーへアップロードすると、追加の露出経路が生まれます。しかし<strong>ローカルのブラウザ</strong>内で処理すれば、パースと整形はバックエンドへ送信されず、オフラインや社内ネットワーク環境でも扱いやすくなります。",
+      "p2": "<strong>{brand}</strong> の <formatterLink>JSON フォーマッタ / 圧縮</formatterLink> をクライアント側で実行すると <code>JSON.parse</code> とシリアライズが行われます。エラーメッセージはネイティブ実装由来なので、不正なカンマやクオートを素早く見つけやすくなります。さらに、どのツールを使い、どんな手順を実行したかも気になる場合は、各ツールのサイドバーで IndexedDB に基づくアクセスと <strong>操作履歴</strong> を確認できます（端末内に保存され、サイトデータを消すと一緒に削除されます）。",
+      "p3": "実践的には、機密ペイロードは<strong>信頼できる端末</strong>と<strong>信頼できるブラウザ設定</strong>で扱うことをおすすめします。共有PCでは作業が終わったらすぐにタブを閉じ、スクリーンショットにトークンが写らないようにしてください。データの範囲の詳細は<settingsLink>私たちについて</settingsLink>をご覧ください。",
+      "summaryTitle": "まとめ",
+      "li1": "ブラウザ側での JSON 処理は、不必要な外部へのデータ送信を減らせます。",
+      "li2": "ローカルでのアクセスと操作履歴と組み合わせることで、「データは手元にある」という期待を作りやすくなります。",
+      "li3": "より強い保証が必要な場合は、システムやネットワークのセキュリティポリシーと組み合わせるべきで、フロントエンドツールだけに頼るべきではありません。",
+      "backToList": "← ガイド一覧へ"
+    }
+  },
+  "tools": {
+    "categories": {
+      "text-data": {
+        "title": "テキストとデータ",
+        "description": "統計、diff、Unicode、構造化データ（JSON など）。"
+      },
+      "encoding": {
+        "title": "エンコードとネットワーク",
+        "description": "Base64、URL、HTML、QRコードなどの一般的な変換。"
+      },
+      "time-id": {
+        "title": "時間と識別子",
+        "description": "時刻変換と一意なID生成。"
+      },
+      "security-dev": {
+        "title": "セキュリティとデバッグ",
+        "description": "パスワード、JWT、ハッシュ、正規表現など（ブラウザ内処理。サーバー側検証の代替ではありません）。"
+      },
+      "color": {
+        "title": "カラーとデザイン",
+        "description": "色空間の変換とプレビュー。"
+      }
+    },
+    "items": {
+      "json-formatter": {
+        "title": "JSON フォーマッタ / 圧縮",
+        "description": "JSON を検証。整形（2スペース）または 1 行に圧縮。",
+        "badge": "JSON"
+      },
+      "text-counter": {
+        "title": "テキスト カウンター",
+        "description": "文字数・単語数・行数を集計。アクセス回数はローカルに保存。",
+        "badge": "テキスト"
+      },
+      "text-diff": {
+        "title": "テキスト差分（行単位）",
+        "description": "2つのテキストを行ごとに diff し、追加/削除を強調。",
+        "badge": "Diff"
+      },
+      "unicode-inspector": {
+        "title": "Unicode コードポイント表示",
+        "description": "文字のコードポイントを表示し、U+ と UTF-16 値で emoji を調査。",
+        "badge": "Unicode"
+      },
+      "base64": {
+        "title": "Base64 変換",
+        "description": "Base64 エンコード/デコード。UTF-8 テキストは崩れません。",
+        "badge": "エンコード"
+      },
+      "url-codec": {
+        "title": "URL エンコード / デコード",
+        "description": "encodeURIComponent / decodeURIComponent。",
+        "badge": "URL"
+      },
+      "html-entities": {
+        "title": "HTML エンティティ 変換",
+        "description": "&lt; &gt; &amp; などの一般的なエンティティをエスケープ/復元。",
+        "badge": "HTML"
+      },
+      "qr-code": {
+        "title": "QRコード生成",
+        "description": "テキストまたはリンクからQR画像を生成（ローカルでレンダリング）。",
+        "badge": "QR"
+      },
+      "timestamp": {
+        "title": "タイムスタンプ変換",
+        "description": "Unix タイムスタンプと見やすい時刻を相互変換。秒/ミリ秒対応。",
+        "badge": "時間"
+      },
+      "uuid": {
+        "title": "UUID ジェネレーター",
+        "description": "UUID v4 を大量生成。",
+        "badge": "ランダム"
+      },
+      "password-generator": {
+        "title": "ランダムパスワード生成",
+        "description": "長さと文字種を設定可能。`crypto` の乱数を使用。",
+        "badge": "パスワード"
+      },
+      "jwt-inspector": {
+        "title": "JWT パース",
+        "description": "ヘッダー/ペイロードをデコード（署名は検証しません）。",
+        "badge": "JWT"
+      },
+      "crypto-hash": {
+        "title": "テキストハッシュ（SHA）",
+        "description": "SHA-256 / 384 / 512。16進数（hex）を出力。",
+        "badge": "ハッシュ"
+      },
+      "regex-tester": {
+        "title": "正規表現テスター",
+        "description": "正規表現をデバッグ：一致とキャプチャグループを一覧表示。",
+        "badge": "正規表現"
+      },
+      "color-converter": {
+        "title": "カラー変換",
+        "description": "HEX / RGB / HSL を相互変換し、プレビュー付き。",
+        "badge": "カラー"
+      }
+    }
+  }
+}

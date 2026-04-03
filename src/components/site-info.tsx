@@ -1,6 +1,7 @@
-import Link from "next/link";
+"use client";
 
 import type { ReactNode } from "react";
+import { useTranslations } from "next-intl";
 
 import { SITE_REPOSITORY_URL } from "@/lib/brand";
 
@@ -12,27 +13,28 @@ type SiteInfoProps = {
   variant?: "default" | "inline";
 };
 
-const rows: Array<{ label: string; value: ReactNode }> = [
-  { label: "框架", value: "Next.js（静态导出）" },
-  { label: "部署", value: "GitHub Pages" },
-  { label: "存储", value: "IndexedDB" },
-  { label: "后端", value: "无" },
-  {
-    label: "源码",
-    value: (
-      <Link
-        className="text-[var(--accent-violet)] underline-offset-4 transition hover:text-[var(--text)] hover:underline"
-        href={SITE_REPOSITORY_URL}
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        GitHub · imklayhu/dev-ease
-      </Link>
-    ),
-  },
-];
-
 export function SiteInfo({ variant = "default" }: SiteInfoProps) {
+  const t = useTranslations("siteInfo");
+  const rows: Array<{ label: string; value: ReactNode }> = [
+    { label: t("rows.framework"), value: t("values.framework") },
+    { label: t("rows.deploy"), value: t("values.deploy") },
+    { label: t("rows.storage"), value: t("values.storage") },
+    { label: t("rows.backend"), value: t("values.backend") },
+    {
+      label: t("rows.repo"),
+      value: (
+        <a
+          className="text-[var(--accent-violet)] underline-offset-4 transition hover:text-[var(--text)] hover:underline"
+          href={SITE_REPOSITORY_URL}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          {t("values.repo")}
+        </a>
+      ),
+    },
+  ];
+
   if (variant === "inline") {
     return (
       <div className="space-y-3">
@@ -40,7 +42,7 @@ export function SiteInfo({ variant = "default" }: SiteInfoProps) {
           className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--text-faint)]"
           id="site-meta-heading"
         >
-          技术栈
+          {t("stackTitle")}
         </h3>
         <dl className="divide-y divide-[var(--border)]/90">
           {rows.map((row) => (
@@ -53,7 +55,7 @@ export function SiteInfo({ variant = "default" }: SiteInfoProps) {
             </div>
           ))}
         </dl>
-        <p className="pt-1 font-mono text-[11px] text-[var(--text-faint)]">版本 v0.x</p>
+        <p className="pt-1 font-mono text-[11px] text-[var(--text-faint)]">{t("version")}</p>
       </div>
     );
   }
@@ -63,9 +65,9 @@ export function SiteInfo({ variant = "default" }: SiteInfoProps) {
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--accent-violet)]/12 via-transparent to-[var(--accent)]/10" />
       <div className="relative flex flex-col rounded-[31px] glass-panel">
         <div className="flex items-center justify-between gap-4 border-b border-[var(--border)] px-6 py-5">
-          <p className="text-sm font-semibold text-[var(--text)]">站点信息</p>
+          <p className="text-sm font-semibold text-[var(--text)]">{t("title")}</p>
           <p className="rounded-full bg-[var(--surface-subtle)] px-2.5 py-0.5 font-mono text-[11px] text-[var(--text-faint)] ring-1 ring-[var(--border)]">
-            v0.x
+            {t("version")}
           </p>
         </div>
 

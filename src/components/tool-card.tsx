@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 import type { LucideIcon } from "lucide-react";
 
@@ -12,11 +12,24 @@ type ToolCardProps = {
   href: string;
   icon: LucideIcon;
   badge?: string;
+  openLabel: string;
+  enterLabel: string;
+  featuredLabel: string;
   /** Bento 大卡片：跨两列、更强玻璃与装饰 */
   featured?: boolean;
 };
 
-export function ToolCard({ title, description, href, icon: Icon, badge, featured }: ToolCardProps) {
+export function ToolCard({
+  title,
+  description,
+  href,
+  icon: Icon,
+  badge,
+  featured,
+  openLabel,
+  enterLabel,
+  featuredLabel,
+}: ToolCardProps) {
   return (
     <Link
       className={cn(
@@ -59,7 +72,7 @@ export function ToolCard({ title, description, href, icon: Icon, badge, featured
                 {featured ? (
                   <span className="inline-flex items-center gap-1 rounded-full bg-[var(--accent)]/15 px-2 py-0.5 font-mono text-[10px] font-semibold tracking-wider text-[var(--accent)] ring-1 ring-[var(--accent)]/30">
                     <Sparkles aria-hidden className="h-3 w-3" />
-                    首推
+                    {featuredLabel}
                   </span>
                 ) : null}
               </div>
@@ -86,9 +99,9 @@ export function ToolCard({ title, description, href, icon: Icon, badge, featured
             featured && "pt-5",
           )}
         >
-          <span className="text-sm font-medium text-[var(--text-muted)]">打开</span>
+          <span className="text-sm font-medium text-[var(--text-muted)]">{openLabel}</span>
           <span className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--text)]">
-            <span className="transition duration-200 group-hover:text-[var(--accent-violet)]">进入</span>
+            <span className="transition duration-200 group-hover:text-[var(--accent-violet)]">{enterLabel}</span>
             <ArrowUpRight
               aria-hidden
               className="h-4 w-4 transition duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--accent-violet)] motion-reduce:transform-none"

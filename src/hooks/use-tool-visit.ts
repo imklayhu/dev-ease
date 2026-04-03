@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 import { appendToolHistory, getToolActivity, recordToolVisit } from "@/lib/db/client";
 
 export function useToolVisit(toolId: string) {
+  const t = useTranslations("toolVisit");
   const [visits, setVisits] = useState(0);
   const [lastVisitedAt, setLastVisitedAt] = useState("");
 
@@ -21,7 +23,7 @@ export function useToolVisit(toolId: string) {
 
       await appendToolHistory({
         toolId,
-        label: `第 ${next.count} 次打开此工具`,
+        label: t("history.openCount", { count: next.count }),
       });
 
       if (!mounted) {
@@ -35,7 +37,7 @@ export function useToolVisit(toolId: string) {
     return () => {
       mounted = false;
     };
-  }, [toolId]);
+  }, [toolId, t]);
 
   return { visits, lastVisitedAt };
 }

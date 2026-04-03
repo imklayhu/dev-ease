@@ -1,0 +1,486 @@
+{
+  "brand": {
+    "tagline": "Make dev a little easier"
+  },
+  "common": {
+    "copy": "Copy",
+    "copied": "Copied",
+    "skipToMain": "Skip to main content"
+  },
+  "nav": {
+    "home": "Home",
+    "tools": "Tools",
+    "guides": "Guides",
+    "about": "About",
+    "language": "Language",
+    "mainAria": "Main navigation",
+    "breadcrumbAria": "Breadcrumb",
+    "backToTools": "Back to tools",
+    "browseTools": "Browse tools"
+  },
+  "footer": {
+    "line": "Preferences and visit stats stay in your browser by default",
+    "about": "About",
+    "guides": "Guides",
+    "repo": "Source on GitHub",
+    "stack": "Next.js · Tailwind · GitHub Pages"
+  },
+  "home": {
+    "metaTitle": "Everyday developer tools",
+    "metaDescription": "{brand} includes {toolCount} pure front-end developer tools for JSON formatting, Base64, timestamps, UUID, hash, regex, JWT, color conversion, and more. No login required, local-first by default.",
+    "heroTitle": "Everyday developer tools",
+    "heroSubtitle": "All in one place, ready when you are",
+    "heroLead": "Built for developers and daily productivity: JSON, Base64, timestamps, hashing and more in a pure front-end static site with no login required. The word <ease>Ease</ease> reflects being lightweight and smooth, so formatting, validation, and encoding tasks get done quickly in your browser.",
+    "sectionIndex": "Tool index",
+    "sectionIndexBadge": "By category",
+    "sectionIndexDesc": "{brand} lists tools by category below. Open a card to use a tool; new tools appear here when registered in the data layer.",
+    "statsLine": "{toolCount} tools · {catCount} categories",
+    "jumpToCategory": "Jump to category",
+    "readAbout": "About us",
+    "localFirst": "Local-first",
+    "open": "Open",
+    "enter": "Enter",
+    "featured": "Featured"
+  },
+  "about": {
+    "drawerLead": "{brand} site info and local preferences. For the full page, see <link>settings</link>.",
+    "close": "Close",
+    "closeDialogAria": "Close about panel",
+    "overlayCloseAria": "Close about panel",
+    "themeSectionAria": "Theme and appearance"
+  },
+  "settings": {
+    "title": "About us",
+    "description": "{brand} site info, tech stack, IndexedDB-based local usage insights, theme preferences, and tool operation history.",
+    "badge": "Site & preferences",
+    "lead": "{brand} is built from the dev-ease repository. This page provides tech stack notes, IndexedDB-based local usage insights, and appearance preferences.",
+    "siteInfoHeading": "Site info",
+    "themeSectionAria": "Appearance and theme"
+  },
+  "siteInfo": {
+    "title": "Site info",
+    "stackTitle": "Tech stack",
+    "version": "v0.x",
+    "rows": {
+      "framework": "Framework",
+      "deploy": "Deployment",
+      "storage": "Storage",
+      "backend": "Backend",
+      "repo": "Source"
+    },
+    "values": {
+      "framework": "Next.js (static export)",
+      "deploy": "GitHub Pages",
+      "storage": "IndexedDB",
+      "backend": "None",
+      "repo": "GitHub · imklayhu/dev-ease"
+    }
+  },
+  "theme": {
+    "title": "Appearance settings",
+    "desc": "Theme preference is stored in IndexedDB and applied instantly.",
+    "minimalDesc": "Changes apply immediately; preference is saved to IndexedDB.",
+    "modeAria": "Theme mode",
+    "warningNoIdb": "IndexedDB is unavailable in this browser: in-memory session mode is used and settings may be lost after refresh.",
+    "options": {
+      "system": {
+        "label": "System",
+        "description": "Follow system"
+      },
+      "light": {
+        "label": "Light",
+        "description": "Light interface"
+      },
+      "dark": {
+        "label": "Dark",
+        "description": "Dark interface"
+      }
+    }
+  },
+  "usage": {
+    "badge": "Local analytics",
+    "title": "Usage behavior overview",
+    "lead": "Aggregated from visits on tool pages; theme reflects your current preference. Data stays local and resets when site data is cleared.",
+    "idbUnavailable": "IndexedDB is unavailable in this environment; stats may reflect only this session.",
+    "idbEnabled": "IndexedDB enabled",
+    "none": "None",
+    "emptyTitle": "No local visit records yet",
+    "emptyDesc": "Open any tool page and visits/category shares will be aggregated here.",
+    "toolVisitsTitle": "Visits by tool",
+    "categorySummaryTitle": "Summary by category",
+    "categorySummaryDesc": "Aggregates tool visits by homepage category.",
+    "currentTheme": "Current theme preference",
+    "kpi": {
+      "totalVisits": "Total visits",
+      "activeTools": "Active tools",
+      "lastVisit": "Last visit"
+    },
+    "theme": {
+      "system": "Follow system",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "percent": "({value}%)"
+  },
+  "toolVisit": {
+    "title": "Local visit records",
+    "visits": "Visit count",
+    "lastVisit": "Last visit",
+    "firstVisit": "First visit",
+    "note": "Stored only in your local browser (IndexedDB), never uploaded to a server.",
+    "history": {
+      "openCount": "Opened this tool {count} times"
+    }
+  },
+  "toolHistory": {
+    "title": "Operation history",
+    "desc": "Stored only in local IndexedDB, up to {max} records per tool; clearing site data removes it.",
+    "empty": "No records yet. Actions like opening this page or copying output will appear here automatically.",
+    "confirmClear": "Clear all local operation history for this tool? This action cannot be undone.",
+    "collapseDetail": "Collapse details",
+    "expandDetail": "Expand details",
+    "clear": "Clear this tool history",
+    "justNow": "Just now"
+  },
+  "relatedTools": {
+    "title": "Related tools",
+    "desc": "Related capabilities in this site for continuous workflows."
+  },
+  "toolPages": {
+    "jsonFormatter": {
+      "unknownError": "Unknown error",
+      "inputLabel": "Input JSON",
+      "placeholder": "e.g. JSON object",
+      "parseFailed": "Parse failed",
+      "copyFormatted": "Copy formatted result",
+      "copyMinified": "Copy minified result",
+      "formattedTitle": "Formatted (2 spaces)",
+      "minifiedTitle": "Minified",
+      "tip": "Tip: very large JSON may slow down the page; handle sensitive data in a trusted local environment.",
+      "usageTitle": "Usage notes",
+      "usageLi1": "When input changes on the left, parsing is attempted in real time.",
+      "usageLi2": "The copy buttons correspond to formatted and minified outputs.",
+      "history": {
+        "copyFormatted": "Copy JSON formatted output",
+        "copyMinified": "Copy JSON minified output"
+      }
+    },
+    "uuid": {
+      "countLabel": "Count",
+      "generate": "Generate",
+      "copyAll": "Copy all",
+      "resultTitle": "Result",
+      "empty": "Click Generate to start.",
+      "tip": "Tip: up to 50 UUIDs per run to avoid UI lag.",
+      "history": {
+        "generated": "Generated {count} UUIDs",
+        "copyAll": "Copy all UUIDs",
+        "copyOne": "Copy single UUID"
+      }
+    },
+    "base64": {
+      "modeAria": "Mode",
+      "encode": "Encode",
+      "decode": "Decode",
+      "rawText": "Raw text",
+      "base64Text": "Base64 text",
+      "copyOutput": "Copy output",
+      "output": "Output",
+      "encodeDecodeFailed": "Encode/decode failed",
+      "history": {
+        "copyOutput": "Copy Base64 output"
+      }
+    },
+    "timestamp": {
+      "invalidNumber": "Please enter a valid number",
+      "unitAuto": "Auto",
+      "unitS": "Seconds (s)",
+      "unitMs": "Milliseconds (ms)",
+      "fillNow": "Fill current time (ms)",
+      "inputLabel": "Timestamp (leave empty to use current time)",
+      "placeholder": "e.g. 1712131200 or 1712131200000",
+      "emptyHint": "Enter a timestamp or click Fill current time.",
+      "resultTitle": "Conversion result",
+      "copyAll": "Copy all",
+      "isoUtc": "ISO (UTC)",
+      "localTime": "Local time",
+      "unixS": "Unix (seconds)",
+      "unixMs": "Unix (milliseconds)",
+      "tip": "Tip: auto mode uses length rules for numeric strings; for other formats, normalize to seconds or milliseconds first.",
+      "history": {
+        "copyResult": "Copy timestamp conversion result"
+      }
+    },
+    "textCounter": {
+      "inputLabel": "Input text",
+      "placeholder": "Paste or type text…",
+      "tip": "Tip: words are counted by whitespace separation; mixed CJK/English text follows space-based tokenization.",
+      "chars": "Characters",
+      "words": "Words",
+      "lines": "Lines"
+    },
+    "textDiff": {
+      "textA": "Text A",
+      "textB": "Text B",
+      "placeholderA": "Left version…",
+      "placeholderB": "Right version…",
+      "resultTitle": "Diff (line-level)",
+      "resultAria": "diff result",
+      "bothEmpty": "Both sides are empty"
+    },
+    "passwordGenerator": {
+      "length": "Length",
+      "regenerate": "Regenerate",
+      "charset": "Character set",
+      "lower": "Lowercase a–z",
+      "upper": "Uppercase A–Z",
+      "digit": "Digits 0–9",
+      "symbol": "Symbols",
+      "chooseOne": "Select at least one character group.",
+      "resultTitle": "Result",
+      "emptyResult": "—",
+      "copyPassword": "Copy password",
+      "maskedCopied": "•••• (copied)",
+      "history": {
+        "regenerate": "Regenerate random password",
+        "copyPassword": "Copy random password"
+      }
+    },
+    "jwtInspector": {
+      "pasteJwt": "Paste JWT",
+      "placeholder": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....",
+      "threePartsError": "JWT must include three parts: header.payload.signature",
+      "parseFailed": "Parse failed",
+      "copy": "Copy",
+      "signatureTitle": "Signature (raw segment, not verified)",
+      "history": {
+        "copyHeader": "Copy JWT header",
+        "copyPayload": "Copy JWT payload"
+      }
+    },
+    "unicodeInspector": {
+      "inputLabel": "Input text",
+      "placeholder": "Paste any Unicode text…",
+      "char": "Character",
+      "codePoint": "Code point",
+      "utf16Literal": "UTF-16 literal",
+      "empty": "Empty string",
+      "tip": "Note: iterating with `for...of` handles most emoji (surrogate pairs) correctly; combining marks may still span multiple rows."
+    },
+    "urlCodec": {
+      "modeAria": "Mode",
+      "encode": "Encode",
+      "decode": "Decode",
+      "input": "Input",
+      "output": "Output",
+      "copyOutput": "Copy output",
+      "convertFailed": "Conversion failed",
+      "history": {
+        "copyOutput": "Copy URL encode/decode output"
+      }
+    },
+    "qrCode": {
+      "content": "Content",
+      "placeholder": "https:// or any text",
+      "preview": "Preview",
+      "previewAlt": "QR code preview",
+      "generating": "Generating…",
+      "enterContent": "Enter content",
+      "generateFailed": "Failed to generate",
+      "downloadPng": "Download PNG (Data URL)",
+      "history": {
+        "generated": "Generate QR code"
+      }
+    },
+    "regexTester": {
+      "tooLong": "Text too long: keep it within {max} characters (to reduce ReDoS risk).",
+      "truncated": "…(too many matches, output truncated)",
+      "invalidRegex": "Invalid regular expression",
+      "pattern": "Pattern",
+      "flags": "Flags",
+      "text": "Text",
+      "matchCount": "Matches",
+      "copyMatches": "Copy matches",
+      "resultTitle": "Match results",
+      "noMatch": "No matches.",
+      "index": "index",
+      "captureGroups": "Capture groups",
+      "emptyGroup": "(empty)",
+      "tipPrefix": "Tip: without",
+      "tipSuffix": "you usually get only the first match; include g for global matches.",
+      "history": {
+        "copyMatches": "Copy regex match list"
+      }
+    },
+    "htmlEntities": {
+      "encode": "Encode (to entities)",
+      "decode": "Decode (to text)",
+      "input": "Input",
+      "output": "Output",
+      "placeholderEncode": "<div>\"example\" & symbol</div>",
+      "placeholderDecode": "&lt;div&gt;&quot;example&quot; &amp; symbol&lt;/div&gt;",
+      "copyOutput": "Copy output",
+      "history": {
+        "copyEncode": "Copy HTML entities encoded output",
+        "copyDecode": "Copy HTML entities decoded output"
+      }
+    },
+    "cryptoHash": {
+      "webCryptoUnavailable": "Web Crypto is not available in this environment (requires secure context: HTTPS or localhost).",
+      "webCryptoUnavailableBanner": "Current page environment unavailable: `crypto.subtle` requires HTTPS or localhost.",
+      "computeFailed": "Compute failed",
+      "computing": "Computing…",
+      "recompute": "Recompute",
+      "input": "Input text",
+      "copyHex": "Copy HEX",
+      "hexDigest": "HEX digest",
+      "tip": "Tip: very large text may take longer; handle sensitive content in a trusted local environment.",
+      "history": {
+        "copyHex": "Copy hash HEX"
+      }
+    },
+    "colorConverter": {
+      "input": "Input color",
+      "placeholder": "#22c55e / rgb(34, 197, 94) / hsl(142, 71%, 45%)",
+      "preview": "Preview",
+      "previewAria": "Color preview",
+      "copyAll": "Copy all",
+      "copyPrefix": "Copy ",
+      "examples": "Examples",
+      "tip": "Tip: color space conversion has rounding errors; use design source-of-truth for print/brand colors.",
+      "history": {
+        "copyAll": "Copy all color conversions"
+      }
+    }
+  },
+  "guides": {
+    "breadcrumb": "Guides",
+    "badge": "Guides & scenarios",
+    "metaDescription": "{brand} short guides on developer-tool workflows, privacy, and local-first practices.",
+    "indexTitle": "{brand} guides",
+    "indexLead": "Short reads on typical workflows, privacy, and local-first usage; more articles over time.",
+    "readMore": "Read more →",
+    "backToList": "← Back to guides",
+    "items": {
+      "local-first-json-workflow": {
+        "title": "Local-first: Why JSON Feels Safer When Processed in Your Browser",
+        "description": "From API integration and privacy compliance to offline scenarios—explain the value of validating and formatting JSON in the browser, and how it pairs with DevEase's JSON tools and local storage."
+      }
+    },
+    "localFirst": {
+      "date": "2026-04-03",
+      "breadcrumbCurrent": "Local-first & JSON",
+      "title": "Local-first: Why JSON Feels Safer When Processed in Your Browser",
+      "description": "From API integration and privacy compliance to offline scenarios—explain the value of validating and formatting JSON in the browser, and how it pairs with DevEase's JSON tools and local storage.",
+      "p1": "When you're integrating APIs or organizing configuration files, JSON often contains<strong> field names, business identifiers, or even real data after masking</strong>. Uploading the same content to an unknown server for formatting adds an extra exposure path; but when you <strong>process it in your local browser</strong>, parsing and formatting happen without sending data to your backend—and it's also convenient in offline or intranet environments.",
+      "p2": "<strong>{brand}</strong>'s <formatterLink>JSON Formatter / Minifier</formatterLink> runs <code>JSON.parse</code> and serialization on the client. Error messages come from the native implementation, making it easy to quickly spot illegal commas or quotes. If you’re also interested in which tools you used and which steps you performed, check the IndexedDB-based visits and <strong>operation history</strong> in each tool's sidebar (stored only on your device; clearing site data removes it too).",
+      "p3": "In practice, handle sensitive payloads on <strong>trusted devices</strong> and with <strong>trusted browser settings</strong>. On shared computers, close the tab right after you’re done and avoid exposing tokens in screenshots. For more details about data scope, see <settingsLink>About us</settingsLink>.",
+      "summaryTitle": "Summary",
+      "li1": "Browser-side JSON handling can reduce unnecessary outbound paths.",
+      "li2": "Together with local visits and operation history, it's easier to build the expectation that data stays with you.",
+      "li3": "For stronger guarantees, still combine system and network security policies—not just rely on front-end tools.",
+      "backToList": "← Back to guides"
+    }
+  },
+  "tools": {
+    "categories": {
+      "text-data": {
+        "title": "Text & Data",
+        "description": "Statistics, diff, Unicode, and structured data (JSON, etc.)."
+      },
+      "encoding": {
+        "title": "Encoding & Network",
+        "description": "Base64, URL, HTML, QR codes, and common encoders/decoders."
+      },
+      "time-id": {
+        "title": "Time & Identifiers",
+        "description": "Time conversions and unique identifier generation."
+      },
+      "security-dev": {
+        "title": "Security & Debugging",
+        "description": "Passwords, JWT, hashes, regex, and more (processed in the browser; not a replacement for server-side validation)."
+      },
+      "color": {
+        "title": "Color & Design",
+        "description": "Color space conversions and previews."
+      }
+    },
+    "items": {
+      "json-formatter": {
+        "title": "JSON Formatter / Minifier",
+        "description": "Validate JSON; format (2-space indent) or minify into a single line.",
+        "badge": "JSON"
+      },
+      "text-counter": {
+        "title": "Text Counter",
+        "description": "Count characters, words, and lines; visit stats are stored locally.",
+        "badge": "Text"
+      },
+      "text-diff": {
+        "title": "Text Diff (Line-level)",
+        "description": "Compare two texts line by line and highlight additions/deletions.",
+        "badge": "Diff"
+      },
+      "unicode-inspector": {
+        "title": "Unicode Code Point Viewer",
+        "description": "Show code points, U+ values, and UTF-16—useful for debugging emoji.",
+        "badge": "Unicode"
+      },
+      "base64": {
+        "title": "Base64 Encode / Decode",
+        "description": "Base64 encode/decode with stable UTF-8 text.",
+        "badge": "Encoding"
+      },
+      "url-codec": {
+        "title": "URL Encode / Decode",
+        "description": "encodeURIComponent / decodeURIComponent.",
+        "badge": "URL"
+      },
+      "html-entities": {
+        "title": "HTML Entities Encode / Decode",
+        "description": "Escape or restore common entities like &lt; &gt; &amp;.",
+        "badge": "HTML"
+      },
+      "qr-code": {
+        "title": "QR Code Generator",
+        "description": "Generate QR code images from text or links (rendered locally).",
+        "badge": "QR"
+      },
+      "timestamp": {
+        "title": "Timestamp Converter",
+        "description": "Convert Unix timestamps and readable times; supports seconds/milliseconds.",
+        "badge": "Time"
+      },
+      "uuid": {
+        "title": "UUID Generator",
+        "description": "Generate UUID v4 in bulk.",
+        "badge": "Random"
+      },
+      "password-generator": {
+        "title": "Random Password Generator",
+        "description": "Configurable length and character set; uses `crypto` randomness.",
+        "badge": "Password"
+      },
+      "jwt-inspector": {
+        "title": "JWT Decoder",
+        "description": "Decode header/payload; does not verify signatures.",
+        "badge": "JWT"
+      },
+      "crypto-hash": {
+        "title": "Text Hash (SHA)",
+        "description": "SHA-256 / 384 / 512; outputs hex.",
+        "badge": "Hash"
+      },
+      "regex-tester": {
+        "title": "Regex Tester",
+        "description": "Debug regex by listing matches and capture groups.",
+        "badge": "Regex"
+      },
+      "color-converter": {
+        "title": "Color Converter",
+        "description": "Convert HEX / RGB / HSL with a preview.",
+        "badge": "Color"
+      }
+    }
+  }
+}

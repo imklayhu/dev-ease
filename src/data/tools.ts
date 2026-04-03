@@ -63,6 +63,8 @@ export type ToolItem = {
   description: string;
   /** 专用于页面 meta description，可与卡片 description 区分长度与关键词 */
   seoDescription?: string;
+  /** 相关工具内链（2～3 个 id，勿含自身） */
+  relatedToolIds?: string[];
   href: string;
   badge: string;
   icon: LucideIcon;
@@ -82,6 +84,7 @@ export const tools: ToolItem[] = [
     icon: Braces,
     categoryId: "text-data",
     featured: true,
+    relatedToolIds: ["text-diff", "url-codec"],
   },
   {
     id: "text-counter",
@@ -93,6 +96,7 @@ export const tools: ToolItem[] = [
     badge: "文本",
     icon: Gauge,
     categoryId: "text-data",
+    relatedToolIds: ["text-diff", "unicode-inspector"],
   },
   {
     id: "text-diff",
@@ -104,6 +108,7 @@ export const tools: ToolItem[] = [
     badge: "Diff",
     icon: GitCompare,
     categoryId: "text-data",
+    relatedToolIds: ["text-counter", "json-formatter"],
   },
   {
     id: "unicode-inspector",
@@ -115,6 +120,7 @@ export const tools: ToolItem[] = [
     badge: "Unicode",
     icon: Brackets,
     categoryId: "text-data",
+    relatedToolIds: ["text-counter", "html-entities"],
   },
   {
     id: "base64",
@@ -126,6 +132,7 @@ export const tools: ToolItem[] = [
     badge: "编码",
     icon: Binary,
     categoryId: "encoding",
+    relatedToolIds: ["url-codec", "html-entities"],
   },
   {
     id: "url-codec",
@@ -137,6 +144,7 @@ export const tools: ToolItem[] = [
     badge: "URL",
     icon: Link2,
     categoryId: "encoding",
+    relatedToolIds: ["base64", "qr-code"],
   },
   {
     id: "html-entities",
@@ -148,6 +156,7 @@ export const tools: ToolItem[] = [
     badge: "HTML",
     icon: CodeXml,
     categoryId: "encoding",
+    relatedToolIds: ["base64", "url-codec"],
   },
   {
     id: "qr-code",
@@ -159,6 +168,7 @@ export const tools: ToolItem[] = [
     badge: "QR",
     icon: QrCode,
     categoryId: "encoding",
+    relatedToolIds: ["url-codec", "uuid"],
   },
   {
     id: "timestamp",
@@ -170,6 +180,7 @@ export const tools: ToolItem[] = [
     badge: "时间",
     icon: Clock,
     categoryId: "time-id",
+    relatedToolIds: ["uuid", "crypto-hash"],
   },
   {
     id: "uuid",
@@ -181,6 +192,7 @@ export const tools: ToolItem[] = [
     badge: "随机",
     icon: Fingerprint,
     categoryId: "time-id",
+    relatedToolIds: ["timestamp", "password-generator"],
   },
   {
     id: "password-generator",
@@ -192,6 +204,7 @@ export const tools: ToolItem[] = [
     badge: "密码",
     icon: KeyRound,
     categoryId: "security-dev",
+    relatedToolIds: ["crypto-hash", "uuid"],
   },
   {
     id: "jwt-inspector",
@@ -203,6 +216,7 @@ export const tools: ToolItem[] = [
     badge: "JWT",
     icon: Shield,
     categoryId: "security-dev",
+    relatedToolIds: ["base64", "crypto-hash"],
   },
   {
     id: "crypto-hash",
@@ -214,6 +228,7 @@ export const tools: ToolItem[] = [
     badge: "哈希",
     icon: Hash,
     categoryId: "security-dev",
+    relatedToolIds: ["jwt-inspector", "password-generator"],
   },
   {
     id: "regex-tester",
@@ -225,6 +240,7 @@ export const tools: ToolItem[] = [
     badge: "正则",
     icon: Regex,
     categoryId: "security-dev",
+    relatedToolIds: ["text-diff", "url-codec"],
   },
   {
     id: "color-converter",
@@ -236,6 +252,7 @@ export const tools: ToolItem[] = [
     badge: "颜色",
     icon: Palette,
     categoryId: "color",
+    relatedToolIds: ["unicode-inspector", "json-formatter"],
   },
 ];
 
@@ -244,6 +261,28 @@ export function getToolsGrouped(): Array<{ category: ToolCategory; tools: ToolIt
     category,
     tools: tools.filter((t) => t.categoryId === category.id),
   }));
+}
+
+export function getToolById(id: string): ToolItem | undefined {
+  return tools.find((t) => t.id === id);
+}
+
+export function getCategoryForTool(toolId: string): ToolCategory | undefined {
+  const tool = getToolById(toolId);
+  if (!tool) {
+    return undefined;
+  }
+  return toolCategories.find((c) => c.id === tool.categoryId);
+}
+
+export function getRelatedTools(toolId: string): ToolItem[] {
+  const tool = getToolById(toolId);
+  if (!tool?.relatedToolIds?.length) {
+    return [];
+  }
+  return tool.relatedToolIds
+    .map((id) => getToolById(id))
+    .filter((t): t is ToolItem => Boolean(t));
 }
 
 export const toolCount = tools.length;

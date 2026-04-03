@@ -1,0 +1,486 @@
+{
+  "brand": {
+    "tagline": "让开发更轻松"
+  },
+  "common": {
+    "copy": "复制",
+    "copied": "已复制",
+    "skipToMain": "跳到主要内容"
+  },
+  "nav": {
+    "home": "首页",
+    "tools": "工具",
+    "guides": "指南",
+    "about": "关于",
+    "language": "语言",
+    "mainAria": "主导航",
+    "breadcrumbAria": "面包屑导航",
+    "backToTools": "返回工具",
+    "browseTools": "浏览工具"
+  },
+  "footer": {
+    "line": "偏好与访问记录默认保存在浏览器本地",
+    "about": "关于我们",
+    "guides": "指南",
+    "repo": "开源仓库",
+    "stack": "Next.js · Tailwind · GitHub Pages"
+  },
+  "home": {
+    "metaTitle": "常用开发小工具",
+    "metaDescription": "{brand} 收录 JSON 格式化、Base64、时间戳、UUID、哈希、正则、JWT、颜色转换等 {toolCount} 款纯前端开发者工具。无需登录，默认本地处理。",
+    "heroTitle": "常用开发小工具",
+    "heroSubtitle": "收进一处，随手可用",
+    "heroLead": "面向开发者与日常效率场景：把 JSON、Base64、时间戳、哈希等常用能力放进一个纯前端、无需登录的静态站点。名字里的 <ease>Ease</ease> 取「轻松、顺手」之意——让格式化、校验、编解码这类琐事在浏览器里快速完成。",
+    "sectionIndex": "工具索引",
+    "sectionIndexBadge": "按用途分类",
+    "sectionIndexDesc": "{brand} 当前收录的工具按用途分组如下。点进卡片即可使用；新增工具时在数据层登记分类即可出现在对应区块。",
+    "statsLine": "共 {toolCount} 款 · {catCount} 类",
+    "jumpToCategory": "按分类跳转",
+    "readAbout": "关于我们",
+    "localFirst": "本地优先",
+    "open": "打开",
+    "enter": "进入",
+    "featured": "首推"
+  },
+  "about": {
+    "drawerLead": "{brand} 的站点说明与本地偏好。需要更大版面可查看 <link>完整页面</link>",
+    "close": "关闭",
+    "closeDialogAria": "关闭关于面板",
+    "overlayCloseAria": "关闭关于面板",
+    "themeSectionAria": "主题与外观"
+  },
+  "settings": {
+    "title": "关于我们",
+    "description": "{brand} 站点信息、技术栈、基于 IndexedDB 的本地使用统计、外观主题与各工具操作历史说明。",
+    "badge": "站点与偏好",
+    "lead": "{brand} 由项目仓库 dev-ease 构建。本页提供技术栈说明、基于 IndexedDB 的本地使用概览（图表）、以及外观等偏好设置。",
+    "siteInfoHeading": "站点信息",
+    "themeSectionAria": "外观与主题"
+  },
+  "siteInfo": {
+    "title": "站点信息",
+    "stackTitle": "技术栈",
+    "version": "v0.x",
+    "rows": {
+      "framework": "框架",
+      "deploy": "部署",
+      "storage": "存储",
+      "backend": "后端",
+      "repo": "源码"
+    },
+    "values": {
+      "framework": "Next.js（静态导出）",
+      "deploy": "GitHub Pages",
+      "storage": "IndexedDB",
+      "backend": "无",
+      "repo": "GitHub · imklayhu/dev-ease"
+    }
+  },
+  "theme": {
+    "title": "外观设置",
+    "desc": "主题写入 IndexedDB；切换后立即生效。",
+    "minimalDesc": "切换后立即生效；偏好写入 IndexedDB。",
+    "modeAria": "主题模式",
+    "warningNoIdb": "当前浏览器不支持 IndexedDB：将使用会话内存态，刷新后可能丢失设置。",
+    "options": {
+      "system": {
+        "label": "系统",
+        "description": "跟随系统"
+      },
+      "light": {
+        "label": "亮色",
+        "description": "浅色界面"
+      },
+      "dark": {
+        "label": "暗色",
+        "description": "深色界面"
+      }
+    }
+  },
+  "usage": {
+    "badge": "本地统计",
+    "title": "使用习惯与行为概览",
+    "lead": "基于各工具页的访问次数汇总；主题显示为当前偏好。数据仅存本机，清除站点数据后会重置。",
+    "idbUnavailable": "当前环境无 IndexedDB，统计可能仅反映本会话。",
+    "idbEnabled": "IndexedDB 已启用",
+    "none": "暂无",
+    "emptyTitle": "还没有本地访问记录",
+    "emptyDesc": "打开任意工具页后，这里会汇总访问次数与分类占比。",
+    "toolVisitsTitle": "各工具访问次数",
+    "categorySummaryTitle": "按用途分类汇总",
+    "categorySummaryDesc": "将各工具访问次数按其首页分类加总。",
+    "currentTheme": "当前主题偏好",
+    "kpi": {
+      "totalVisits": "累计访问",
+      "activeTools": "活跃工具数",
+      "lastVisit": "最近访问"
+    },
+    "theme": {
+      "system": "跟随系统",
+      "light": "亮色",
+      "dark": "暗色"
+    },
+    "percent": "({value}%)"
+  },
+  "toolVisit": {
+    "title": "本地访问记录",
+    "visits": "访问次数",
+    "lastVisit": "上次访问",
+    "firstVisit": "首次访问",
+    "note": "仅保存在本机浏览器（IndexedDB），不会上传服务器。",
+    "history": {
+      "openCount": "第 {count} 次打开此工具"
+    }
+  },
+  "toolHistory": {
+    "title": "操作历史",
+    "desc": "仅保存在本机 IndexedDB，单工具最多 {max} 条；清除站点数据会一并丢失。",
+    "empty": "暂无记录。进入本页、复制结果等操作会自动出现在这里。",
+    "confirmClear": "确定清空本工具在本机的全部操作历史？此操作不可恢复。",
+    "collapseDetail": "收起详情",
+    "expandDetail": "展开详情",
+    "clear": "清空本工具历史",
+    "justNow": "刚刚"
+  },
+  "relatedTools": {
+    "title": "相关工具",
+    "desc": "站内相关能力，便于连续处理任务。"
+  },
+  "toolPages": {
+    "jsonFormatter": {
+      "unknownError": "未知错误",
+      "inputLabel": "输入 JSON",
+      "placeholder": "例如：JSON 对象",
+      "parseFailed": "解析失败",
+      "copyFormatted": "复制格式化结果",
+      "copyMinified": "复制压缩结果",
+      "formattedTitle": "格式化（2 空格）",
+      "minifiedTitle": "压缩",
+      "tip": "提示：超大 JSON 可能会让页面变慢；敏感数据请注意本地环境安全。",
+      "usageTitle": "使用说明",
+      "usageLi1": "左侧输入变化时，右侧会尝试实时解析。",
+      "usageLi2": "复制按钮分别对应「美化」与「压缩」结果。",
+      "history": {
+        "copyFormatted": "复制 JSON 格式化结果",
+        "copyMinified": "复制 JSON 压缩结果"
+      }
+    },
+    "uuid": {
+      "countLabel": "生成数量",
+      "generate": "生成",
+      "copyAll": "复制全部",
+      "resultTitle": "结果",
+      "empty": "点击「生成」开始。",
+      "tip": "提示：单次最多生成 50 条，避免页面卡顿。",
+      "history": {
+        "generated": "生成 {count} 条 UUID",
+        "copyAll": "复制全部 UUID",
+        "copyOne": "复制单条 UUID"
+      }
+    },
+    "base64": {
+      "modeAria": "模式",
+      "encode": "编码",
+      "decode": "解码",
+      "rawText": "原始文本",
+      "base64Text": "Base64 文本",
+      "copyOutput": "复制输出",
+      "output": "输出",
+      "encodeDecodeFailed": "编解码失败",
+      "history": {
+        "copyOutput": "复制 Base64 输出"
+      }
+    },
+    "timestamp": {
+      "invalidNumber": "请输入有效数字",
+      "unitAuto": "自动",
+      "unitS": "秒（s）",
+      "unitMs": "毫秒（ms）",
+      "fillNow": "填入当前时间（ms）",
+      "inputLabel": "时间戳（留空则使用当前时间）",
+      "placeholder": "例如 1712131200 或 1712131200000",
+      "emptyHint": "请输入时间戳，或点击「填入当前时间」。",
+      "resultTitle": "转换结果",
+      "copyAll": "复制全部",
+      "isoUtc": "ISO（UTC）",
+      "localTime": "本地时间",
+      "unixS": "Unix（秒）",
+      "unixMs": "Unix（毫秒）",
+      "tip": "提示：自动模式对「纯数字字符串」使用长度规则；其他格式请先统一为秒或毫秒。",
+      "history": {
+        "copyResult": "复制时间戳换算结果"
+      }
+    },
+    "textCounter": {
+      "inputLabel": "输入文本",
+      "placeholder": "粘贴或输入文本…",
+      "tip": "提示：统计规则为「空白分隔的单词」；中英文混合时以空格分词为准。",
+      "chars": "字符数",
+      "words": "单词数",
+      "lines": "行数"
+    },
+    "textDiff": {
+      "textA": "文本 A",
+      "textB": "文本 B",
+      "placeholderA": "左侧版本…",
+      "placeholderB": "右侧版本…",
+      "resultTitle": "差异（行级）",
+      "resultAria": "diff 结果",
+      "bothEmpty": "两侧均为空"
+    },
+    "passwordGenerator": {
+      "length": "长度",
+      "regenerate": "重新生成",
+      "charset": "字符集",
+      "lower": "小写字母 a–z",
+      "upper": "大写字母 A–Z",
+      "digit": "数字 0–9",
+      "symbol": "符号",
+      "chooseOne": "请至少选择一类字符。",
+      "resultTitle": "结果",
+      "emptyResult": "—",
+      "copyPassword": "复制密码",
+      "maskedCopied": "••••（已复制）",
+      "history": {
+        "regenerate": "重新生成随机密码",
+        "copyPassword": "复制随机密码"
+      }
+    },
+    "jwtInspector": {
+      "pasteJwt": "粘贴 JWT",
+      "placeholder": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....",
+      "threePartsError": "JWT 应包含三段：header.payload.signature",
+      "parseFailed": "解析失败",
+      "copy": "复制",
+      "signatureTitle": "Signature（原始片段，未验证）",
+      "history": {
+        "copyHeader": "复制 JWT Header",
+        "copyPayload": "复制 JWT Payload"
+      }
+    },
+    "unicodeInspector": {
+      "inputLabel": "输入文本",
+      "placeholder": "粘贴任意 Unicode 文本…",
+      "char": "字符",
+      "codePoint": "码点",
+      "utf16Literal": "UTF-16 字面量",
+      "empty": "空字符串",
+      "tip": "说明：采用 for…of 遍历，可正确处理多数 emoji（代理对）；组合音标等可能仍显示为多行。"
+    },
+    "urlCodec": {
+      "modeAria": "模式",
+      "encode": "编码",
+      "decode": "解码",
+      "input": "输入",
+      "output": "输出",
+      "copyOutput": "复制输出",
+      "convertFailed": "转换失败",
+      "history": {
+        "copyOutput": "复制 URL 编解码输出"
+      }
+    },
+    "qrCode": {
+      "content": "内容",
+      "placeholder": "https:// 或任意文本",
+      "preview": "预览",
+      "previewAlt": "二维码预览",
+      "generating": "生成中…",
+      "enterContent": "请输入内容",
+      "generateFailed": "生成失败",
+      "downloadPng": "下载 PNG（Data URL）",
+      "history": {
+        "generated": "生成二维码"
+      }
+    },
+    "regexTester": {
+      "tooLong": "文本过长：请控制在 {max} 字符以内（降低 ReDoS 风险）。",
+      "truncated": "…（匹配过多，已截断展示）",
+      "invalidRegex": "正则表达式无效",
+      "pattern": "Pattern",
+      "flags": "Flags",
+      "text": "文本",
+      "matchCount": "匹配数",
+      "copyMatches": "复制匹配列表",
+      "resultTitle": "匹配结果",
+      "noMatch": "无匹配。",
+      "index": "index",
+      "captureGroups": "捕获组",
+      "emptyGroup": "（空）",
+      "tipPrefix": "提示：未使用",
+      "tipSuffix": "时通常只匹配第一次；全局匹配请包含 g。",
+      "history": {
+        "copyMatches": "复制正则匹配列表"
+      }
+    },
+    "htmlEntities": {
+      "encode": "编码（转实体）",
+      "decode": "解码（还原文本）",
+      "input": "输入",
+      "output": "输出",
+      "placeholderEncode": "<div>\"示例\" & 符号</div>",
+      "placeholderDecode": "&lt;div&gt;&quot;示例&quot; &amp; 符号&lt;/div&gt;",
+      "copyOutput": "复制输出",
+      "history": {
+        "copyEncode": "复制 HTML 实体编码结果",
+        "copyDecode": "复制 HTML 实体解码结果"
+      }
+    },
+    "cryptoHash": {
+      "webCryptoUnavailable": "当前环境不支持 Web Crypto（需要安全上下文：HTTPS 或 localhost）。",
+      "webCryptoUnavailableBanner": "当前页面环境不可用：`crypto.subtle` 需要 HTTPS 或 localhost。",
+      "computeFailed": "计算失败",
+      "computing": "计算中…",
+      "recompute": "重新计算",
+      "input": "输入文本",
+      "copyHex": "复制 HEX",
+      "hexDigest": "HEX 摘要",
+      "tip": "提示：超大文本可能耗时更长；敏感内容请注意本地环境安全。",
+      "history": {
+        "copyHex": "复制哈希 HEX"
+      }
+    },
+    "colorConverter": {
+      "input": "输入颜色",
+      "placeholder": "#22c55e / rgb(34, 197, 94) / hsl(142, 71%, 45%)",
+      "preview": "预览",
+      "previewAria": "颜色预览",
+      "copyAll": "复制全部",
+      "copyPrefix": "复制",
+      "examples": "示例",
+      "tip": "提示：不同颜色空间转换存在舍入误差；需要印刷/品牌色请以设计稿为准。",
+      "history": {
+        "copyAll": "复制颜色换算全部"
+      }
+    }
+  },
+  "guides": {
+    "breadcrumb": "指南",
+    "badge": "指南与场景",
+    "metaDescription": "{brand} 短指南：开发者工具使用场景、隐私与本地优先实践。",
+    "indexTitle": "{brand} 指南",
+    "indexLead": "短文说明典型使用场景、隐私与本地优先实践；会随工具更新持续补充。",
+    "readMore": "阅读全文 →",
+    "backToList": "← 返回指南列表",
+    "items": {
+      "local-first-json-workflow": {
+        "title": "本地优先：为什么 JSON 在浏览器里处理更安心",
+        "description": "从接口联调、隐私合规到离线场景，说明在浏览器内完成 JSON 校验与排版的价值，以及如何配合 DevEase 的 JSON 工具与本地存储。"
+      }
+    },
+    "localFirst": {
+      "date": "2026-04-03",
+      "breadcrumbCurrent": "本地优先与 JSON",
+      "title": "本地优先：为什么 JSON 在浏览器里处理更安心",
+      "description": "从接口联调、隐私合规到离线场景，说明在浏览器内完成 JSON 校验与排版的价值，以及如何配合 DevEase 的 JSON 工具与本地存储。",
+      "p1": "在联调接口或整理配置文件时，JSON 往往包含<strong>字段名、业务标识甚至脱敏后的真实数据</strong>。把同一份内容上传到未知服务器再格式化，会引入额外的泄露面；而在<strong>本机浏览器</strong>内完成解析与排版，数据默认不会经过你的后端，也便于在离线或内网环境使用。",
+      "p2": "<strong>{brand}</strong> 的 <formatterLink>JSON 格式化 / 压缩</formatterLink> 在客户端执行 <code>JSON.parse</code> 与序列化，错误信息来自原生实现，便于快速定位非法逗号或引号问题。若你同时关心「来过哪些工具、操作过哪些步骤」，可在各工具侧栏查看基于 IndexedDB 的访问与 <strong>操作历史</strong>（仅本机，清除站点数据会一并清空）。",
+      "p3": "实践上建议：敏感 payload 优先在<strong>可信设备、可信浏览器配置</strong>中处理；公共电脑用完即关标签页，并避免在截图中暴露令牌。更多数据范围说明见<settingsLink>关于我们</settingsLink>。",
+      "summaryTitle": "小结",
+      "li1": "浏览器内 JSON 处理可减少不必要的外传路径。",
+      "li2": "配合本地访问与操作历史，更易建立「数据在我手里」的预期。",
+      "li3": "需要更强保障时，仍应结合系统与网络安全策略，而非仅依赖前端工具。",
+      "backToList": "← 返回指南列表"
+    }
+  },
+  "tools": {
+    "categories": {
+      "text-data": {
+        "title": "文本与数据",
+        "description": "统计、diff、Unicode 与结构化数据（JSON 等）。"
+      },
+      "encoding": {
+        "title": "编码与网络",
+        "description": "Base64、URL、HTML、二维码等常见编解码与生成。"
+      },
+      "time-id": {
+        "title": "时间与标识",
+        "description": "时间换算与唯一标识生成。"
+      },
+      "security-dev": {
+        "title": "安全与调试",
+        "description": "密码、JWT、哈希、正则等（浏览器内处理，不代替服务端校验）。"
+      },
+      "color": {
+        "title": "颜色与设计",
+        "description": "色彩空间换算与预览。"
+      }
+    },
+    "items": {
+      "json-formatter": {
+        "title": "JSON 格式化 / 压缩",
+        "description": "校验 JSON；格式化（两格缩进）或压缩成一行。",
+        "badge": "JSON"
+      },
+      "text-counter": {
+        "title": "文本计数器",
+        "description": "统计字符、单词、行数；访问次数只在本地累计。",
+        "badge": "文本"
+      },
+      "text-diff": {
+        "title": "文本对比（行级）",
+        "description": "按行 diff 两段文本，高亮增删。",
+        "badge": "Diff"
+      },
+      "unicode-inspector": {
+        "title": "Unicode 码点查看",
+        "description": "按字符展示码点、U+ 与 UTF-16，便于排查 emoji。",
+        "badge": "Unicode"
+      },
+      "base64": {
+        "title": "Base64 编解码",
+        "description": "Base64 编解码，UTF-8 文本不走样。",
+        "badge": "编码"
+      },
+      "url-codec": {
+        "title": "URL 组件编解码",
+        "description": "encodeURIComponent / decodeURIComponent。",
+        "badge": "URL"
+      },
+      "html-entities": {
+        "title": "HTML 实体编解码",
+        "description": "转义或还原 &lt; &gt; &amp; 等常见实体。",
+        "badge": "HTML"
+      },
+      "qr-code": {
+        "title": "二维码生成",
+        "description": "文本或链接生成 QR 码图片（本地渲染）。",
+        "badge": "QR"
+      },
+      "timestamp": {
+        "title": "时间戳转换",
+        "description": "Unix 时间戳与可读时间互转；支持秒/毫秒。",
+        "badge": "时间"
+      },
+      "uuid": {
+        "title": "UUID 生成器",
+        "description": "批量生成 UUID v4。",
+        "badge": "随机"
+      },
+      "password-generator": {
+        "title": "随机密码生成",
+        "description": "可配置长度与字符集，使用 crypto 随机数。",
+        "badge": "密码"
+      },
+      "jwt-inspector": {
+        "title": "JWT 解析",
+        "description": "解码 header / payload；不验证签名。",
+        "badge": "JWT"
+      },
+      "crypto-hash": {
+        "title": "文本哈希（SHA）",
+        "description": "SHA-256 / 384 / 512；输出 hex。",
+        "badge": "哈希"
+      },
+      "regex-tester": {
+        "title": "正则测试",
+        "description": "调试正则：列出匹配与捕获组。",
+        "badge": "正则"
+      },
+      "color-converter": {
+        "title": "颜色转换",
+        "description": "HEX / RGB / HSL 互转，带预览。",
+        "badge": "颜色"
+      }
+    }
+  }
+}

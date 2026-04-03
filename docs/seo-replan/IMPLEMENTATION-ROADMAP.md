@@ -24,10 +24,10 @@
 
 | # | 任务 | 类型 | 验收 |
 |---|------|------|------|
-| 2.1 | 新增 **`/guides/`** 路由 + 2～3 篇首发文章（MDX 或静态） | 开发+内容 | 索引中出现 `/guides/...` |
-| 2.2 | 首页 **ItemList**（或 `SoftwareApplication` 子项）结构化数据 | 开发 | 与首页可见工具列表一致 |
-| 2.3 | **工具页互链**：在相关工具间增加「相关工具」链接（组件化） | 开发 | 每工具 ≥1 出站内链 |
-| 2.4 | **BreadcrumbList**：与 UI 面包屑一致 | 开发 | 任选 2 页通过 Rich Results 校验 |
+| 2.1 | 新增 **`/guides/`** 路由 + 2～3 篇首发文章（MDX 或静态） | 开发+内容 | ✅ `/guides/` + 首篇 `local-first-json-workflow`；`src/data/guides.ts` 登记 |
+| 2.2 | 首页 **ItemList**（或 `SoftwareApplication` 子项）结构化数据 | 开发 | ✅ 与首页可见工具列表一致 |
+| 2.3 | **工具页互链**：在相关工具间增加「相关工具」链接（组件化） | 开发 | ✅ `RelatedTools` + `tools.relatedToolIds` |
+| 2.4 | **BreadcrumbList**：与 UI 面包屑一致 | 开发 | ✅ `ToolBreadcrumbJsonLd`（首页 / 分类锚点 / 工具） |
 | 2.5 | 可选：**Plausible / Cloudflare Web Analytics**（隐私友好） | 运维 | 与「无追踪」叙事一致再上线 |
 
 ---

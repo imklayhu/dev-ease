@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import { Check, Copy } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { appendToolHistory } from "@/lib/db/client";
 
@@ -19,12 +20,13 @@ type CopyButtonProps = {
 
 export function CopyButton({
   text,
-  label = "复制",
+  label,
   className,
   toolId,
   historyLabel,
   historyDetail,
 }: CopyButtonProps) {
+  const t = useTranslations("common");
   const [ok, setOk] = useState(false);
 
   const onCopy = async () => {
@@ -44,6 +46,7 @@ export function CopyButton({
     }
   };
 
+  const buttonLabel = label || t("copy");
   return (
     <button
       className={
@@ -55,7 +58,7 @@ export function CopyButton({
       onClick={onCopy}
     >
       {ok ? <Check aria-hidden className="h-4 w-4 text-[var(--accent)]" /> : <Copy aria-hidden className="h-4 w-4" />}
-      {ok ? "已复制" : label}
+      {ok ? t("copied") : buttonLabel}
     </button>
   );
 }

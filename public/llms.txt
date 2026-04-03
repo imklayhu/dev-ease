@@ -7,6 +7,7 @@
 - Canonical: https://devease.ai-dddd.top/
 - Human language: zh-CN
 - Source: https://github.com/imklayhu/dev-ease
+- Guides: https://devease.ai-dddd.top/guides/
 
 ## Tools (index)
 

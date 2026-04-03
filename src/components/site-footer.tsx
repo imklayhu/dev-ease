@@ -1,10 +1,13 @@
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
+import { Link } from "@/i18n/navigation";
 import { BRAND_DISPLAY_NAME, SITE_REPOSITORY_URL } from "@/lib/brand";
 
-export function SiteFooter() {
+export async function SiteFooter() {
+  const t = await getTranslations("footer");
+
   return (
-    <footer className="relative mt-auto overflow-hidden border-t border-[var(--border-strong)] bg-[var(--surface)]/80 py-14">
+    <footer className="relative mt-auto overflow-hidden border-t border-[var(--border-strong)] bg-[var(--surface)]/80 py-12">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--accent-violet)]/45 to-transparent"
@@ -14,26 +17,38 @@ export function SiteFooter() {
         className="pointer-events-none absolute -bottom-24 left-1/2 h-48 w-[min(90%,42rem)] -translate-x-1/2 rounded-full bg-[var(--accent-violet)]/10 blur-3xl"
       />
 
-      <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-6 text-sm text-[var(--text-muted)] sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-md leading-7">
-          © {new Date().getFullYear()} {BRAND_DISPLAY_NAME} · 偏好与访问记录默认保存在浏览器本地
-        </p>
-        <div className="flex flex-col gap-3 text-xs sm:flex-row sm:items-center sm:gap-6 sm:text-right">
-          <Link
-            className="inline-flex w-fit cursor-pointer items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface-elevated)] px-3 py-1.5 font-medium text-[var(--text-muted)] transition hover:border-[var(--accent-violet)]/40 hover:text-[var(--text)]"
-            href="/settings/"
-          >
-            关于我们
-          </Link>
-          <a
-            className="inline-flex w-fit cursor-pointer items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface-elevated)] px-3 py-1.5 font-medium text-[var(--text-muted)] transition hover:border-[var(--accent-violet)]/40 hover:text-[var(--text)]"
-            href={SITE_REPOSITORY_URL}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            开源仓库
-          </a>
-          <p className="font-mono text-[var(--text-faint)]">Next.js · Tailwind · GitHub Pages</p>
+      <div className="relative mx-auto max-w-6xl px-6">
+        <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+          <p className="text-sm leading-7 text-[var(--text-muted)] md:max-w-2xl md:text-[15px]">
+            © {new Date().getFullYear()} {BRAND_DISPLAY_NAME} · {t("line")}
+          </p>
+
+          <nav aria-label="Footer" className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+            <Link
+              className="cursor-pointer font-medium text-[var(--text-muted)] underline-offset-4 transition hover:text-[var(--text)] hover:underline"
+              href="/settings/"
+            >
+              {t("about")}
+            </Link>
+            <Link
+              className="cursor-pointer font-medium text-[var(--text-muted)] underline-offset-4 transition hover:text-[var(--text)] hover:underline"
+              href="/guides/"
+            >
+              {t("guides")}
+            </Link>
+            <a
+              className="cursor-pointer font-medium text-[var(--text-muted)] underline-offset-4 transition hover:text-[var(--text)] hover:underline"
+              href={SITE_REPOSITORY_URL}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {t("repo")}
+            </a>
+          </nav>
+        </div>
+
+        <div className="mt-5 border-t border-[var(--border)]/80 pt-4">
+          <p className="font-mono text-xs text-[var(--text-faint)]">{t("stack")}</p>
         </div>
       </div>
     </footer>

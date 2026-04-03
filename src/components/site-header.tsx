@@ -1,21 +1,24 @@
 import type { ReactNode } from "react";
 
-import Link from "next/link";
-
 import { Wrench } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { AboutDrawer } from "@/components/about-drawer";
-import { BRAND_DISPLAY_NAME, BRAND_TAGLINE } from "@/lib/brand";
+import { LocaleSwitcher } from "@/components/locale-switcher";
+import { Link } from "@/i18n/navigation";
+import { BRAND_DISPLAY_NAME } from "@/lib/brand";
 
-export function SiteHeader() {
+export async function SiteHeader() {
+  const t = await getTranslations("nav");
+  const tBrand = await getTranslations("brand");
+
   return (
     <header className="sticky top-4 z-50 w-full px-6">
-      <div className="relative mx-auto flex max-w-6xl items-center justify-between gap-4 overflow-hidden rounded-[1.75rem] p-[1px] shadow-[var(--shadow)]">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[var(--accent-violet)]/35 via-[var(--accent-fuchsia)]/15 to-[var(--accent)]/30 opacity-90"
-        />
-        <div className="relative flex w-full items-center justify-between gap-4 rounded-[22px] border border-[var(--border-strong)]/90 glass-panel px-4 py-3 backdrop-blur-xl sm:px-5">
+      <div className="relative mx-auto flex max-w-6xl items-center justify-between gap-4 overflow-visible rounded-[1.75rem] p-[1px]">
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-[1.75rem]">
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent-violet)]/35 via-[var(--accent-fuchsia)]/15 to-[var(--accent)]/30 opacity-90" />
+        </div>
+        <div className="relative flex w-full items-center justify-between gap-4 rounded-[22px] border border-[var(--border-strong)]/90 glass-panel px-4 py-3 shadow-[var(--shadow)] backdrop-blur-xl sm:px-5">
           <Link
             className="group flex cursor-pointer items-center gap-3 rounded-xl outline-none ring-offset-2 ring-offset-[var(--surface)] transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
             href="/"
@@ -33,13 +36,15 @@ export function SiteHeader() {
             </span>
             <span className="flex flex-col leading-tight">
               <span className="font-display text-sm font-bold tracking-tight text-[var(--text)]">{BRAND_DISPLAY_NAME}</span>
-              <span className="text-xs text-[var(--text-muted)]">{BRAND_TAGLINE}</span>
+              <span className="text-xs text-[var(--text-muted)]">{tBrand("tagline")}</span>
             </span>
           </Link>
 
-          <nav aria-label="主导航" className="flex items-center gap-1 sm:gap-2">
-            <HeaderNavLink href="/">首页</HeaderNavLink>
-            <HeaderNavLink href="/#tools">工具</HeaderNavLink>
+          <nav aria-label={t("mainAria")} className="flex items-center gap-1 sm:gap-2">
+            <HeaderNavLink href="/">{t("home")}</HeaderNavLink>
+            <HeaderNavLink href="/#tools">{t("tools")}</HeaderNavLink>
+            <HeaderNavLink href="/guides/">{t("guides")}</HeaderNavLink>
+            <LocaleSwitcher />
             <AboutDrawer />
           </nav>
         </div>

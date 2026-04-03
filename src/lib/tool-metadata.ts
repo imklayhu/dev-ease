@@ -5,7 +5,7 @@ import { BRAND_DISPLAY_NAME } from "@/lib/brand";
 import { OG_IMAGE_DIMENSIONS, OG_IMAGE_PATH, ogImageAlt } from "@/lib/seo-shared";
 import { absoluteUrl } from "@/lib/site-url";
 
-export function metadataForTool(toolId: string): Metadata {
+export function metadataForTool(toolId: string, locale: string): Metadata {
   const tool = tools.find((t) => t.id === toolId);
   if (!tool) {
     return { title: "工具" };
@@ -14,7 +14,7 @@ export function metadataForTool(toolId: string): Metadata {
   const description =
     tool.seoDescription ??
     `${tool.description} 纯前端在线工具，无需登录；数据在浏览器本地处理。`;
-  const url = absoluteUrl(tool.href);
+  const url = absoluteUrl(tool.href, locale);
   const ogTitle = `${tool.title} · ${BRAND_DISPLAY_NAME}`;
   const ogImages = [
     {
@@ -34,7 +34,7 @@ export function metadataForTool(toolId: string): Metadata {
       title: ogTitle,
       description,
       siteName: BRAND_DISPLAY_NAME,
-      locale: "zh_CN",
+      locale: locale === "zh" ? "zh_CN" : locale === "ja" ? "ja_JP" : locale === "ko" ? "ko_KR" : "en_US",
       images: ogImages,
     },
     twitter: {

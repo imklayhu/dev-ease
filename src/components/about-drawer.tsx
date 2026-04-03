@@ -1,13 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import { useCallback, useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 
 import { Info, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { SiteInfo } from "@/components/site-info";
 import { ThemeSettings } from "@/components/theme-settings";
+import { Link } from "@/i18n/navigation";
 import { BRAND_DISPLAY_NAME } from "@/lib/brand";
 
 const clientSubscribe = () => () => {};
@@ -19,6 +20,8 @@ function useIsClient() {
 }
 
 export function AboutDrawer() {
+  const t = useTranslations("about");
+  const tFooter = useTranslations("footer");
   const [open, setOpen] = useState(false);
   const isClient = useIsClient();
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -68,7 +71,7 @@ export function AboutDrawer() {
     open && isClient ? (
       <div className="fixed inset-0 z-[80]">
         <button
-          aria-label="关闭关于面板"
+          aria-label={t("overlayCloseAria")}
           className="absolute inset-0 z-0 cursor-pointer bg-black/45 backdrop-blur-[1px]"
           type="button"
           onClick={close}
@@ -88,24 +91,27 @@ export function AboutDrawer() {
           <div className="flex shrink-0 items-start justify-between gap-4 border-b border-[var(--border)] bg-[var(--surface-elevated)]/40 px-5 py-4">
             <div className="min-w-0 pr-2">
               <h2 className="font-display text-lg font-bold tracking-tight text-[var(--text)]" id={titleId}>
-                关于我们
+                {tFooter("about")}
               </h2>
               <p className="mt-1 text-xs leading-5 text-[var(--text-muted)]">
-                {BRAND_DISPLAY_NAME} 的站点说明与本地偏好。需要更大版面可查看{" "}
-                <Link
-                  className="cursor-pointer font-medium text-[var(--accent-violet)] underline-offset-4 hover:underline"
-                  href="/settings/"
-                  onClick={close}
-                >
-                  完整页面
-                </Link>
-                。
+                {t.rich("drawerLead", {
+                  brand: BRAND_DISPLAY_NAME,
+                  link: (chunks) => (
+                    <Link
+                      className="cursor-pointer font-medium text-[var(--accent-violet)] underline-offset-4 hover:underline"
+                      href="/settings/"
+                      onClick={close}
+                    >
+                      {chunks}
+                    </Link>
+                  ),
+                })}
               </p>
             </div>
 
             <button
               ref={closeButtonRef}
-              aria-label="关闭"
+              aria-label={t("close")}
               className="inline-flex shrink-0 cursor-pointer items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--surface-elevated)]/80 p-2 text-[var(--text)] outline-none ring-offset-2 ring-offset-[var(--surface)] transition duration-200 hover:border-[var(--accent-violet)]/35 hover:bg-[var(--accent-violet)]/10 focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
               type="button"
               onClick={close}
@@ -125,7 +131,7 @@ export function AboutDrawer() {
                 className="h-px w-full shrink-0 bg-gradient-to-r from-transparent via-[var(--border)] to-transparent"
               />
 
-              <section aria-label="主题与外观">
+              <section aria-label={t("themeSectionAria")}>
                 <ThemeSettings variant="minimal" />
               </section>
             </div>
@@ -144,7 +150,7 @@ export function AboutDrawer() {
         onClick={() => setOpen(true)}
       >
         <Info aria-hidden className="h-4 w-4" />
-        <span className="hidden sm:inline">关于我们</span>
+        <span className="hidden sm:inline">{tFooter("about")}</span>
       </button>
 
       {isClient && overlay ? createPortal(overlay, document.body) : null}

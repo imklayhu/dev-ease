@@ -2,9 +2,10 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-import Link from "next/link";
-
 import type { LucideIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
+
+import { Link } from "@/i18n/navigation";
 import { BarChart3, Clock, Layers, Sparkles } from "lucide-react";
 
 import type { ThemeMode } from "@/lib/db/client";
@@ -16,12 +17,6 @@ import {
   type CategoryUsageRow,
   type ToolUsageRow,
 } from "@/lib/usage-stats";
-
-const THEME_LABEL: Record<ThemeMode, string> = {
-  light: "亮色",
-  dark: "暗色",
-  system: "跟随系统",
-};
 
 function BarRow({
   label,
@@ -46,7 +41,7 @@ function BarRow({
         </span>
       </div>
       <div
-        aria-label={`${label}：${count} 次`}
+        aria-label={`${label}: ${count}`}
         className="h-2.5 overflow-hidden rounded-full bg-[var(--surface-subtle)] ring-1 ring-[var(--border)]"
         role="img"
       >
@@ -60,6 +55,8 @@ function BarRow({
 }
 
 export function UsageInsights() {
+  const tNav = useTranslations("nav");
+  const t = useTranslations("usage");
   const [theme, setTheme] = useState<ThemeMode>("system");
   const [toolRows, setToolRows] = useState<ToolUsageRow[]>([]);
   const [categoryRows, setCategoryRows] = useState<CategoryUsageRow[]>([]);
@@ -100,17 +97,17 @@ export function UsageInsights() {
         <div className="space-y-1">
           <div className="inline-flex items-center gap-2 rounded-full border border-[var(--accent-violet)]/25 bg-gradient-to-r from-[var(--accent-violet)]/12 to-[var(--accent)]/10 px-3 py-1 text-xs font-semibold text-[var(--text-muted)] ring-1 ring-[var(--border)]">
             <BarChart3 aria-hidden className="h-4 w-4 text-[var(--accent-violet)]" />
-            本地统计
+            {t("badge")}
           </div>
           <h2 className="font-display text-xl font-bold tracking-tight text-[var(--text)]" id="usage-insights-heading">
-            使用习惯与行为概览
+            {t("title")}
           </h2>
           <p className="max-w-2xl text-sm leading-6 text-[var(--text-muted)]">
-            基于各工具页的访问次数汇总；主题显示为当前偏好。数据仅存本机，清除站点数据后会重置。
+            {t("lead")}
           </p>
         </div>
         <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface-subtle)] px-3 py-2 text-xs text-[var(--text-muted)]">
-          {!idbOk ? "当前环境无 IndexedDB，统计可能仅反映本会话。" : "IndexedDB 已启用"}
+          {!idbOk ? t("idbUnavailable") : t("idbEnabled")}
         </div>
       </div>
 
@@ -123,17 +120,17 @@ export function UsageInsights() {
           <div className="grid gap-3 sm:grid-cols-3">
             <KpiCard
               icon={Layers}
-              label="累计访问"
+              label={t("kpi.totalVisits")}
               value={hasData ? String(summary.totalVisits) : "—"}
             />
             <KpiCard
               icon={Sparkles}
-              label="活跃工具数"
+              label={t("kpi.activeTools")}
               value={hasData ? String(summary.toolsWithVisits) : "—"}
             />
             <KpiCard
               icon={Clock}
-              label="最近访问"
+              label={t("kpi.lastVisit")}
               value={
                 summary.lastActivityAt
                   ? new Date(summary.lastActivityAt).toLocaleString(undefined, {
@@ -142,26 +139,26 @@ export function UsageInsights() {
                       hour: "2-digit",
                       minute: "2-digit",
                     })
-                  : "暂无"
+                  : t("none")
               }
             />
           </div>
 
           {!hasData ? (
             <div className="mt-6 rounded-2xl border border-dashed border-[var(--border)] bg-[var(--surface-subtle)]/50 px-5 py-10 text-center">
-              <p className="text-sm font-medium text-[var(--text)]">还没有本地访问记录</p>
-              <p className="mt-2 text-sm text-[var(--text-muted)]">打开任意工具页后，这里会汇总访问次数与分类占比。</p>
+              <p className="text-sm font-medium text-[var(--text)]">{t("emptyTitle")}</p>
+              <p className="mt-2 text-sm text-[var(--text-muted)]">{t("emptyDesc")}</p>
               <Link
                 className="mt-5 inline-flex rounded-xl border border-[var(--border)] bg-[var(--surface-elevated)] px-4 py-2 text-sm font-semibold text-[var(--text)] transition hover:border-[var(--accent-violet)]/35 hover:bg-[var(--accent-violet)]/10"
                 href="/#tools"
               >
-                浏览工具
+                {tNav("browseTools")}
               </Link>
             </div>
           ) : (
             <div className="mt-6 space-y-10">
               <div className="space-y-4">
-                <h3 className="text-sm font-semibold text-[var(--text)]">各工具访问次数</h3>
+                <h3 className="text-sm font-semibold text-[var(--text)]">{t("toolVisitsTitle")}</h3>
                 <div className="space-y-4">
                   {toolRows.map((row) => (
                     <BarRow key={row.toolId} count={row.count} label={row.title} max={maxTool} />
@@ -171,8 +168,8 @@ export function UsageInsights() {
 
               {categoryWithAny ? (
                 <div className="space-y-4 border-t border-[var(--border)] pt-8">
-                  <h3 className="text-sm font-semibold text-[var(--text)]">按用途分类汇总</h3>
-                  <p className="text-xs text-[var(--text-muted)]">将各工具访问次数按其首页分类加总。</p>
+                  <h3 className="text-sm font-semibold text-[var(--text)]">{t("categorySummaryTitle")}</h3>
+                  <p className="text-xs text-[var(--text-muted)]">{t("categorySummaryDesc")}</p>
                   <div className="space-y-4">
                     {categoryRows
                       .filter((r) => r.count > 0)
@@ -184,7 +181,7 @@ export function UsageInsights() {
                           label={row.categoryTitle}
                           max={maxCat}
                           sublabel={
-                            totalVisits > 0 ? `（${Math.round((row.count / totalVisits) * 100)}%）` : undefined
+                            totalVisits > 0 ? t("percent", { value: Math.round((row.count / totalVisits) * 100) }) : undefined
                           }
                         />
                       ))}
@@ -195,9 +192,9 @@ export function UsageInsights() {
           )}
 
           <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--border)] pt-6">
-            <p className="text-sm font-semibold text-[var(--text)]">当前主题偏好</p>
+            <p className="text-sm font-semibold text-[var(--text)]">{t("currentTheme")}</p>
             <span className="rounded-full bg-[var(--accent)]/15 px-3 py-1 text-sm font-medium text-[var(--accent)] ring-1 ring-[var(--accent)]/30">
-              {THEME_LABEL[theme]}
+              {t(`theme.${theme}`)}
             </span>
           </div>
         </div>

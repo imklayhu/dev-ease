@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import type { LucideIcon } from "lucide-react";
 import { Monitor, Moon, Sun } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import {
   getThemeSetting,
@@ -12,15 +13,10 @@ import {
   type ThemeMode,
 } from "@/lib/db/client";
 
-const themeOptions: Array<{
-  mode: ThemeMode;
-  label: string;
-  description: string;
-  icon: LucideIcon;
-}> = [
-  { mode: "system", label: "系统", description: "跟随系统", icon: Monitor },
-  { mode: "light", label: "亮色", description: "浅色界面", icon: Sun },
-  { mode: "dark", label: "暗色", description: "深色界面", icon: Moon },
+const themeOptions: Array<{ mode: ThemeMode; icon: LucideIcon }> = [
+  { mode: "system", icon: Monitor },
+  { mode: "light", icon: Sun },
+  { mode: "dark", icon: Moon },
 ];
 
 const applyTheme = (mode: ThemeMode): void => {
@@ -45,6 +41,7 @@ type ThemeSettingsProps = {
 };
 
 export function ThemeSettings({ embedded = false, variant = "default" }: ThemeSettingsProps) {
+  const t = useTranslations("theme");
   const [theme, setTheme] = useState<ThemeMode>("system");
   const [warning, setWarning] = useState<string>("");
 
@@ -61,14 +58,14 @@ export function ThemeSettings({ embedded = false, variant = "default" }: ThemeSe
       applyTheme(savedTheme);
 
       if (!isIndexedDbAvailable()) {
-        setWarning("当前浏览器不支持 IndexedDB：将使用会话内存态，刷新后可能丢失设置。");
+        setWarning(t("warningNoIdb"));
       }
     })();
 
     return () => {
       active = false;
     };
-  }, []);
+  }, [t]);
 
   const onChange = async (mode: ThemeMode) => {
     setTheme(mode);
@@ -90,18 +87,18 @@ export function ThemeSettings({ embedded = false, variant = "default" }: ThemeSe
     >
       {isMinimal ? (
         <div className="space-y-1">
-          <h3 className="font-display text-sm font-bold tracking-tight text-[var(--text)]">主题模式</h3>
-          <p className="text-xs leading-5 text-[var(--text-muted)]">切换后立即生效；偏好写入 IndexedDB。</p>
+          <h3 className="font-display text-sm font-bold tracking-tight text-[var(--text)]">{t("modeAria")}</h3>
+          <p className="text-xs leading-5 text-[var(--text-muted)]">{t("minimalDesc")}</p>
         </div>
       ) : (
         <div className="space-y-1">
-          <h2 className="font-display text-lg font-bold tracking-tight text-[var(--text)]">外观设置</h2>
-          <p className="text-sm leading-6 text-[var(--text-muted)]">主题写入 IndexedDB；切换后立即生效。</p>
+          <h2 className="font-display text-lg font-bold tracking-tight text-[var(--text)]">{t("title")}</h2>
+          <p className="text-sm leading-6 text-[var(--text-muted)]">{t("desc")}</p>
         </div>
       )}
 
       <div
-        aria-label="主题模式"
+        aria-label={t("modeAria")}
         className={`grid gap-2 ${isMinimal ? "grid-cols-1" : "sm:grid-cols-3"}`}
         role="radiogroup"
       >
@@ -135,8 +132,10 @@ export function ThemeSettings({ embedded = false, variant = "default" }: ThemeSe
                   <Icon aria-hidden className="h-4 w-4" />
                 </span>
                 <span className="min-w-0">
-                  <span className="block text-sm font-semibold text-[var(--text)]">{option.label}</span>
-                  <span className="mt-0.5 block text-xs text-[var(--text-muted)]">{option.description}</span>
+                  <span className="block text-sm font-semibold text-[var(--text)]">{t(`options.${option.mode}.label`)}</span>
+                  <span className="mt-0.5 block text-xs text-[var(--text-muted)]">
+                    {t(`options.${option.mode}.description`)}
+                  </span>
                 </span>
               </div>
             </button>
