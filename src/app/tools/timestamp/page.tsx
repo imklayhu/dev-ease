@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { Clock } from "lucide-react";
 
 import { CopyButton } from "@/components/copy-button";
+import { ToolHistoryPanel } from "@/components/tool-history-panel";
 import { ToolPageHeader } from "@/components/tool-page-header";
 import { ToolVisitPanel } from "@/components/tool-visit-panel";
 import { useToolVisit } from "@/hooks/use-tool-visit";
@@ -121,7 +122,13 @@ export default function TimestampPage() {
               <div className="space-y-3 rounded-2xl border border-[var(--border)] bg-[var(--surface-elevated)]/70 p-5 shadow-sm">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <p className="text-sm font-semibold text-[var(--text)]">转换结果</p>
-                  <CopyButton label="复制全部" text={copyPayload} />
+                  <CopyButton
+                    historyDetail={copyPayload ? copyPayload.slice(0, 120) : undefined}
+                    historyLabel="复制时间戳换算结果"
+                    label="复制全部"
+                    text={copyPayload}
+                    toolId={TOOL_ID}
+                  />
                 </div>
                 <div className="grid gap-3 text-sm">
                   <Row label="ISO（UTC）" value={formatted.iso} />
@@ -137,8 +144,9 @@ export default function TimestampPage() {
             </p>
           </div>
 
-          <aside>
+          <aside className="space-y-4">
             <ToolVisitPanel lastVisitedAt={lastVisitedAt} visits={visits} />
+            <ToolHistoryPanel toolId={TOOL_ID} />
           </aside>
         </section>
       </main>

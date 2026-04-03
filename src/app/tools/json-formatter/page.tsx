@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { Braces } from "lucide-react";
 
 import { CopyButton } from "@/components/copy-button";
+import { ToolHistoryPanel } from "@/components/tool-history-panel";
 import { ToolPageHeader } from "@/components/tool-page-header";
 import { ToolVisitPanel } from "@/components/tool-visit-panel";
 import { useToolVisit } from "@/hooks/use-tool-visit";
@@ -69,8 +70,20 @@ export default function JsonFormatterPage() {
             ) : null}
 
             <div className="flex flex-wrap gap-2">
-              <CopyButton label="复制格式化结果" text={output} />
-              <CopyButton label="复制压缩结果" text={minified} />
+              <CopyButton
+                historyDetail={output ? output.slice(0, 120) : undefined}
+                historyLabel="复制 JSON 格式化结果"
+                label="复制格式化结果"
+                text={output}
+                toolId={TOOL_ID}
+              />
+              <CopyButton
+                historyDetail={minified ? minified.slice(0, 120) : undefined}
+                historyLabel="复制 JSON 压缩结果"
+                label="复制压缩结果"
+                text={minified}
+                toolId={TOOL_ID}
+              />
             </div>
 
             <div className="grid gap-4 lg:grid-cols-2">
@@ -98,6 +111,7 @@ export default function JsonFormatterPage() {
               </ul>
             </div>
             <ToolVisitPanel lastVisitedAt={lastVisitedAt} visits={visits} />
+            <ToolHistoryPanel toolId={TOOL_ID} />
           </aside>
         </section>
       </main>

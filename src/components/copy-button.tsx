@@ -4,13 +4,27 @@ import { useState } from "react";
 
 import { Check, Copy } from "lucide-react";
 
+import { appendToolHistory } from "@/lib/db/client";
+
 type CopyButtonProps = {
   text: string;
   label?: string;
   className?: string;
+  /** 与 historyLabel 同时传入时，复制成功后写入工具操作历史 */
+  toolId?: string;
+  historyLabel?: string;
+  /** 写入历史的可选摘要（如内容前缀，勿传长敏感正文） */
+  historyDetail?: string;
 };
 
-export function CopyButton({ text, label = "复制", className }: CopyButtonProps) {
+export function CopyButton({
+  text,
+  label = "复制",
+  className,
+  toolId,
+  historyLabel,
+  historyDetail,
+}: CopyButtonProps) {
   const [ok, setOk] = useState(false);
 
   const onCopy = async () => {
@@ -18,6 +32,13 @@ export function CopyButton({ text, label = "复制", className }: CopyButtonProp
       await navigator.clipboard.writeText(text);
       setOk(true);
       window.setTimeout(() => setOk(false), 1500);
+      if (toolId && historyLabel) {
+        await appendToolHistory({
+          toolId,
+          label: historyLabel,
+          detail: historyDetail,
+        });
+      }
     } catch (error) {
       console.error("Clipboard write failed.", error);
     }

@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { Palette } from "lucide-react";
 
 import { CopyButton } from "@/components/copy-button";
+import { ToolHistoryPanel } from "@/components/tool-history-panel";
 import { ToolPageHeader } from "@/components/tool-page-header";
 import { ToolVisitPanel } from "@/components/tool-visit-panel";
 import { useToolVisit } from "@/hooks/use-tool-visit";
@@ -70,7 +71,13 @@ export default function ColorConverterPage() {
                 <div className="space-y-3 rounded-2xl border border-[var(--border)] bg-[var(--surface-elevated)]/70 p-5 shadow-sm">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <p className="text-sm font-semibold text-[var(--text)]">预览</p>
-                    <CopyButton label="复制全部" text={copyAll} />
+                    <CopyButton
+                      historyDetail={copyAll ? copyAll.slice(0, 120) : undefined}
+                      historyLabel="复制颜色换算全部"
+                      label="复制全部"
+                      text={copyAll}
+                      toolId={TOOL_ID}
+                    />
                   </div>
 
                   <div
@@ -80,13 +87,15 @@ export default function ColorConverterPage() {
                   />
 
                   <div className="space-y-2 text-sm">
-                    <Row label="HEX" value={parsed.hex} />
+                    <Row label="HEX" toolId={TOOL_ID} value={parsed.hex} />
                     <Row
                       label="RGB"
+                      toolId={TOOL_ID}
                       value={`rgb(${parsed.rgb.r}, ${parsed.rgb.g}, ${parsed.rgb.b})`}
                     />
                     <Row
                       label="HSL"
+                      toolId={TOOL_ID}
                       value={`hsl(${parsed.hsl.h}, ${parsed.hsl.s}%, ${parsed.hsl.l}%)`}
                     />
                   </div>
@@ -124,8 +133,9 @@ export default function ColorConverterPage() {
             </p>
           </div>
 
-          <aside>
+          <aside className="space-y-4">
             <ToolVisitPanel lastVisitedAt={lastVisitedAt} visits={visits} />
+            <ToolHistoryPanel toolId={TOOL_ID} />
           </aside>
         </section>
       </main>
@@ -133,13 +143,20 @@ export default function ColorConverterPage() {
   );
 }
 
-function Row({ label, value }: { label: string; value: string }) {
+function Row({ label, value, toolId }: { label: string; value: string; toolId: string }) {
   return (
     <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
       <div className="text-[var(--text-muted)]">{label}</div>
       <div className="flex flex-col items-start gap-2 sm:items-end">
         <div className="break-all font-mono text-[var(--text)]">{value}</div>
-        <CopyButton className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface-elevated)]/70 px-3 py-2 text-xs font-semibold text-[var(--text)] outline-none ring-offset-2 ring-offset-[var(--surface)] transition duration-200 hover:bg-black/5 focus-visible:ring-2 focus-visible:ring-[var(--ring)] disabled:cursor-not-allowed disabled:opacity-50 dark:hover:bg-white/10" label={`复制${label}`} text={value} />
+        <CopyButton
+          className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface-elevated)]/70 px-3 py-2 text-xs font-semibold text-[var(--text)] outline-none ring-offset-2 ring-offset-[var(--surface)] transition duration-200 hover:bg-black/5 focus-visible:ring-2 focus-visible:ring-[var(--ring)] disabled:cursor-not-allowed disabled:opacity-50 dark:hover:bg-white/10"
+          historyDetail={value.slice(0, 80)}
+          historyLabel={`复制${label}`}
+          label={`复制${label}`}
+          text={value}
+          toolId={toolId}
+        />
       </div>
     </div>
   );

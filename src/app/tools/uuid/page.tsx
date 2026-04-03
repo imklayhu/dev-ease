@@ -5,9 +5,11 @@ import { useMemo, useState } from "react";
 import { Fingerprint } from "lucide-react";
 
 import { CopyButton } from "@/components/copy-button";
+import { ToolHistoryPanel } from "@/components/tool-history-panel";
 import { ToolPageHeader } from "@/components/tool-page-header";
 import { ToolVisitPanel } from "@/components/tool-visit-panel";
 import { useToolVisit } from "@/hooks/use-tool-visit";
+import { appendToolHistory } from "@/lib/db/client";
 
 const TOOL_ID = "uuid";
 
@@ -23,6 +25,7 @@ export default function UuidPage() {
     const safeCount = Math.min(50, Math.max(1, n));
     const next = Array.from({ length: safeCount }, () => crypto.randomUUID());
     setItems(next);
+    void appendToolHistory({ toolId: TOOL_ID, label: `生成 ${safeCount} 条 UUID` });
   };
 
   return (
@@ -61,7 +64,14 @@ export default function UuidPage() {
                 生成
               </button>
 
-              <CopyButton className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface-elevated)]/70 px-3 py-3 text-sm font-semibold text-[var(--text)] outline-none ring-offset-2 ring-offset-[var(--surface)] transition duration-200 hover:bg-black/5 focus-visible:ring-2 focus-visible:ring-[var(--ring)] disabled:cursor-not-allowed disabled:opacity-50 dark:hover:bg-white/10" label="复制全部" text={allText} />
+              <CopyButton
+                className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface-elevated)]/70 px-3 py-3 text-sm font-semibold text-[var(--text)] outline-none ring-offset-2 ring-offset-[var(--surface)] transition duration-200 hover:bg-black/5 focus-visible:ring-2 focus-visible:ring-[var(--ring)] disabled:cursor-not-allowed disabled:opacity-50 dark:hover:bg-white/10"
+                historyDetail={allText ? allText.slice(0, 120) : undefined}
+                historyLabel="复制全部 UUID"
+                label="复制全部"
+                text={allText}
+                toolId={TOOL_ID}
+              />
             </div>
 
             <div className="space-y-2">
@@ -76,7 +86,12 @@ export default function UuidPage() {
                       className="flex flex-col gap-2 rounded-2xl border border-[var(--border)] bg-[var(--surface-elevated)]/70 p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between"
                     >
                       <code className="break-all font-mono text-sm text-[var(--text)]">{id}</code>
-                      <CopyButton text={id} />
+                      <CopyButton
+                        historyDetail={id}
+                        historyLabel="复制单条 UUID"
+                        text={id}
+                        toolId={TOOL_ID}
+                      />
                     </li>
                   ))}
                 </ul>
@@ -86,8 +101,9 @@ export default function UuidPage() {
             <p className="text-xs text-[var(--text-muted)]">提示：单次最多生成 50 条，避免页面卡顿。</p>
           </div>
 
-          <aside>
+          <aside className="space-y-4">
             <ToolVisitPanel lastVisitedAt={lastVisitedAt} visits={visits} />
+            <ToolHistoryPanel toolId={TOOL_ID} />
           </aside>
         </section>
       </main>

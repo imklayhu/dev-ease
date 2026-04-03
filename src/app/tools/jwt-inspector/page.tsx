@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { Shield } from "lucide-react";
 
 import { CopyButton } from "@/components/copy-button";
+import { ToolHistoryPanel } from "@/components/tool-history-panel";
 import { ToolPageHeader } from "@/components/tool-page-header";
 import { ToolVisitPanel } from "@/components/tool-visit-panel";
 import { useToolVisit } from "@/hooks/use-tool-visit";
@@ -88,14 +89,26 @@ export default function JwtInspectorPage() {
                 <div className="space-y-2">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <p className="text-sm font-semibold text-[var(--text)]">Header</p>
-                    <CopyButton label="复制" text={headerStr} />
+                    <CopyButton
+                      historyDetail={headerStr ? headerStr.slice(0, 120) : undefined}
+                      historyLabel="复制 JWT Header"
+                      label="复制"
+                      text={headerStr}
+                      toolId={TOOL_ID}
+                    />
                   </div>
                   <textarea className={`${TOOL_TEXTAREA_CLASS} min-h-40`} readOnly value={headerStr} />
                 </div>
                 <div className="space-y-2">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <p className="text-sm font-semibold text-[var(--text)]">Payload</p>
-                    <CopyButton label="复制" text={payloadStr} />
+                    <CopyButton
+                      historyDetail={payloadStr ? payloadStr.slice(0, 120) : undefined}
+                      historyLabel="复制 JWT Payload"
+                      label="复制"
+                      text={payloadStr}
+                      toolId={TOOL_ID}
+                    />
                   </div>
                   <textarea className={`${TOOL_TEXTAREA_CLASS} min-h-40`} readOnly value={payloadStr} />
                 </div>
@@ -109,7 +122,10 @@ export default function JwtInspectorPage() {
             ) : null}
           </div>
 
-          <ToolVisitPanel lastVisitedAt={lastVisitedAt} visits={visits} />
+          <div className="space-y-4">
+            <ToolVisitPanel lastVisitedAt={lastVisitedAt} visits={visits} />
+            <ToolHistoryPanel toolId={TOOL_ID} />
+          </div>
         </section>
       </main>
     </div>

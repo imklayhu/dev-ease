@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { Regex } from "lucide-react";
 
 import { CopyButton } from "@/components/copy-button";
+import { ToolHistoryPanel } from "@/components/tool-history-panel";
 import { ToolPageHeader } from "@/components/tool-page-header";
 import { ToolVisitPanel } from "@/components/tool-visit-panel";
 import { useToolVisit } from "@/hooks/use-tool-visit";
@@ -153,7 +154,13 @@ export default function RegexTesterPage() {
               <p className="text-sm text-[var(--text-muted)]">
                 匹配数：<span className="font-semibold text-[var(--text)]">{items.filter((m) => m.index >= 0).length}</span>
               </p>
-              <CopyButton label="复制匹配列表" text={copyText} />
+              <CopyButton
+                historyDetail={copyText ? copyText.slice(0, 120) : undefined}
+                historyLabel="复制正则匹配列表"
+                label="复制匹配列表"
+                text={copyText}
+                toolId={TOOL_ID}
+              />
             </div>
 
             <div className="space-y-2">
@@ -198,8 +205,9 @@ export default function RegexTesterPage() {
             </p>
           </div>
 
-          <aside>
+          <aside className="space-y-4">
             <ToolVisitPanel lastVisitedAt={lastVisitedAt} visits={visits} />
+            <ToolHistoryPanel toolId={TOOL_ID} />
           </aside>
         </section>
       </main>

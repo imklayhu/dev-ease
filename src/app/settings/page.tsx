@@ -5,17 +5,18 @@ import { Info } from "lucide-react";
 
 import { SiteInfo } from "@/components/site-info";
 import { ThemeSettings } from "@/components/theme-settings";
+import { UsageInsights } from "@/components/usage-insights";
 import { BRAND_DISPLAY_NAME } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "关于我们",
-  description: `${BRAND_DISPLAY_NAME} 站点信息、技术栈与外观主题等本地偏好设置。`,
+  description: `${BRAND_DISPLAY_NAME} 站点信息、本地使用统计、外观主题与偏好设置。`,
 };
 
 export default function AboutPage() {
   return (
     <div className="flex flex-1 flex-col">
-      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-10 px-6 pb-16 pt-8" id="main-content">
+      <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col gap-10 px-6 pb-16 pt-8" id="main-content">
         <nav aria-label="面包屑导航" className="text-sm text-[var(--text-muted)]">
           <ol className="flex flex-wrap items-center gap-2">
             <li>
@@ -44,18 +45,20 @@ export default function AboutPage() {
             </h1>
             <p className="text-pretty text-sm leading-7 text-[var(--text-muted)] sm:text-base">
               <strong className="font-semibold text-[var(--text)]">{BRAND_DISPLAY_NAME}</strong>{" "}
-              由项目仓库 dev-ease 构建，本页汇总技术栈与部署方式，以及不影响核心工具流程的本地偏好（例如主题）。数据默认保存在本机 IndexedDB。
+              由项目仓库 dev-ease 构建。本页提供技术栈说明、基于 IndexedDB 的本地使用概览（图表）、以及外观等偏好设置。
             </p>
           </div>
         </header>
 
-        <div className="space-y-10">
+        <div className="space-y-12">
           <section aria-labelledby="site-info-heading" className="space-y-4">
             <h2 className="sr-only" id="site-info-heading">
               站点信息
             </h2>
             <SiteInfo />
           </section>
+
+          <UsageInsights />
 
           <section aria-label="外观与主题" className="space-y-4">
             <ThemeSettings />

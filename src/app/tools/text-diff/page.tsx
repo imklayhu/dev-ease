@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { diffLines } from "diff";
 import { GitCompare } from "lucide-react";
 
+import { ToolHistoryPanel } from "@/components/tool-history-panel";
 import { ToolPageHeader } from "@/components/tool-page-header";
 import { ToolVisitPanel } from "@/components/tool-visit-panel";
 import { useToolVisit } from "@/hooks/use-tool-visit";
@@ -89,7 +90,10 @@ export default function TextDiffPage() {
             </div>
           </div>
 
-          <ToolVisitPanel lastVisitedAt={lastVisitedAt} visits={visits} />
+          <div className="space-y-4">
+            <ToolVisitPanel lastVisitedAt={lastVisitedAt} visits={visits} />
+            <ToolHistoryPanel toolId={TOOL_ID} />
+          </div>
         </section>
       </main>
     </div>

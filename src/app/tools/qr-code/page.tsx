@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { QrCode } from "lucide-react";
 
+import { ToolHistoryPanel } from "@/components/tool-history-panel";
 import { ToolPageHeader } from "@/components/tool-page-header";
 import { ToolVisitPanel } from "@/components/tool-visit-panel";
 import { useToolVisit } from "@/hooks/use-tool-visit";
+import { appendToolHistory } from "@/lib/db/client";
 import { TOOL_TEXTAREA_CLASS } from "@/lib/tool-ui";
 
 const TOOL_ID = "qr-code";
@@ -16,6 +18,7 @@ export default function QrCodePage() {
   const [dataUrl, setDataUrl] = useState<string>("");
   const [error, setError] = useState("");
   const { visits, lastVisitedAt } = useToolVisit(TOOL_ID);
+  const lastLoggedContent = useRef<string>("");
 
   useEffect(() => {
     let cancelled = false;
@@ -52,6 +55,25 @@ export default function QrCodePage() {
       cancelled = true;
     };
   }, [text]);
+
+  useEffect(() => {
+    const t = text.trim();
+    if (!dataUrl || !t) {
+      return;
+    }
+    const timer = window.setTimeout(() => {
+      if (lastLoggedContent.current === t) {
+        return;
+      }
+      lastLoggedContent.current = t;
+      void appendToolHistory({
+        toolId: TOOL_ID,
+        label: "生成二维码",
+        detail: t.slice(0, 120),
+      });
+    }, 650);
+    return () => window.clearTimeout(timer);
+  }, [dataUrl, text]);
 
   return (
     <div className="flex flex-1 flex-col">
@@ -105,7 +127,10 @@ export default function QrCodePage() {
             </div>
           </div>
 
-          <ToolVisitPanel lastVisitedAt={lastVisitedAt} visits={visits} />
+          <div className="space-y-4">
+            <ToolVisitPanel lastVisitedAt={lastVisitedAt} visits={visits} />
+            <ToolHistoryPanel toolId={TOOL_ID} />
+          </div>
         </section>
       </main>
     </div>

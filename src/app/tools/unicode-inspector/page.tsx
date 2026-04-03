@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 
 import { Brackets } from "lucide-react";
 
+import { ToolHistoryPanel } from "@/components/tool-history-panel";
 import { ToolPageHeader } from "@/components/tool-page-header";
 import { ToolVisitPanel } from "@/components/tool-visit-panel";
 import { useToolVisit } from "@/hooks/use-tool-visit";
@@ -93,7 +94,10 @@ export default function UnicodeInspectorPage() {
             </p>
           </div>
 
-          <ToolVisitPanel lastVisitedAt={lastVisitedAt} visits={visits} />
+          <div className="space-y-4">
+            <ToolVisitPanel lastVisitedAt={lastVisitedAt} visits={visits} />
+            <ToolHistoryPanel toolId={TOOL_ID} />
+          </div>
         </section>
       </main>
     </div>

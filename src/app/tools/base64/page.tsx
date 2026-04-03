@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { Binary } from "lucide-react";
 
 import { CopyButton } from "@/components/copy-button";
+import { ToolHistoryPanel } from "@/components/tool-history-panel";
 import { ToolPageHeader } from "@/components/tool-page-header";
 import { ToolVisitPanel } from "@/components/tool-visit-panel";
 import { useToolVisit } from "@/hooks/use-tool-visit";
@@ -81,7 +82,13 @@ export default function Base64Page() {
             ) : null}
 
             <div className="flex flex-wrap gap-2">
-              <CopyButton label="复制输出" text={output} />
+              <CopyButton
+                historyDetail={output ? output.slice(0, 120) : undefined}
+                historyLabel="复制 Base64 输出"
+                label="复制输出"
+                text={output}
+                toolId={TOOL_ID}
+              />
             </div>
 
             <div className="space-y-2">
@@ -90,8 +97,9 @@ export default function Base64Page() {
             </div>
           </div>
 
-          <aside>
+          <aside className="space-y-4">
             <ToolVisitPanel lastVisitedAt={lastVisitedAt} visits={visits} />
+            <ToolHistoryPanel toolId={TOOL_ID} />
           </aside>
         </section>
       </main>

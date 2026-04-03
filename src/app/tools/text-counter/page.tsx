@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import type { LucideIcon } from "lucide-react";
 import { AlignLeft, Hash, ListOrdered, WholeWord } from "lucide-react";
 
+import { ToolHistoryPanel } from "@/components/tool-history-panel";
 import { ToolPageHeader } from "@/components/tool-page-header";
 import { ToolVisitPanel } from "@/components/tool-visit-panel";
 import { useToolVisit } from "@/hooks/use-tool-visit";
@@ -66,6 +67,7 @@ export default function TextCounterPage() {
             </div>
 
             <ToolVisitPanel lastVisitedAt={lastVisitedAt} visits={visits} />
+            <ToolHistoryPanel toolId={TOOL_ID} />
           </aside>
         </section>
       </main>

@@ -41,14 +41,9 @@ export default function Home() {
                     <strong className="font-semibold text-[var(--text)]">{BRAND_DISPLAY_NAME}</strong>{" "}
                     面向开发者与日常效率场景：把 JSON、Base64、时间戳、哈希等常用能力放进一个纯前端、无需登录的静态站点。名字里的{" "}
                     <strong className="font-semibold text-[var(--text)]">Ease</strong> 取「轻松、顺手」之意——让格式化、校验、编解码这类琐事在浏览器里快速完成。
-                  </p>
-                  <p>
-                    页面在本地运行；偏好与访问次数默认写进 IndexedDB，没有账号、也不把内容同步到云端。技术栈与部署说明见{" "}
                     <a className="font-medium text-[var(--accent-violet)] underline-offset-4 hover:underline" href="/settings/">
                       关于我们
-                    </a>
-                    。
-                  </p>
+                    </a> </p>
                 </div>
               </div>
 

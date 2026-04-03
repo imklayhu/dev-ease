@@ -16,7 +16,7 @@ export function SiteFooter() {
 
       <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-6 text-sm text-[var(--text-muted)] sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-md leading-7">
-          © {new Date().getFullYear()} {BRAND_DISPLAY_NAME} · 偏好与访问记录默认保存在浏览器本地（IndexedDB）
+          © {new Date().getFullYear()} {BRAND_DISPLAY_NAME} · 偏好与访问记录默认保存在浏览器本地
         </p>
         <div className="flex flex-col gap-3 text-xs sm:flex-row sm:items-center sm:gap-6 sm:text-right">
           <Link

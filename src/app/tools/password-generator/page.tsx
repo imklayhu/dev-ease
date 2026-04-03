@@ -5,9 +5,11 @@ import { useMemo, useState } from "react";
 import { KeyRound } from "lucide-react";
 
 import { CopyButton } from "@/components/copy-button";
+import { ToolHistoryPanel } from "@/components/tool-history-panel";
 import { ToolPageHeader } from "@/components/tool-page-header";
 import { ToolVisitPanel } from "@/components/tool-visit-panel";
 import { useToolVisit } from "@/hooks/use-tool-visit";
+import { appendToolHistory } from "@/lib/db/client";
 
 const TOOL_ID = "password-generator";
 
@@ -117,7 +119,10 @@ export default function PasswordGeneratorPage() {
               <button
                 className="rounded-xl border border-[var(--border)] bg-[var(--surface-elevated)] px-4 py-2 text-sm font-semibold text-[var(--text)] transition hover:border-[var(--accent-violet)]/35 hover:bg-[var(--accent-violet)]/10"
                 type="button"
-                onClick={() => setRegenNonce((n) => n + 1)}
+                onClick={() => {
+                  void appendToolHistory({ toolId: TOOL_ID, label: "重新生成随机密码" });
+                  setRegenNonce((n) => n + 1);
+                }}
               >
                 重新生成
               </button>
@@ -152,11 +157,20 @@ export default function PasswordGeneratorPage() {
               <div className="flex flex-wrap items-center gap-2 break-all rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-3 font-mono text-sm text-[var(--text)]">
                 {password || "—"}
               </div>
-              <CopyButton label="复制密码" text={password} />
+              <CopyButton
+                historyDetail={password ? "••••（已复制）" : undefined}
+                historyLabel="复制随机密码"
+                label="复制密码"
+                text={password}
+                toolId={TOOL_ID}
+              />
             </div>
           </div>
 
-          <ToolVisitPanel lastVisitedAt={lastVisitedAt} visits={visits} />
+          <div className="space-y-4">
+            <ToolVisitPanel lastVisitedAt={lastVisitedAt} visits={visits} />
+            <ToolHistoryPanel toolId={TOOL_ID} />
+          </div>
         </section>
       </main>
     </div>
