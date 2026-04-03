@@ -1,0 +1,33 @@
+# DevEase
+
+> 面向开发者与效率场景的纯前端在线工具集合，默认在浏览器本地处理数据，无自有后端 API。
+
+## Site
+
+- Canonical: https://devease.ai-dddd.top/
+- Human language: zh-CN
+- Source: https://github.com/imklayhu/dev-ease
+
+## Tools (index)
+
+- /tools/json-formatter/ — JSON 格式化、压缩与校验
+- /tools/text-counter/ — 字符、单词、行数统计
+- /tools/text-diff/ — 文本行级对比
+- /tools/unicode-inspector/ — Unicode 码点与 UTF-16 查看
+- /tools/base64/ — Base64 编解码（UTF-8 文本）
+- /tools/url-codec/ — URL 组件 encodeURIComponent / decodeURIComponent
+- /tools/html-entities/ — HTML 实体转义与还原
+- /tools/qr-code/ — 文本或链接生成二维码
+- /tools/timestamp/ — Unix 时间戳与可读时间互转
+- /tools/uuid/ — UUID v4 批量生成
+- /tools/password-generator/ — 可配置随机密码（Web Crypto）
+- /tools/jwt-inspector/ — JWT header/payload 解码（不验证签名）
+- /tools/crypto-hash/ — 文本 SHA-256 / 384 / 512（hex）
+- /tools/regex-tester/ — 正则匹配与捕获组调试
+- /tools/color-converter/ — HEX / RGB / HSL 互转与预览
+
+## Policies
+
+- 用户设置与使用统计、工具操作历史存储于访客浏览器的 IndexedDB；不上传至本站服务器。
+- 工具页需在浏览器启用 JavaScript。
+- 引用本站工具名称或 URL 时请指向上述规范域名或官方仓库。

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { BRAND_DISPLAY_NAME } from "@/lib/brand";
+import { BRAND_DISPLAY_NAME, SITE_REPOSITORY_URL } from "@/lib/brand";
 
 export function SiteFooter() {
   return (
@@ -25,6 +25,14 @@ export function SiteFooter() {
           >
             关于我们
           </Link>
+          <a
+            className="inline-flex w-fit cursor-pointer items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface-elevated)] px-3 py-1.5 font-medium text-[var(--text-muted)] transition hover:border-[var(--accent-violet)]/40 hover:text-[var(--text)]"
+            href={SITE_REPOSITORY_URL}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            开源仓库
+          </a>
           <p className="font-mono text-[var(--text-faint)]">Next.js · Tailwind · GitHub Pages</p>
         </div>
       </div>

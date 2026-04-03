@@ -1,11 +1,21 @@
 import type { Metadata } from "next";
 
+import { HomeJsonLd } from "@/components/home-json-ld";
 import { ToolCard } from "@/components/tool-card";
 import { BRAND_DISPLAY_NAME, BRAND_TAGLINE } from "@/lib/brand";
 import { getToolsGrouped, toolCount } from "@/data/tools";
+import { OG_IMAGE_DIMENSIONS, OG_IMAGE_PATH, ogImageAlt } from "@/lib/seo-shared";
 import { absoluteUrl } from "@/lib/site-url";
 
 const homeDescription = `${BRAND_DISPLAY_NAME} 收录 JSON 格式化、Base64、时间戳、UUID、哈希、正则、JWT、颜色转换等 ${toolCount} 款纯前端开发者工具。${BRAND_TAGLINE}，无需登录，默认本地处理。`;
+
+const homeOgImages = [
+  {
+    url: OG_IMAGE_PATH,
+    ...OG_IMAGE_DIMENSIONS,
+    alt: ogImageAlt(),
+  },
+];
 
 export const metadata: Metadata = {
   title: "常用开发小工具",
@@ -15,10 +25,13 @@ export const metadata: Metadata = {
     title: `${BRAND_DISPLAY_NAME} — 常用开发小工具`,
     description: homeDescription,
     url: absoluteUrl("/"),
+    images: homeOgImages,
   },
   twitter: {
+    card: "summary_large_image",
     title: `${BRAND_DISPLAY_NAME} — 常用开发小工具`,
     description: homeDescription,
+    images: [OG_IMAGE_PATH],
   },
 };
 
@@ -27,6 +40,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-1 flex-col">
+      <HomeJsonLd />
       <main
         className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-16 px-6 pb-24 pt-10 sm:pt-14"
         id="main-content"

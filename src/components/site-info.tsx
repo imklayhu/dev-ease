@@ -1,3 +1,9 @@
+import Link from "next/link";
+
+import type { ReactNode } from "react";
+
+import { SITE_REPOSITORY_URL } from "@/lib/brand";
+
 type SiteInfoProps = {
   /**
    * `default`：完整关于页用的玻璃卡片。
@@ -6,11 +12,24 @@ type SiteInfoProps = {
   variant?: "default" | "inline";
 };
 
-const rows: Array<{ label: string; value: string }> = [
+const rows: Array<{ label: string; value: ReactNode }> = [
   { label: "框架", value: "Next.js（静态导出）" },
   { label: "部署", value: "GitHub Pages" },
   { label: "存储", value: "IndexedDB" },
   { label: "后端", value: "无" },
+  {
+    label: "源码",
+    value: (
+      <Link
+        className="text-[var(--accent-violet)] underline-offset-4 transition hover:text-[var(--text)] hover:underline"
+        href={SITE_REPOSITORY_URL}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        GitHub · imklayhu/dev-ease
+      </Link>
+    ),
+  },
 ];
 
 export function SiteInfo({ variant = "default" }: SiteInfoProps) {

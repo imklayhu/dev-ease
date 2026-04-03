@@ -7,9 +7,18 @@ import { SiteInfo } from "@/components/site-info";
 import { ThemeSettings } from "@/components/theme-settings";
 import { UsageInsights } from "@/components/usage-insights";
 import { BRAND_DISPLAY_NAME } from "@/lib/brand";
+import { OG_IMAGE_DIMENSIONS, OG_IMAGE_PATH, ogImageAlt } from "@/lib/seo-shared";
 import { absoluteUrl } from "@/lib/site-url";
 
 const aboutDescription = `${BRAND_DISPLAY_NAME} 站点信息、技术栈、基于 IndexedDB 的本地使用统计、外观主题与各工具操作历史说明。`;
+
+const aboutOgImages = [
+  {
+    url: OG_IMAGE_PATH,
+    ...OG_IMAGE_DIMENSIONS,
+    alt: ogImageAlt(),
+  },
+];
 
 export const metadata: Metadata = {
   title: "关于我们",
@@ -19,10 +28,13 @@ export const metadata: Metadata = {
     title: `关于我们 · ${BRAND_DISPLAY_NAME}`,
     description: aboutDescription,
     url: absoluteUrl("/settings/"),
+    images: aboutOgImages,
   },
   twitter: {
+    card: "summary_large_image",
     title: `关于我们 · ${BRAND_DISPLAY_NAME}`,
     description: aboutDescription,
+    images: [OG_IMAGE_PATH],
   },
 };
 

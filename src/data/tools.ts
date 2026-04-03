@@ -61,6 +61,8 @@ export type ToolItem = {
   id: string;
   title: string;
   description: string;
+  /** 专用于页面 meta description，可与卡片 description 区分长度与关键词 */
+  seoDescription?: string;
   href: string;
   badge: string;
   icon: LucideIcon;
@@ -73,6 +75,8 @@ export const tools: ToolItem[] = [
     id: "json-formatter",
     title: "JSON 格式化 / 压缩",
     description: "校验 JSON；格式化（两格缩进）或压缩成一行。",
+    seoDescription:
+      "在线 JSON 格式化、压缩与语法校验：两格缩进美化或一行压缩，适合接口联调与配置审查。纯前端处理，无需登录。",
     href: "/tools/json-formatter/",
     badge: "JSON",
     icon: Braces,
@@ -83,6 +87,8 @@ export const tools: ToolItem[] = [
     id: "text-counter",
     title: "文本计数器",
     description: "统计字符、单词、行数；访问次数只在本地累计。",
+    seoDescription:
+      "在线统计字符数、单词数与行数，支持中英文混排；访问统计仅存于本机浏览器。适合文案与代码片段快速计量。",
     href: "/tools/text-counter/",
     badge: "文本",
     icon: Gauge,
@@ -92,6 +98,8 @@ export const tools: ToolItem[] = [
     id: "text-diff",
     title: "文本对比（行级）",
     description: "按行 diff 两段文本，高亮增删。",
+    seoDescription:
+      "两行级文本对比与 diff 高亮，快速查看增删；日志、配置与文档版本比对均可本地完成，无需上传文件。",
     href: "/tools/text-diff/",
     badge: "Diff",
     icon: GitCompare,
@@ -101,6 +109,8 @@ export const tools: ToolItem[] = [
     id: "unicode-inspector",
     title: "Unicode 码点查看",
     description: "按字符展示码点、U+ 与 UTF-16，便于排查 emoji。",
+    seoDescription:
+      "逐字符查看 Unicode 码点、U+ 表示与 UTF-16 单元，排查 emoji 与异常字符。浏览器内处理，保护隐私。",
     href: "/tools/unicode-inspector/",
     badge: "Unicode",
     icon: Brackets,
@@ -110,6 +120,8 @@ export const tools: ToolItem[] = [
     id: "base64",
     title: "Base64 编解码",
     description: "Base64 编解码，UTF-8 文本不走样。",
+    seoDescription:
+      "在线 Base64 编码与解码，UTF-8 文本与常见字符串场景；纯前端完成，适合调试与快速转换，不上传内容。",
     href: "/tools/base64/",
     badge: "编码",
     icon: Binary,
@@ -119,6 +131,8 @@ export const tools: ToolItem[] = [
     id: "url-codec",
     title: "URL 组件编解码",
     description: "encodeURIComponent / decodeURIComponent。",
+    seoDescription:
+      "URL 组件 encodeURIComponent / decodeURIComponent 在线工具，处理查询参数与特殊字符，前端本地执行、无需后端。",
     href: "/tools/url-codec/",
     badge: "URL",
     icon: Link2,
@@ -128,6 +142,8 @@ export const tools: ToolItem[] = [
     id: "html-entities",
     title: "HTML 实体编解码",
     description: "转义或还原 &lt; &gt; &amp; 等常见实体。",
+    seoDescription:
+      "HTML 实体转义与还原，处理尖括号、引号与 & 等常见符号，便于模板与富文本安全输出。本地浏览器处理。",
     href: "/tools/html-entities/",
     badge: "HTML",
     icon: CodeXml,
@@ -137,6 +153,8 @@ export const tools: ToolItem[] = [
     id: "qr-code",
     title: "二维码生成",
     description: "文本或链接生成 QR 码图片（本地渲染）。",
+    seoDescription:
+      "将文本或网址生成二维码图片，浏览器本地渲染与下载预览；适合活动链接与快速扫码测试，数据不离开本机。",
     href: "/tools/qr-code/",
     badge: "QR",
     icon: QrCode,
@@ -146,6 +164,8 @@ export const tools: ToolItem[] = [
     id: "timestamp",
     title: "时间戳转换",
     description: "Unix 时间戳与可读时间互转；支持秒/毫秒。",
+    seoDescription:
+      "Unix 时间戳与本地可读时间互转，支持秒与毫秒；排查日志与时区问题时常用，纯前端在线工具。",
     href: "/tools/timestamp/",
     badge: "时间",
     icon: Clock,
@@ -155,6 +175,8 @@ export const tools: ToolItem[] = [
     id: "uuid",
     title: "UUID 生成器",
     description: "批量生成 UUID v4。",
+    seoDescription:
+      "批量在线生成 UUID v4，使用浏览器加密随机数；适合占位 ID、测试数据与前端原型，无需安装工具。",
     href: "/tools/uuid/",
     badge: "随机",
     icon: Fingerprint,
@@ -164,6 +186,8 @@ export const tools: ToolItem[] = [
     id: "password-generator",
     title: "随机密码生成",
     description: "可配置长度与字符集，使用 crypto 随机数。",
+    seoDescription:
+      "可配置长度与字符集的随机密码生成器，基于 Web Crypto 随机数；仅在浏览器内生成，请妥善保管生成结果。",
     href: "/tools/password-generator/",
     badge: "密码",
     icon: KeyRound,
@@ -173,6 +197,8 @@ export const tools: ToolItem[] = [
     id: "jwt-inspector",
     title: "JWT 解析",
     description: "解码 header / payload；不验证签名。",
+    seoDescription:
+      "在线解码 JWT 的 header 与 payload（Base64URL），不验证签名；仅供调试与学习，不可替代服务端鉴权。",
     href: "/tools/jwt-inspector/",
     badge: "JWT",
     icon: Shield,
@@ -182,6 +208,8 @@ export const tools: ToolItem[] = [
     id: "crypto-hash",
     title: "文本哈希（SHA）",
     description: "SHA-256 / 384 / 512；输出 hex。",
+    seoDescription:
+      "在线计算文本的 SHA-256、SHA-384、SHA-512 摘要（hex 输出）。浏览器内 SubtleCrypto 执行，适合校验与联调。",
     href: "/tools/crypto-hash/",
     badge: "哈希",
     icon: Hash,
@@ -191,6 +219,8 @@ export const tools: ToolItem[] = [
     id: "regex-tester",
     title: "正则测试",
     description: "调试正则：列出匹配与捕获组。",
+    seoDescription:
+      "正则表达式在线测试：列出全部匹配位置与捕获组，辅助编写与排错。在本地浏览器运行，不上传测试文本。",
     href: "/tools/regex-tester/",
     badge: "正则",
     icon: Regex,
@@ -200,6 +230,8 @@ export const tools: ToolItem[] = [
     id: "color-converter",
     title: "颜色转换",
     description: "HEX / RGB / HSL 互转，带预览。",
+    seoDescription:
+      "HEX、RGB、HSL 互转并带色块预览，方便前端与 UI 取色；纯前端计算，无需上传调色板数据。",
     href: "/tools/color-converter/",
     badge: "颜色",
     icon: Palette,
