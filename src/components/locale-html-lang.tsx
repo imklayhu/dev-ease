@@ -6,8 +6,6 @@ import { useEffect } from "react";
 export const HTML_LANG: Record<string, string> = {
   zh: "zh-CN",
   en: "en",
-  ja: "ja",
-  ko: "ko",
 };
 
 export function LocaleHtmlLang() {

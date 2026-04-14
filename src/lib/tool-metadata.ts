@@ -35,7 +35,7 @@ export function metadataForTool(toolId: string, locale: string): Metadata {
       title: ogTitle,
       description,
       siteName: BRAND_DISPLAY_NAME,
-      locale: locale === "zh" ? "zh_CN" : locale === "ja" ? "ja_JP" : locale === "ko" ? "ko_KR" : "en_US",
+      locale: locale === "zh" ? "zh_CN" : "en_US",
       images: ogImages,
     },
     twitter: {

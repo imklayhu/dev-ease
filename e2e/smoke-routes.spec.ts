@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-const locales = ["zh", "en", "ja", "ko"] as const;
+const locales = ["zh", "en"] as const;
 
 test("root redirects to default locale", async ({ page }) => {
   await page.goto("/");

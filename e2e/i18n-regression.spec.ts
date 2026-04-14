@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-const LOCALES = ["zh", "en", "ja", "ko"] as const;
+const LOCALES = ["zh", "en"] as const;
 
 test.describe("i18n full-site regression", () => {
   for (const locale of LOCALES) {

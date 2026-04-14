@@ -41,8 +41,7 @@ export async function generateMetadata({
     .filter(Boolean);
 
   const canonical = absoluteUrl("/", locale);
-  const ogLocale =
-    locale === "zh" ? "zh_CN" : locale === "ja" ? "ja_JP" : locale === "ko" ? "ko_KR" : "en_US";
+  const ogLocale = locale === "zh" ? "zh_CN" : "en_US";
 
   return {
     metadataBase: new URL(SITE_ORIGIN),

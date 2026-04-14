@@ -81,15 +81,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         {/* 与顶栏 max-w-6xl、工具区同宽，避免「介绍窄一截」 */}
         <section className="w-full max-w-6xl">
           <div className="relative overflow-hidden rounded-[2rem] border border-[var(--border-strong)] bg-gradient-to-br from-[var(--surface-elevated)] via-[var(--surface)] to-[var(--surface-elevated)] p-[1px] shadow-[var(--shadow)]">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[var(--accent-violet)]/25 blur-3xl"
-            />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -bottom-20 -left-16 h-64 w-64 rounded-full bg-[var(--accent-fuchsia)]/20 blur-3xl"
-            />
-
             <div className="relative space-y-7 rounded-[31px] glass-panel p-8 sm:p-10">
               <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--text-faint)]">
                 {BRAND_DISPLAY_NAME}
@@ -147,7 +138,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               </p>
             </div>
             <div className="flex items-center gap-2 self-start rounded-2xl border border-[var(--border)] bg-[var(--surface-elevated)] px-4 py-2 font-mono text-xs text-[var(--text-muted)] shadow-inner ring-1 ring-white/5">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--accent)] shadow-[0_0_12px_var(--accent)] motion-reduce:animate-none" />
+              <span className="h-2 w-2 rounded-full bg-[var(--accent)]" />
               {t("statsLine", { toolCount, catCount: grouped.length })}
             </div>
           </div>

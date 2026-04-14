@@ -30,7 +30,7 @@ export function SiteJsonLd({ locale, siteDescription }: SiteJsonLdProps) {
       url: absoluteUrl("/", locale),
       name: BRAND_DISPLAY_NAME,
       description: webDesc,
-      inLanguage: locale === "zh" ? "zh-CN" : locale === "ja" ? "ja" : locale === "ko" ? "ko" : "en",
+      inLanguage: locale === "zh" ? "zh-CN" : "en",
       publisher: { "@id": orgId },
     },
     {

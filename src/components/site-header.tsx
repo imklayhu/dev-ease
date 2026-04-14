@@ -18,7 +18,7 @@ export async function SiteHeader() {
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-[1.75rem]">
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent-violet)]/35 via-[var(--accent-fuchsia)]/15 to-[var(--accent)]/30 opacity-90" />
         </div>
-        <div className="relative flex w-full items-center justify-between gap-4 rounded-[22px] border border-[var(--border-strong)]/90 glass-panel px-4 py-3 shadow-[var(--shadow)] backdrop-blur-xl sm:px-5">
+        <div className="relative flex w-full items-center justify-between gap-4 rounded-[22px] border border-[var(--border-strong)]/90 glass-panel px-4 py-3 shadow-[var(--shadow)] sm:px-5">
           <Link
             className="group flex cursor-pointer items-center gap-3 rounded-xl outline-none ring-offset-2 ring-offset-[var(--surface)] transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
             href="/"

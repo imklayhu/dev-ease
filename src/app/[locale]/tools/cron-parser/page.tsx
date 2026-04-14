@@ -23,8 +23,7 @@ export default function CronParserPage() {
   const [timeZone] = useState(() => Intl.DateTimeFormat().resolvedOptions().timeZone);
   const { visits, lastVisitedAt } = useToolVisit(TOOL_ID);
 
-  const localeTag =
-    locale === "zh" ? "zh-CN" : locale === "ja" ? "ja-JP" : locale === "ko" ? "ko-KR" : "en-US";
+  const localeTag = locale === "zh" ? "zh-CN" : "en-US";
 
   const result = useMemo(() => getNextCronRuns(input, count, timeZone), [input, count, timeZone]);
 

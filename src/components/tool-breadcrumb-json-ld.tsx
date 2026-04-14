@@ -13,7 +13,7 @@ export function ToolBreadcrumbJsonLd({ toolId, locale }: ToolBreadcrumbJsonLdPro
     return null;
   }
 
-  const homeLabel = locale === "zh" ? "首页" : locale === "ja" ? "ホーム" : locale === "ko" ? "홈" : "Home";
+  const homeLabel = locale === "zh" ? "首页" : "Home";
   const data = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

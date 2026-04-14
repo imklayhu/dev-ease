@@ -7,8 +7,6 @@ import { absoluteUrl } from "@/lib/site-url";
 const HREFLANG: Record<string, string> = {
   zh: "zh-CN",
   en: "en",
-  ja: "ja",
-  ko: "ko",
 };
 
 /**
