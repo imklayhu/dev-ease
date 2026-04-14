@@ -1,6 +1,6 @@
 import { BRAND_DISPLAY_NAME } from "@/lib/brand";
 import { OG_IMAGE_PATH } from "@/lib/seo-shared";
-import { SITE_ORIGIN, absoluteUrl } from "@/lib/site-url";
+import { SITE_ORIGIN, absoluteSiteUrl, absoluteUrl } from "@/lib/site-url";
 
 type SiteJsonLdProps = {
   locale: string;
@@ -9,8 +9,11 @@ type SiteJsonLdProps = {
 };
 
 export function SiteJsonLd({ locale, siteDescription }: SiteJsonLdProps) {
+  const homeUrl = absoluteUrl("/", locale);
   const orgId = `${SITE_ORIGIN}/#organization`;
-  const logoUrl = absoluteUrl(OG_IMAGE_PATH, locale);
+  const websiteId = `${homeUrl}#website`;
+  const webAppId = `${homeUrl}#webapp`;
+  const logoUrl = absoluteSiteUrl(OG_IMAGE_PATH);
   const webDesc =
     siteDescription ??
     `${BRAND_DISPLAY_NAME} developer utilities, local-first and deployable on GitHub Pages.`;
@@ -20,27 +23,29 @@ export function SiteJsonLd({ locale, siteDescription }: SiteJsonLdProps) {
       "@type": "Organization",
       "@id": orgId,
       name: BRAND_DISPLAY_NAME,
-      url: absoluteUrl("/", locale),
+      url: SITE_ORIGIN,
       logo: logoUrl,
       sameAs: ["https://github.com/imklayhu/dev-ease"],
     },
     {
       "@type": "WebSite",
-      "@id": `${SITE_ORIGIN}/#website`,
-      url: absoluteUrl("/", locale),
+      "@id": websiteId,
+      url: homeUrl,
       name: BRAND_DISPLAY_NAME,
       description: webDesc,
       inLanguage: locale === "zh" ? "zh-CN" : "en",
+      availableLanguage: ["zh-CN", "en"],
       publisher: { "@id": orgId },
     },
     {
       "@type": "WebApplication",
-      "@id": `${SITE_ORIGIN}/#webapp`,
+      "@id": webAppId,
       name: BRAND_DISPLAY_NAME,
-      url: absoluteUrl("/", locale),
+      url: homeUrl,
       applicationCategory: "DeveloperApplication",
       operatingSystem: "Any",
       browserRequirements: "JavaScript enabled browser",
+      inLanguage: locale === "zh" ? "zh-CN" : "en",
       offers: {
         "@type": "Offer",
         price: "0",

@@ -7,52 +7,43 @@ import { absoluteUrl } from "@/lib/site-url";
 
 export const dynamic = "force-static";
 
+function alternatesFor(path: string): NonNullable<MetadataRoute.Sitemap[number]["alternates"]> {
+  const languages: Record<string, string> = {};
+  for (const locale of routing.locales) {
+    const hreflang = locale === "zh" ? "zh-CN" : "en";
+    languages[hreflang] = absoluteUrl(path, locale);
+  }
+  languages["x-default"] = absoluteUrl(path, routing.defaultLocale);
+  return { languages };
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-  const locales = routing.locales;
+  const pages: Array<{
+    path: string;
+    changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
+    priority: number;
+  }> = [
+    { path: "/", changeFrequency: "weekly", priority: 1 },
+    { path: "/settings/", changeFrequency: "monthly", priority: 0.5 },
+    { path: "/guides/", changeFrequency: "monthly", priority: 0.65 },
+    ...guides.map((g) => ({
+      path: `/guides/${g.slug}/`,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
+    ...tools.map((tool) => ({
+      path: tool.href,
+      changeFrequency: "monthly" as const,
+      priority: tool.featured ? 0.9 : 0.8,
+    })),
+  ];
 
-  const entries: MetadataRoute.Sitemap = [];
-
-  for (const locale of locales) {
-    entries.push({
-      url: absoluteUrl("/", locale),
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 1,
-    });
-
-    entries.push({
-      url: absoluteUrl("/settings/", locale),
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    });
-
-    entries.push({
-      url: absoluteUrl("/guides/", locale),
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.65,
-    });
-
-    for (const g of guides) {
-      entries.push({
-        url: absoluteUrl(`/guides/${g.slug}/`, locale),
-        lastModified,
-        changeFrequency: "monthly",
-        priority: 0.6,
-      });
-    }
-
-    for (const tool of tools) {
-      entries.push({
-        url: absoluteUrl(tool.href, locale),
-        lastModified,
-        changeFrequency: "monthly",
-        priority: tool.featured ? 0.9 : 0.8,
-      });
-    }
-  }
-
-  return entries;
+  return pages.map((page) => ({
+    url: absoluteUrl(page.path, routing.defaultLocale),
+    lastModified,
+    changeFrequency: page.changeFrequency,
+    priority: page.priority,
+    alternates: alternatesFor(page.path),
+  }));
 }

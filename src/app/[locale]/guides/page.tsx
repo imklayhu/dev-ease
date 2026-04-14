@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { BookOpen } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { GuideListJsonLd } from "@/components/guide-json-ld";
 import { guides } from "@/data/guides";
 import { Link } from "@/i18n/navigation";
 import { BRAND_DISPLAY_NAME } from "@/lib/brand";
@@ -48,10 +49,26 @@ export default async function GuidesIndexPage({ params }: { params: Promise<{ lo
   setRequestLocale(locale);
   const t = await getTranslations("guides");
   const tNav = await getTranslations("nav");
+  const localizedGuides = guides.map((guide) => {
+    const keyPrefix = `items.${guide.slug}`;
+    const read = (key: "title" | "description", fallback: string): string => {
+      try {
+        return t(`${keyPrefix}.${key}` as never) as string;
+      } catch {
+        return fallback;
+      }
+    };
+    return {
+      ...guide,
+      title: read("title", guide.title),
+      description: read("description", guide.description),
+    };
+  });
 
   return (
     <div className="flex flex-1 flex-col">
       <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-10 px-6 pb-20 pt-10" id="main-content">
+        <GuideListJsonLd guides={localizedGuides} locale={locale} name={t("breadcrumb")} />
         <nav aria-label={tNav("breadcrumbAria")} className="text-sm text-[var(--text-muted)]">
           <ol className="flex flex-wrap items-center gap-2">
             <li>
@@ -83,19 +100,15 @@ export default async function GuidesIndexPage({ params }: { params: Promise<{ lo
         </header>
 
         <ul className="space-y-4" role="list">
-          {guides.map((g) => (
+          {localizedGuides.map((g) => (
             <li key={g.slug}>
               <Link
                 className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-elevated)]/70 p-5 shadow-sm shadow-black/5 outline-none ring-offset-2 ring-offset-[var(--surface)] transition hover:border-[var(--accent-violet)]/35 hover:bg-[var(--accent-violet)]/6 focus-visible:ring-2 focus-visible:ring-[var(--ring)] dark:shadow-black/40"
                 href={`/guides/${g.slug}/`}
               >
                 <p className="font-mono text-[11px] text-[var(--text-faint)]">{g.date}</p>
-                <h2 className="mt-2 font-display text-lg font-bold text-[var(--text)]">
-                  {t("items.local-first-json-workflow.title")}
-                </h2>
-                <p className="mt-2 text-sm leading-6 text-[var(--text-muted)]">
-                  {t("items.local-first-json-workflow.description")}
-                </p>
+                <h2 className="mt-2 font-display text-lg font-bold text-[var(--text)]">{g.title}</h2>
+                <p className="mt-2 text-sm leading-6 text-[var(--text-muted)]">{g.description}</p>
                 <p className="mt-3 text-sm font-medium text-[var(--accent-violet)]">{t("readMore")}</p>
               </Link>
             </li>

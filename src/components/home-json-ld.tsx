@@ -14,14 +14,24 @@ export function HomeJsonLd({ locale, name, items }: HomeJsonLdProps) {
     name,
     numberOfItems: items.length,
     itemListElement: items.map((tool, index) => ({
+      // 首页可见顺序与页面列表保持一致
       "@type": "ListItem",
       position: index + 1,
       item: {
         "@type": "SoftwareApplication",
+        "@id": `${absoluteUrl(tool.href, locale)}#software`,
         name: tool.title,
         url: absoluteUrl(tool.href, locale),
         description: tool.description,
         applicationCategory: "DeveloperApplication",
+        operatingSystem: "Any",
+        isAccessibleForFree: true,
+        inLanguage: locale === "zh" ? "zh-CN" : "en",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
       },
     })),
   };

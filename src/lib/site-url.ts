@@ -16,6 +16,12 @@ export const SITE_ORIGIN =
   fromEnv ||
   (process.env.NODE_ENV === "production" ? PRODUCTION_DEFAULT_ORIGIN : "http://localhost:3000");
 
+/** 不带 locale 前缀的站点绝对 URL（用于静态资源、robots、JSON-LD 站点实体等） */
+export function absoluteSiteUrl(path: string): string {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${SITE_ORIGIN}${normalized}`.replace(/([^:]\/)\/+/g, "$1");
+}
+
 /**
  * 带语言前缀的绝对 URL（与 `localePrefix: "always"` 一致）。
  * `path` 为站点内路径（不含 locale），如 `/`、`/tools/json-formatter/`。

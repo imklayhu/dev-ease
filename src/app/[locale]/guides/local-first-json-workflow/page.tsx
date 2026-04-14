@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { GuideArticleJsonLd } from "@/components/guide-json-ld";
+import { getGuideBySlug } from "@/data/guides";
 import { Link } from "@/i18n/navigation";
 import { BRAND_DISPLAY_NAME } from "@/lib/brand";
 import { localeAlternates } from "@/lib/locale-alternates";
@@ -46,6 +48,7 @@ export default async function GuideLocalFirstJsonPage({ params }: { params: Prom
   setRequestLocale(locale);
   const t = await getTranslations("guides");
   const tNav = await getTranslations("nav");
+  const guide = getGuideBySlug("local-first-json-workflow");
 
   return (
     <div className="flex flex-1 flex-col">
@@ -53,6 +56,13 @@ export default async function GuideLocalFirstJsonPage({ params }: { params: Prom
         className="mx-auto w-full max-w-3xl flex-1 px-6 pb-20 pt-10 text-[var(--text-muted)]"
         id="main-content"
       >
+        <GuideArticleJsonLd
+          date={guide?.date ?? "2026-04-03"}
+          description={t("localFirst.description")}
+          locale={locale}
+          slug="local-first-json-workflow"
+          title={t("localFirst.title")}
+        />
         <nav aria-label={tNav("breadcrumbAria")} className="text-sm">
           <ol className="flex flex-wrap items-center gap-2">
             <li>
