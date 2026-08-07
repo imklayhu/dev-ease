@@ -87,6 +87,24 @@ test.describe("tool workflows", () => {
     await expect(page.locator("img")).toBeVisible();
   });
 
+  test("qr code with center logo", async ({ page }) => {
+    await page.goto("/zh/tools/qr-code/");
+    await page.fill("#qr-text", "https://example.com");
+    const preview = page.locator("main img");
+    await expect(preview).toBeVisible();
+    const srcWithoutLogo = await preview.getAttribute("src");
+
+    await page.locator("#qr-logo-file").setInputFiles("tests/fixtures/qr-logo.png");
+    await expect(page.getByRole("button", { name: /移除|Remove/ })).toBeVisible();
+    // 选择图标后，二维码重新生成且内容不同（图标被合成进中心）
+    await expect.poll(async () => preview.getAttribute("src")).not.toBe(srcWithoutLogo);
+    await expect(preview).toBeVisible();
+    await expect(page.getByRole("link", { name: /下载 PNG|Download PNG/ })).toHaveAttribute(
+      "href",
+      /^data:image\/png/,
+    );
+  });
+
   test("regex tester", async ({ page }) => {
     await page.goto("/zh/tools/regex-tester/");
     await page.fill("#re-pattern", "\\d+");

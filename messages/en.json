@@ -291,6 +291,13 @@
       "enterContent": "Enter content",
       "generateFailed": "Failed to generate",
       "downloadPng": "Download PNG (Data URL)",
+      "logoLabel": "Center icon (optional)",
+      "logoHint": "Upload a small image to embed it in the center of the QR code. A higher error correction level is used automatically for better scannability. Choose a simple, high-contrast image.",
+      "chooseLogo": "Choose icon",
+      "removeLogo": "Remove",
+      "logoNotImage": "Please choose an image file",
+      "logoTooLarge": "Image too large: keep it under 10MB",
+      "logoReadFailed": "Failed to read icon",
       "history": {
         "generated": "Generate QR code"
       }

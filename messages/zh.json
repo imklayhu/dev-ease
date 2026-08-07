@@ -291,6 +291,13 @@
       "enterContent": "请输入内容",
       "generateFailed": "生成失败",
       "downloadPng": "下载 PNG（Data URL）",
+      "logoLabel": "居中图标（可选）",
+      "logoHint": "上传小图后会居中嵌入二维码；为提升可扫描性，生成时自动采用更高纠错级别。建议使用简洁、对比清晰的图片。",
+      "chooseLogo": "选择图标",
+      "removeLogo": "移除",
+      "logoNotImage": "请选择图片文件",
+      "logoTooLarge": "图片过大：请控制在 10MB 以内",
+      "logoReadFailed": "图标读取失败",
       "history": {
         "generated": "生成二维码"
       }
